@@ -1,0 +1,175 @@
+
+# Project: Payroll Data Validator (24h MVP - Recruitment Project)
+# Stack: Next.js 15, React 19, Shadcn/ui, Tailwind 4, Supabase
+# Architecture: Feature-based monorepo with design system
+
+## BUSINESS CONTEXT
+- Domain: French payroll variable validation for HR professionals
+- Use Case: Upload CSV/Excel → Validate against French labor law → Export clean data
+- Performance Target: Process 500 payroll lines in <30 seconds
+- Mobile-first responsive design for field payroll managers
+
+## CODE STYLE & ARCHITECTURE
+
+### TypeScript Standards
+- Use strict mode with exact types
+- Prefer interfaces over types for object shapes
+- Use branded types for business domain (EmployeeId, SalaryAmount)
+- Export types alongside components
+- JSDoc for all public APIs
+
+### React Patterns
+- Function components with TypeScript
+- Custom hooks for business logic isolation
+- Server components by default (Next.js 15)
+- Client components only when necessary (interactivity)
+- Error boundaries for feature isolation
+- Proper loading states with Suspense
+
+### File Organization (Feature-based)
+```
+apps/web/features/[feature-name]/
+├── components/     # Feature-specific UI
+├── hooks/         # Business logic hooks
+├── types/         # Feature domain types
+├── utils/         # Feature utilities
+└── api/          # Feature API handlers
+```
+
+### Naming Conventions
+- Components: PascalCase (PayrollValidator.tsx)
+- Hooks: camelCase with 'use' prefix (usePayrollValidation.ts)
+- Types: PascalCase with domain prefix (PayrollEmployee, ValidationResult)
+- Constants: SCREAMING_SNAKE_CASE (SMIC_2024, MAX_WEEKLY_HOURS)
+- Files: kebab-case (payroll-validator.tsx)
+
+## IMPORT ORGANIZATION
+1. React imports first
+2. Next.js imports
+3. Third-party libraries (ordered alphabetically)
+4. Shared package imports (@payroll/ui, @payroll/shared)
+5. Feature-relative imports (./components, ../hooks)
+6. Type-only imports last
+
+## SUPABASE INTEGRATION
+
+### Database Patterns
+- Use generated TypeScript types from Supabase CLI
+- Implement RLS (Row Level Security) for multi-tenant data
+- Handle loading/error states consistently
+- Use React Query for data fetching and caching
+
+### Naming Conventions
+- Tables: snake_case (payroll_files, validation_results)
+- Columns: snake_case (file_name, created_at, employee_id)
+- Foreign keys: [table]_id pattern
+
+### Error Handling
+- Always wrap database calls in try-catch
+- Use custom error types for business logic
+- Provide user-friendly error messages
+- Log errors for debugging (non-sensitive data only)
+
+## FRENCH PAYROLL BUSINESS RULES
+
+### Legal Constants (2024)
+- SMIC_MONTHLY: 1398.69 (euros gross)
+- MAX_WEEKLY_HOURS: 48
+- LEGAL_WEEKLY_HOURS: 35
+- MAX_DAILY_HOURS: 10
+- OVERTIME_RATE_125: 1.25 (first 8 hours)
+- OVERTIME_RATE_150: 1.50 (beyond 43h/week)
+
+### Validation Categories
+- BLOCKING_ERROR: Violates legal minimums (salary < SMIC)
+- WARNING: Exceeds standards but may be legal (>35h with agreement)
+- SUGGESTION: Best practice recommendations
+
+### Data Format Requirements
+- Currency: Always in euros, 2 decimal places
+- Hours: Decimal format (37.5 not 37h30)
+- Dates: ISO format (YYYY-MM-DD)
+- Names: Trim whitespace, handle accents properly
+
+## PERFORMANCE REQUIREMENTS
+
+### Web Workers Usage
+- Use Web Workers for CSV parsing (non-blocking UI)
+- Stream validation results to UI progressively
+- Handle worker termination gracefully
+- Provide progress feedback with meaningful steps
+
+### Component Optimization
+- Use React.memo for heavy table components
+- Implement virtual scrolling for large datasets
+- Lazy load correction modals
+- Debounce search and filter inputs
+
+## RESPONSIVE DESIGN
+
+### Mobile-First Approach
+- Design for 320px minimum width
+- Touch-friendly targets (44px minimum)
+- Horizontal scrolling for data tables
+- Bottom sheets for mobile modals
+- Sticky headers for long tables
+
+### Breakpoints (Tailwind)
+- sm: 640px (small tablets)
+- md: 768px (tablets)
+- lg: 1024px (laptops)
+- xl: 1280px (desktops)
+
+## ERROR HANDLING PATTERNS
+
+### User-Facing Errors
+- Toast notifications for immediate feedback
+- Inline validation messages
+- Error boundaries with recovery options
+- Clear actionable error messages in French
+
+### Developer Errors
+- Console warnings for development
+- Structured error logging
+- Error boundary fallbacks
+- Graceful degradation
+
+## TESTING STRATEGY
+
+### Unit Tests (Vitest)
+- Test business logic in isolation
+- Mock external dependencies (Supabase, Workers)
+- Test error handling paths
+- Validate French business rules
+
+### E2E Tests (Playwright)
+- Test complete user workflows
+- Validate file upload/download
+- Test responsive behavior
+- Performance benchmarks
+
+## ACCESSIBILITY
+
+### WCAG 2.1 AA Compliance
+- Proper ARIA labels for screen readers
+- Keyboard navigation support
+- Color contrast ratios
+- Focus management in modals
+- Alt text for status indicators
+
+## SECURITY CONSIDERATIONS
+
+### Data Privacy
+- No persistent storage of payroll data
+- Clear localStorage on session end
+- HTTPS only for production
+- Input sanitization for file uploads
+- Rate limiting for API endpoints
+
+When suggesting code changes:
+1. Always consider the business context (French payroll processing)
+2. Maintain feature isolation in the monorepo structure
+3. Optimize for mobile-first responsive design
+4. Include proper TypeScript types and error handling
+5. Follow the established naming conventions
+6. Consider performance implications for large datasets
