@@ -12,6 +12,7 @@
     "lint": "eslint . --max-warnings 0",
     "check-types": "tsc --noEmit",
     "storybook": "storybook dev -p 6006",
+    "dev": "pnpm storybook",
     "build-storybook": "storybook build"
   },
   "devDependencies": {
