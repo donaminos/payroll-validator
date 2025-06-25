@@ -103,16 +103,15 @@ Payroll managers lose 40-60% of their monthly time on:
 ```tsx
 // Hardcoded business rules for demo
 const VALIDATION_RULES = {
-  SMIC_2024: 1398.69,           // Monthly gross SMIC
-  MAX_WEEKLY_HOURS: 48,         // Legal maximum duration
-  MAX_DAILY_HOURS: 10,          // Daily maximum duration
-  LEGAL_HOURS: 35,              // Legal weekly duration
-  OVERTIME_RATE_125: 1.25,      // Overtime rate
-  OVERTIME_RATE_150: 1.50,      // Overtime rate
-  MIN_PAID_LEAVE: 2.5,          // Days per month
-  MAX_MONTHLY_ABSENCE: 22       // Max working days
+  SMIC_2024: 1398.69, // Monthly gross SMIC
+  MAX_WEEKLY_HOURS: 48, // Legal maximum duration
+  MAX_DAILY_HOURS: 10, // Daily maximum duration
+  LEGAL_HOURS: 35, // Legal weekly duration
+  OVERTIME_RATE_125: 1.25, // Overtime rate
+  OVERTIME_RATE_150: 1.5, // Overtime rate
+  MIN_PAID_LEAVE: 2.5, // Days per month
+  MAX_MONTHLY_ABSENCE: 22, // Max working days
 };
-
 ```
 
 ### FR3 - Error Correction Interface

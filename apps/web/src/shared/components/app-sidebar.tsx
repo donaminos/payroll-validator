@@ -1,7 +1,7 @@
-import * as React from "react"
+import * as React from "react";
 
-import { SearchForm } from "@/domains/payroll-importer/search-form"
-import { VersionSwitcher } from "@/domains/payroll-importer/version-switcher"
+import { SearchForm } from "@/shared/components/search-form";
+import { VersionSwitcher } from "@/shared/components/version-switcher";
 import {
   Sidebar,
   SidebarContent,
@@ -13,28 +13,28 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarRail,
-} from "@payroll/ui/components/ui/sidebar"
+} from "@payroll/ui/components/ui/sidebar";
 
 // This is sample data.
 const data = {
   versions: ["1.0.1", "1.1.0-alpha", "2.0.0-beta1"],
   navMain: [
+    // {
+    //   title: "Getting Started",
+    //   url: "#",
+    //   items: [
+    //     {
+    //       title: "Installation",
+    //       url: "#",
+    //     },
+    //     {
+    //       title: "Project Structure",
+    //       url: "#",
+    //     },
+    //   ],
+    // },
     {
-      title: "Getting Started",
-      url: "#",
-      items: [
-        {
-          title: "Installation",
-          url: "#",
-        },
-        {
-          title: "Project Structure",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Building Your Application",
+      title: "Employees",
       url: "#",
       items: [
         {
@@ -89,7 +89,7 @@ const data = {
       ],
     },
     {
-      title: "API Reference",
+      title: "Payslips",
       url: "#",
       items: [
         {
@@ -118,34 +118,8 @@ const data = {
         },
       ],
     },
-    {
-      title: "Architecture",
-      url: "#",
-      items: [
-        {
-          title: "Accessibility",
-          url: "#",
-        },
-        {
-          title: "Fast Refresh",
-          url: "#",
-        },
-        {
-          title: "Next.js Compiler",
-          url: "#",
-        },
-        {
-          title: "Supported Browsers",
-          url: "#",
-        },
-        {
-          title: "Turbopack",
-          url: "#",
-        },
-      ],
-    },
   ],
-}
+};
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
@@ -178,5 +152,5 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarContent>
       <SidebarRail />
     </Sidebar>
-  )
+  );
 }

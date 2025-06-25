@@ -9,7 +9,14 @@ const meta: Meta<typeof Button> = {
   argTypes: {
     variant: {
       control: "select",
-      options: ["default", "secondary", "destructive", "outline", "ghost", "link"],
+      options: [
+        "default",
+        "secondary",
+        "destructive",
+        "outline",
+        "ghost",
+        "link",
+      ],
     },
     size: {
       control: "select",
@@ -61,15 +68,18 @@ export const WithIcons: Story = {
   render: () => (
     <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
       <Button variant="default">
-        <Upload className="mr-2" />Upload
+        <Upload className="mr-2" />
+        Upload
       </Button>
       <Button variant="secondary">
-        <CheckCircle className="mr-2" />Success
+        <CheckCircle className="mr-2" />
+        Success
       </Button>
       <Button variant="destructive">
-        <AlertTriangle className="mr-2" />Warning
+        <AlertTriangle className="mr-2" />
+        Warning
       </Button>
     </div>
   ),
   name: "With Icons",
-}; 
+};
