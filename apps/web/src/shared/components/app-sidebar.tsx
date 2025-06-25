@@ -1,4 +1,5 @@
 import * as React from "react";
+import { User2, FileText, Wallet, CalendarCheck, Clock, BarChart2, Settings } from "lucide-react";
 
 import { SearchForm } from "@/shared/components/search-form";
 import { VersionSwitcher } from "@/shared/components/version-switcher";
@@ -14,115 +15,49 @@ import {
   SidebarMenuItem,
   SidebarRail,
 } from "@payroll/ui/components/ui/sidebar/sidebar";
-import { Button } from "@payroll/ui/components/ui/button/button";
 
-// This is sample data.
-const data = {
-  versions: ["1.0.1", "1.1.0-alpha", "2.0.0-beta1"],
-  navMain: [
-    // {
-    //   title: "Getting Started",
-    //   url: "#",
-    //   items: [
-    //     {
-    //       title: "Installation",
-    //       url: "#",
-    //     },
-    //     {
-    //       title: "Project Structure",
-    //       url: "#",
-    //     },
-    //   ],
-    // },
-    {
-      title: "Employees",
-      url: "#",
-      items: [
-        {
-          title: "Routing",
-          url: "#",
-        },
-        {
-          title: "Data Fetching",
-          url: "#",
-          isActive: true,
-        },
-        {
-          title: "Rendering",
-          url: "#",
-        },
-        {
-          title: "Caching",
-          url: "#",
-        },
-        {
-          title: "Styling",
-          url: "#",
-        },
-        {
-          title: "Optimizing",
-          url: "#",
-        },
-        {
-          title: "Configuring",
-          url: "#",
-        },
-        {
-          title: "Testing",
-          url: "#",
-        },
-        {
-          title: "Authentication",
-          url: "#",
-        },
-        {
-          title: "Deploying",
-          url: "#",
-        },
-        {
-          title: "Upgrading",
-          url: "#",
-        },
-        {
-          title: "Examples",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Payslips",
-      url: "#",
-      items: [
-        {
-          title: "Components",
-          url: "#",
-        },
-        {
-          title: "File Conventions",
-          url: "#",
-        },
-        {
-          title: "Functions",
-          url: "#",
-        },
-        {
-          title: "next.config.js Options",
-          url: "#",
-        },
-        {
-          title: "CLI",
-          url: "#",
-        },
-        {
-          title: "Edge Runtime",
-          url: "#",
-        },
-      ],
-    },
-  ],
+/**
+ * Sidebar navigation item type for AppSidebar.
+ */
+export interface AppSidebarNavItem {
+  title: string;
+  url: string;
+  isActive?: boolean;
+}
+
+/**
+ * Sidebar navigation group type for AppSidebar.
+ */
+export interface AppSidebarNavGroup {
+  title: string;
+  url: string;
+  items: AppSidebarNavItem[];
+}
+
+/**
+ * Data prop type for AppSidebar.
+ */
+export interface AppSidebarData {
+  versions: string[];
+  navMain: AppSidebarNavGroup[];
+}
+
+// Map section titles to Lucide icons (for possible future use, but not rendered now)
+const sectionIcons: Record<string, React.ReactNode> = {
+  Employees: <User2 className="w-4 h-4 mr-2" />,
+  Payroll: <FileText className="w-4 h-4 mr-2" />,
+  Expenses: <Wallet className="w-4 h-4 mr-2" />,
+  "Time Management": <CalendarCheck className="w-4 h-4 mr-2" />,
+  Reports: <BarChart2 className="w-4 h-4 mr-2" />,
+  Settings: <Settings className="w-4 h-4 mr-2" />,
 };
 
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+/**
+ * AppSidebar component for displaying navigation and version switcher.
+ * @param data - Sidebar data (versions and navigation groups)
+ * @param props - Additional Sidebar props
+ */
+export function AppSidebar({ data, ...props }: React.ComponentProps<typeof Sidebar> & { data: AppSidebarData }) {
   return (
     <Sidebar {...props}>
       <SidebarHeader>
@@ -133,16 +68,33 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <SearchForm />
       </SidebarHeader>
       <SidebarContent>
-        {/* We create a SidebarGroup for each parent. */}
-        {data.navMain.map((item) => (
-          <SidebarGroup key={item.title}>
-            <SidebarGroupLabel>{item.title}</SidebarGroupLabel>
-            <SidebarGroupContent>
+        {data.navMain.map((group) => (
+          <SidebarGroup
+            key={group.title}>
+            <SidebarGroupLabel className="text-sm font-medium text-gray-700 mb-2 mt-2 tracking-tight uppercase flex items-center">
+              {sectionIcons[group.title]}
+              {group.title}
+            </SidebarGroupLabel>
+            <SidebarGroupContent className="gap-1">
               <SidebarMenu>
-                {item.items.map((item) => (
+                {group.items.map((item) => (
                   <SidebarMenuItem key={item.title}>
-                    <SidebarMenuButton asChild isActive={item.isActive}>
-                      <a href={item.url}>{item.title}</a>
+                    <SidebarMenuButton
+                      asChild
+                      isActive={item.isActive}
+                      className={
+                        item.isActive
+                          ? "text-md font-normal px-4 py-1 rounded-md bg-primary/10 border-l-4 border-primary text-primary transition-colors"
+                          : "text-md font-normal px-4 py-1 rounded-md hover:bg-gray-100 focus:bg-gray-100 transition-colors text-gray-900"
+                      }
+                    >
+                      <a
+                        href={item.url}
+                        className="w-full text-left block"
+                        aria-current={item.isActive ? "page" : undefined}
+                      >
+                        {item.title}
+                      </a>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 ))}
