@@ -207,9 +207,7 @@ payroll-validator/
 │   │   │   └── styles/          # Tailwind config
 │   │   ├── stories/             # Storybook stories
 │   │   └── package.json
-│   ├── shared/                  # Shared utilities & types
-│   │   ├── types/               # Business domain types
-│   │   ├── utils/               # Cross-domain utilities
+│   ├── tailwind-config/           # Shared tailwind-config
 │   │   └── package.json
 │   └── e2e/                     # E2E Tests by feature
 └── turbo.json                   # Turborepo config

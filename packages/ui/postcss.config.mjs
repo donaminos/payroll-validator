@@ -1,0 +1,1 @@
+import "@payroll/tailwind-config/postcss.config";

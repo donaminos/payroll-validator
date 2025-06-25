@@ -1,0 +1,21 @@
+{
+    "$schema": "https://ui.shadcn.com/schema.json",
+    "style": "new-york",
+    "rsc": false,
+    "tsx": true,
+    "tailwind": {
+      "config": "",
+      "css": "@payroll/tailwind-config/globals.css",
+      "baseColor": "neutral",
+      "cssVariables": true,
+      "prefix": ""
+    },
+    "aliases": {
+      "components": "@payroll/ui/components",
+      "utils": "@payroll/ui/lib/utils",
+      "ui": "@payroll/ui/components/ui",
+      "lib": "@payroll/ui/lib",
+      "hooks": "@payroll/ui/hooks"
+    },
+    "iconLibrary": "lucide"
+  }
