@@ -1,1 +1,1 @@
-import "@payroll/tailwind-config/postcss.config";
+export { default } from "@payroll/tailwind-config/postcss.config";
