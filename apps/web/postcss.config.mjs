@@ -1,0 +1,1 @@
+export { default } from "@payroll/tailwind-config/postcss.config";
