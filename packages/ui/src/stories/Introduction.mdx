@@ -1,0 +1,112 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+import Docs from "./assets/docs.png";
+import Styling from "./assets/styling.png";
+import Testing from "./assets/testing.png";
+import Accessibility from "./assets/accessibility.png";
+
+<Meta title="Introduction" />
+
+# Payroll Validator Design System
+
+Welcome to the Payroll Validator Design System! This library powers data-heavy, accessible, and compliant interfaces for French payroll validation. It is built for performance, clarity, and best-in-class developer experience.
+
+---
+
+## ✨ Philosophy & Principles
+
+- **Strict TypeScript**: All components use exact types and branded business types.
+- **Accessibility First**: Built on [Shadcn/ui](https://ui.shadcn.com/) and [Radix UI](https://www.radix-ui.com/), with WCAG 2.1 AA compliance.
+- **Mobile-First**: Responsive from 320px, with touch-friendly targets and sticky headers.
+- **Feature Isolation**: No barrel files, no leaky abstractions—each component is self-contained.
+- **Performance**: Optimized for 500+ rows, with virtual scrolling and memoization.
+
+---
+
+## 🛠️ Adding a New Component (Shadcn CLI)
+
+To add a new Shadcn component to a dedicated folder, use the CLI:
+
+```sh
+pnpm dlx shadcn-ui@latest add carousel -p ./src/components/ui/carousel
+```
+
+- **Why this structure?**
+  - Keeps each component isolated for easier upgrades and customizations.
+  - Follows the feature-based monorepo pattern.
+  - Ensures clear import paths and avoids import cycles.
+
+> **Tip:** Always use `kebab-case` for folders and files, and `PascalCase` for component names.
+
+---
+
+## 🚫 Why Not Use Barrel Files?
+
+Barrel files (e.g., `index.ts`) are intentionally avoided:
+
+- They hide dependencies and can cause circular imports.
+- They make tree-shaking less effective, increasing bundle size.
+- They break feature isolation and make upgrades harder.
+
+**Import components directly from their folder:**
+
+```tsx
+import { Button } from "@payroll/ui/src/components/ui/button/button";
+```
+
+---
+
+## 🧪 How to Test a Component
+
+<img src={Testing} alt="Testing" style={{ width: '100%', maxWidth: 400, margin: '1rem 0' }} />
+
+- All components are tested with [Vitest](https://vitest.dev/) and [@storybook/addon-vitest](https://storybook.js.org/docs/writing-tests/integrations/vitest-addon).
+- Stories double as test cases—write stories for all states and edge cases.
+- To run tests:
+
+```sh
+pnpm test
+# or for Storybook-specific tests
+pnpm vitest run
+```
+
+- See [`vitest.config.ts`](https://github.com/your-repo/packages/ui/vitest.config.ts) for setup.
+
+---
+
+## 📚 Best Practices
+
+- **Types**: Use interfaces for object shapes, export types alongside components.
+- **Accessibility**: Use ARIA labels, keyboard navigation, and test with screen readers.
+- **Styling**: Use Tailwind CSS utility classes and CVA for variants.
+- **Docs**: Write stories in `.stories.tsx` and document all props and states.
+- **Testing**: Mock external dependencies, test error states, and validate business rules.
+
+---
+
+## 🎨 Theming & Customization
+
+
+- Theme with Tailwind and custom payroll tokens.
+- Use CVA for variants and extend with your own classes.
+- All components support dark mode and high-contrast.
+
+---
+
+## ♿ Accessibility Commitment
+
+<img src={Accessibility} alt="Accessibility" style={{ width: '100%', maxWidth: 400, margin: '1rem 0' }} />
+
+- All components are tested for keyboard and screen reader support.
+- Color contrast meets or exceeds WCAG 2.1 AA.
+- Focus management and ARIA roles are built-in.
+
+---
+
+## 🚀 Get Started
+
+- Browse the components in the sidebar.
+- Read the code and stories for usage patterns.
+- Contribute improvements and new components!
+
+> For more, see the [README](https://github.com/your-repo/packages/ui/README.md) and [Shadcn/ui docs](https://ui.shadcn.com/). 
