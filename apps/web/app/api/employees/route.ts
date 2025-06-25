@@ -16,6 +16,7 @@ export async function GET(request: NextRequest) {
     const department = searchParams.get('department') || '';
     const status = searchParams.get('status') || '';
     const contractType = searchParams.get('contractType') || '';
+    const slug = searchParams.get('slug') || '';
     
     // Validate pagination parameters
     const validPage = Math.max(1, page);
@@ -23,12 +24,16 @@ export async function GET(request: NextRequest) {
     
     // Filter employees based on search criteria
     let filteredEmployees = employeesData.filter((employee: Employee) => {
-      // Search in name, email, or employee number
+      // Search in name, email, employee number, or slug
       const searchMatch = !search || 
         employee.firstName.toLowerCase().includes(search.toLowerCase()) ||
         employee.lastName.toLowerCase().includes(search.toLowerCase()) ||
         employee.email.toLowerCase().includes(search.toLowerCase()) ||
-        employee.employeeNumber.toLowerCase().includes(search.toLowerCase());
+        employee.employeeNumber.toLowerCase().includes(search.toLowerCase()) ||
+        employee.slug.toLowerCase().includes(search.toLowerCase());
+      
+      // Filter by slug (exact match)
+      const slugMatch = !slug || employee.slug === slug;
       
       // Filter by department
       const departmentMatch = !department || employee.department === department;
@@ -39,7 +44,7 @@ export async function GET(request: NextRequest) {
       // Filter by contract type
       const contractMatch = !contractType || employee.contractType === contractType;
       
-      return searchMatch && departmentMatch && statusMatch && contractMatch;
+      return searchMatch && slugMatch && departmentMatch && statusMatch && contractMatch;
     });
     
     // Calculate pagination
@@ -64,6 +69,7 @@ export async function GET(request: NextRequest) {
       },
       filters: {
         search,
+        slug,
         department,
         status,
         contractType

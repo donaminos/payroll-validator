@@ -5,6 +5,7 @@
 
 export interface Employee {
   id: string;
+  slug: string; // UUID for secure referencing without exposing database ID
   firstName: string;
   lastName: string;
   email: string;
@@ -264,6 +265,17 @@ function generateWeeklyHours(contractType: string): number {
 }
 
 /**
+ * Generate a UUID v4 for employee slug
+ */
+function generateUUID(): string {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    const r = Math.random() * 16 | 0;
+    const v = c === 'x' ? r : (r & 0x3 | 0x8);
+    return v.toString(16);
+  });
+}
+
+/**
  * Generate 1000 employee records
  */
 export function generateEmployees(): Employee[] {
@@ -281,6 +293,7 @@ export function generateEmployees(): Employee[] {
     
     const employee: Employee = {
       id: `emp_${i.toString().padStart(4, '0')}`,
+      slug: generateUUID(),
       firstName,
       lastName,
       email: `${firstName.toLowerCase()}.${lastName.toLowerCase()}@entreprise.fr`,
