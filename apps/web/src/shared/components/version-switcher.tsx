@@ -8,12 +8,12 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@payroll/ui/components/ui/dropdown-menu";
+} from "@payroll/ui/components/ui/dropdown-menu/dropdown-menu";
 import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@payroll/ui/components/ui/sidebar";
+} from "@payroll/ui/components/ui/sidebar/sidebar";
 
 export function VersionSwitcher({
   versions,

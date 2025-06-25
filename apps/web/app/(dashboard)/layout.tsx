@@ -5,7 +5,7 @@ import "@payroll/tailwind-config/globals.css";
 import {
   SidebarInset,
   SidebarProvider,
-} from "@payroll/ui/components/ui/sidebar";
+} from "@payroll/ui/components/ui/sidebar/sidebar";
 
 import { AppSidebar } from "@/shared/components/app-sidebar";
 import { SidebarHeader } from "@/shared/components/sidebar-header";

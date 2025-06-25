@@ -13,7 +13,8 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarRail,
-} from "@payroll/ui/components/ui/sidebar";
+} from "@payroll/ui/components/ui/sidebar/sidebar";
+import { Button } from "@payroll/ui/components/ui/button/button";
 
 // This is sample data.
 const data = {

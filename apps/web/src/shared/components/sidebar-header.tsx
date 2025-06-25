@@ -1,4 +1,4 @@
-import { SidebarTrigger } from "@payroll/ui/components/ui/sidebar";
+import { SidebarTrigger } from "@payroll/ui/components/ui/sidebar/sidebar";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -6,8 +6,8 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@payroll/ui/components/ui/breadcrumb";
-import { Separator } from "@payroll/ui/components/ui/separator";
+} from "@payroll/ui/components/ui/breadcrumb/breadcrumb";
+import { Separator } from "@payroll/ui/components/ui/separator/separator";
 
 export function SidebarHeader() {
   return (
