@@ -23,7 +23,7 @@ const config: StorybookConfig = {
     options: {},
   },
   docs: {
-    defaultName: "Introduction"
+    defaultName: "Introduction",
   },
 };
 export default config;

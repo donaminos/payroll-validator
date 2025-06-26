@@ -48,9 +48,15 @@ export const Variants: Story = {
 export const StatusBadges: Story = {
   render: () => (
     <div style={{ display: "flex", gap: 12 }}>
-      <Badge variant="default"><CheckCircle className="text-green-600" /> Validé</Badge>
-      <Badge variant="destructive"><XCircle className="text-red-600" /> Erreur</Badge>
-      <Badge variant="secondary"><AlertTriangle className="text-yellow-600" /> Avertissement</Badge>
+      <Badge variant="default">
+        <CheckCircle className="text-green-600" /> Validé
+      </Badge>
+      <Badge variant="destructive">
+        <XCircle className="text-red-600" /> Erreur
+      </Badge>
+      <Badge variant="secondary">
+        <AlertTriangle className="text-yellow-600" /> Avertissement
+      </Badge>
     </div>
   ),
   name: "Status Badges (Mock Data)",
@@ -81,4 +87,4 @@ Testing scenario: Badge is focusable and has an ARIA label for screen readers.\n
       },
     },
   },
-}; 
+};

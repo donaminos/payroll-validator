@@ -144,7 +144,7 @@ const columns = [
   {
     key: "salary" as const,
     header: "Salary",
-    cell: (item: typeof sampleData[0]) => (
+    cell: (item: (typeof sampleData)[0]) => (
       <span className="font-mono">
         {new Intl.NumberFormat("fr-FR", {
           style: "currency",
@@ -156,7 +156,7 @@ const columns = [
   {
     key: "status" as const,
     header: "Status",
-    cell: (item: typeof sampleData[0]) => (
+    cell: (item: (typeof sampleData)[0]) => (
       <Badge variant={item.status === "active" ? "default" : "secondary"}>
         {item.status}
       </Badge>
@@ -165,16 +165,14 @@ const columns = [
   {
     key: "startDate" as const,
     header: "Start Date",
-    cell: (item: typeof sampleData[0]) => (
-      <span>
-        {new Date(item.startDate).toLocaleDateString("fr-FR")}
-      </span>
+    cell: (item: (typeof sampleData)[0]) => (
+      <span>{new Date(item.startDate).toLocaleDateString("fr-FR")}</span>
     ),
   },
   {
     key: "actions" as const,
     header: "Actions",
-    cell: (item: typeof sampleData[0]) => (
+    cell: (item: (typeof sampleData)[0]) => (
       <div className="flex gap-2">
         <Button size="sm" variant="outline">
           Edit
@@ -212,7 +210,7 @@ export const LargeDataset = {
       name: `Employee ${i + 1}`,
       email: `employee${i + 1}@example.com`,
       department: ["Engineering", "Marketing", "Sales", "HR"][i % 4],
-      salary: 35000 + (i * 500),
+      salary: 35000 + i * 500,
       status: i % 10 === 0 ? "inactive" : "active",
       startDate: new Date(2023, 0, 1 + i).toISOString().split("T")[0],
     })),
@@ -232,4 +230,4 @@ export const CustomStyling = {
     itemsPerPage: 6,
     className: "max-w-4xl mx-auto",
   },
-}; 
+};

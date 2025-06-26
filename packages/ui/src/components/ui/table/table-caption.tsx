@@ -2,7 +2,10 @@ import * as React from "react";
 
 import { cn } from "@payroll/ui/lib/utils";
 
-function TableCaption({ className, ...props }: React.ComponentProps<"caption">) {
+function TableCaption({
+  className,
+  ...props
+}: React.ComponentProps<"caption">) {
   return (
     <caption
       data-slot="table-caption"
@@ -12,4 +15,4 @@ function TableCaption({ className, ...props }: React.ComponentProps<"caption">) 
   );
 }
 
-export { TableCaption }; 
+export { TableCaption };

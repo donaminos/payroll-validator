@@ -44,13 +44,22 @@ export const Vertical: Story = {
 
 export const InCardLayout: Story = {
   render: () => (
-    <div style={{ border: "1px solid #eee", borderRadius: 8, padding: 16, maxWidth: 320 }}>
+    <div
+      style={{
+        border: "1px solid #eee",
+        borderRadius: 8,
+        padding: 16,
+        maxWidth: 320,
+      }}
+    >
       <div style={{ display: "flex", justifyContent: "space-between" }}>
         <span>Nom: Jean Dupont</span>
         <span>Salaire: 2 500 €</span>
       </div>
       <Separator style={{ margin: "12px 0" }} />
-      <div>Statut: <span style={{ color: '#16a34a' }}>Validé</span></div>
+      <div>
+        Statut: <span style={{ color: "#16a34a" }}>Validé</span>
+      </div>
     </div>
   ),
   name: "In Mock Payroll Card Layout",
@@ -74,4 +83,4 @@ Testing scenario: Separator uses correct role and orientation.\n- Inspect access
       },
     },
   },
-}; 
+};

@@ -94,7 +94,9 @@ export const AccessibilityTest: Story = {
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
-          <BreadcrumbPage aria-label="Page courante">Fiche de paie</BreadcrumbPage>
+          <BreadcrumbPage aria-label="Page courante">
+            Fiche de paie
+          </BreadcrumbPage>
         </BreadcrumbItem>
       </BreadcrumbList>
     </Breadcrumb>
@@ -109,4 +111,4 @@ Testing scenario: Tab through breadcrumb links and verify aria attributes.\n- Cu
       },
     },
   },
-}; 
+};

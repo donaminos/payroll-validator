@@ -43,10 +43,19 @@ export const Default: Story = {
             <SheetDescription>Résumé du mois de juin 2024</SheetDescription>
           </SheetHeader>
           <div style={{ padding: 16 }}>
-            <div><strong>Employé:</strong> Jean Dupont</div>
-            <div><strong>Salaire brut:</strong> 2 500,00 €</div>
-            <div><strong>Heures travaillées:</strong> 151,67</div>
-            <div><strong>Statut:</strong> <span style={{ color: '#16a34a' }}>Validé</span></div>
+            <div>
+              <strong>Employé:</strong> Jean Dupont
+            </div>
+            <div>
+              <strong>Salaire brut:</strong> 2 500,00 €
+            </div>
+            <div>
+              <strong>Heures travaillées:</strong> 151,67
+            </div>
+            <div>
+              <strong>Statut:</strong>{" "}
+              <span style={{ color: "#16a34a" }}>Validé</span>
+            </div>
           </div>
           <SheetFooter>
             <SheetClose asChild>
@@ -73,8 +82,12 @@ export const WithActions: Story = {
             <SheetTitle>Actions employé</SheetTitle>
           </SheetHeader>
           <div style={{ padding: 16 }}>
-            <Button size="sm" style={{ marginRight: 8 }}>Télécharger PDF</Button>
-            <Button size="sm" variant="destructive">Supprimer</Button>
+            <Button size="sm" style={{ marginRight: 8 }}>
+              Télécharger PDF
+            </Button>
+            <Button size="sm" variant="destructive">
+              Supprimer
+            </Button>
           </div>
           <SheetFooter>
             <SheetClose asChild>
@@ -109,7 +122,9 @@ export const AccessibilityTest: Story = {
           <SheetHeader>
             <SheetTitle>Test accessibilité</SheetTitle>
           </SheetHeader>
-          <div style={{ padding: 16 }}>Tab to focus, Esc to close, focus trap enabled.</div>
+          <div style={{ padding: 16 }}>
+            Tab to focus, Esc to close, focus trap enabled.
+          </div>
           <SheetFooter>
             <SheetClose asChild>
               <Button variant="secondary">Fermer</Button>
@@ -129,4 +144,4 @@ Testing scenario: Sheet traps focus, closes on Esc, and uses correct ARIA roles.
       },
     },
   },
-}; 
+};

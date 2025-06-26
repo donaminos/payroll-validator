@@ -1,8 +1,13 @@
-import { Suspense } from 'react';
-import { DataTable } from '@payroll/ui/components/ui/table/data-table';
-import { Skeleton } from '@payroll/ui/components/ui/skeleton/skeleton';
-import { Card, CardContent, CardHeader, CardTitle } from '@payroll/ui/components/ui/card/card';
-import { Badge } from '@payroll/ui/components/ui/badge/badge';
+import { Suspense } from "react";
+import { DataTable } from "@payroll/ui/components/ui/table/data-table";
+import { Skeleton } from "@payroll/ui/components/ui/skeleton/skeleton";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@payroll/ui/components/ui/card/card";
+import { Badge } from "@payroll/ui/components/ui/badge/badge";
 
 function EmployeesTableSkeleton() {
   return (

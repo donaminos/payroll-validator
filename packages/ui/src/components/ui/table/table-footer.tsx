@@ -6,10 +6,13 @@ function TableFooter({ className, ...props }: React.ComponentProps<"tfoot">) {
   return (
     <tfoot
       data-slot="table-footer"
-      className={cn("bg-primary font-medium text-primary-foreground", className)}
+      className={cn(
+        "bg-primary font-medium text-primary-foreground",
+        className,
+      )}
       {...props}
     />
   );
 }
 
-export { TableFooter }; 
+export { TableFooter };

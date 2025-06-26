@@ -105,16 +105,20 @@ const columns = [
     key: "hoursWorked" as keyof PayrollEmployee,
     header: "Heures travaillées",
     cell: (item: PayrollEmployee) => (
-      <span className="font-mono">
-        {item.hoursWorked}h
-      </span>
+      <span className="font-mono">{item.hoursWorked}h</span>
     ),
   },
   {
     key: "overtimeHours" as keyof PayrollEmployee,
     header: "Heures supplémentaires",
     cell: (item: PayrollEmployee) => (
-      <span className={item.overtimeHours > 0 ? "text-orange-600 font-medium" : "text-muted-foreground"}>
+      <span
+        className={
+          item.overtimeHours > 0
+            ? "text-orange-600 font-medium"
+            : "text-muted-foreground"
+        }
+      >
         {item.overtimeHours}h
       </span>
     ),
@@ -132,9 +136,7 @@ const columns = [
     key: "startDate" as keyof PayrollEmployee,
     header: "Date de début",
     cell: (item: PayrollEmployee) => (
-      <span>
-        {new Date(item.startDate).toLocaleDateString("fr-FR")}
-      </span>
+      <span>{new Date(item.startDate).toLocaleDateString("fr-FR")}</span>
     ),
   },
   {
@@ -159,10 +161,11 @@ export function PayrollTableExample() {
       <div>
         <h2 className="text-2xl font-bold mb-2">Validation des Paies</h2>
         <p className="text-muted-foreground">
-          Tableau des employés avec validation des heures et salaires selon la législation française.
+          Tableau des employés avec validation des heures et salaires selon la
+          législation française.
         </p>
       </div>
-      
+
       <DataTable
         data={payrollData}
         columns={columns}
@@ -173,4 +176,4 @@ export function PayrollTableExample() {
       />
     </div>
   );
-} 
+}

@@ -29,7 +29,7 @@ export const Default: Story = {
     placeholder: "Ajouter une note...",
   },
   render: (args: any) => (
-    <div style={{ maxWidth: 400, margin: '40px auto' }}>
+    <div style={{ maxWidth: 400, margin: "40px auto" }}>
       <Textarea {...args} />
     </div>
   ),
@@ -39,10 +39,10 @@ export const WithMockData: Story = {
   render: () => {
     const [value, setValue] = useState("Prime exceptionnelle de juin validée.");
     return (
-      <div style={{ maxWidth: 400, margin: '40px auto' }}>
+      <div style={{ maxWidth: 400, margin: "40px auto" }}>
         <Textarea
           value={value}
-          onChange={e => setValue(e.target.value)}
+          onChange={(e) => setValue(e.target.value)}
           placeholder="Ajouter une note..."
         />
       </div>
@@ -57,7 +57,7 @@ export const Disabled: Story = {
     disabled: true,
   },
   render: (args: any) => (
-    <div style={{ maxWidth: 400, margin: '40px auto' }}>
+    <div style={{ maxWidth: 400, margin: "40px auto" }}>
       <Textarea {...args} />
     </div>
   ),
@@ -68,10 +68,18 @@ export const ValidationTest: Story = {
     const [value, setValue] = useState("");
     const isInvalid = value.length > 0 && value.length < 10;
     return (
-      <div style={{ maxWidth: 400, margin: '40px auto', display: "flex", flexDirection: "column", gap: 8 }}>
+      <div
+        style={{
+          maxWidth: 400,
+          margin: "40px auto",
+          display: "flex",
+          flexDirection: "column",
+          gap: 8,
+        }}
+      >
         <Textarea
           value={value}
-          onChange={e => setValue(e.target.value)}
+          onChange={(e) => setValue(e.target.value)}
           placeholder="Note (min 10 caractères)"
           aria-invalid={isInvalid}
         />
@@ -93,4 +101,4 @@ Testing scenario: Shows validation error and aria-invalid.\n- Try less than 10 c
       },
     },
   },
-}; 
+};

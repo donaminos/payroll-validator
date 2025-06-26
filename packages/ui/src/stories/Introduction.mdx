@@ -28,8 +28,11 @@ Welcome to the Payroll Validator Design System! This library powers data-heavy, 
 To add a new Shadcn component to a dedicated folder, use the CLI:
 
 ```sh
-pnpm dlx shadcn-ui@latest add carousel -p ./src/components/ui/carousel
+cd packages/ui/
+pnpm dlx shadcn@latest add -p ./src/components/ui/carousel carousel
 ```
+🐛 Well it not working as expected at the moment... 
+[GH issue](https://github.com/shadcn-ui/ui/issues/1156)
 
 - **Why this structure?**
   - Keeps each component isolated for easier upgrades and customizations.

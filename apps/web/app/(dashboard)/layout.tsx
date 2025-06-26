@@ -7,8 +7,8 @@ import {
   SidebarProvider,
 } from "@payroll/ui/components/ui/sidebar/sidebar";
 
-import { AppSidebar, AppSidebarData } from "@/shared/components/app-sidebar";
-import { SidebarHeader } from "@/shared/components/sidebar-header";
+import { AppSidebar, AppSidebarData } from "@/shared/components/sidebar/app-sidebar";
+import { SidebarHeader } from "@/shared/components/sidebar/sidebar-header";
 
 export const metadata: Metadata = {
   title: "PayrollValidator - Validation de paie intelligente",
@@ -29,7 +29,7 @@ export default function DashboardLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // Sidebar data (can be fetched or customized per layout in the future)
+
   const sidebarData: AppSidebarData = {
     versions: ["1.0.1", "1.1.0-alpha", "2.0.0-beta1"],
     navMain: [

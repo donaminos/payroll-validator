@@ -11,7 +11,12 @@ interface TableSearchProps {
   className?: string;
 }
 
-function TableSearch({ placeholder = "Search...", value, onValueChange, className }: TableSearchProps) {
+function TableSearch({
+  placeholder = "Search...",
+  value,
+  onValueChange,
+  className,
+}: TableSearchProps) {
   return (
     <div className={cn("relative", className)}>
       <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
@@ -25,4 +30,4 @@ function TableSearch({ placeholder = "Search...", value, onValueChange, classNam
   );
 }
 
-export { TableSearch }; 
+export { TableSearch };

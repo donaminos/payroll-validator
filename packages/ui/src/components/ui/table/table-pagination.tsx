@@ -1,5 +1,10 @@
 import * as React from "react";
-import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from "lucide-react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  ChevronsLeft,
+  ChevronsRight,
+} from "lucide-react";
 
 import { cn } from "@payroll/ui/lib/utils";
 import { Button } from "../button/button";
@@ -11,7 +16,12 @@ interface TablePaginationProps {
   className?: string;
 }
 
-function TablePagination({ currentPage, totalPages, onPageChange, className }: TablePaginationProps) {
+function TablePagination({
+  currentPage,
+  totalPages,
+  onPageChange,
+  className,
+}: TablePaginationProps) {
   return (
     <div className={cn("flex items-center justify-between px-2", className)}>
       <div className="flex-1 text-sm text-muted-foreground">
@@ -55,4 +65,4 @@ function TablePagination({ currentPage, totalPages, onPageChange, className }: T
   );
 }
 
-export { TablePagination }; 
+export { TablePagination };

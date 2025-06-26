@@ -29,7 +29,7 @@ type Story = StoryObj<typeof Card>;
 
 export const Default: Story = {
   render: () => (
-    <div style={{ maxWidth: 480, margin: '40px auto' }}>
+    <div style={{ maxWidth: 480, margin: "40px auto" }}>
       <Card>
         <CardHeader>
           <CardTitle>Fiche de paie</CardTitle>
@@ -37,14 +37,25 @@ export const Default: Story = {
         </CardHeader>
         <CardContent>
           <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-            <div><strong>Employé:</strong> Jean Dupont</div>
-            <div><strong>Salaire brut:</strong> 2 500,00 €</div>
-            <div><strong>Heures travaillées:</strong> 151,67</div>
-            <div><strong>Statut:</strong> <span style={{ color: '#16a34a' }}>Validé</span></div>
+            <div>
+              <strong>Employé:</strong> Jean Dupont
+            </div>
+            <div>
+              <strong>Salaire brut:</strong> 2 500,00 €
+            </div>
+            <div>
+              <strong>Heures travaillées:</strong> 151,67
+            </div>
+            <div>
+              <strong>Statut:</strong>{" "}
+              <span style={{ color: "#16a34a" }}>Validé</span>
+            </div>
           </div>
         </CardContent>
         <CardFooter>
-          <span style={{ fontSize: 12, color: '#888' }}>Dernière mise à jour : 28/06/2024</span>
+          <span style={{ fontSize: 12, color: "#888" }}>
+            Dernière mise à jour : 28/06/2024
+          </span>
         </CardFooter>
       </Card>
     </div>
@@ -54,7 +65,7 @@ export const Default: Story = {
 
 export const WithAction: Story = {
   render: () => (
-    <div style={{ maxWidth: 480, margin: '40px auto' }}>
+    <div style={{ maxWidth: 480, margin: "40px auto" }}>
       <Card>
         <CardHeader>
           <CardTitle>Employé</CardTitle>
@@ -63,8 +74,12 @@ export const WithAction: Story = {
           </CardAction>
         </CardHeader>
         <CardContent>
-          <div><strong>Nom:</strong> Marie Curie</div>
-          <div><strong>Salaire brut:</strong> 3 200,00 €</div>
+          <div>
+            <strong>Nom:</strong> Marie Curie
+          </div>
+          <div>
+            <strong>Salaire brut:</strong> 3 200,00 €
+          </div>
         </CardContent>
       </Card>
     </div>
@@ -83,7 +98,7 @@ Use CardAction for contextual actions (e.g., download, edit, menu).\n- Action is
 
 export const AccessibilityTest: Story = {
   render: () => (
-    <div style={{ maxWidth: 480, margin: '40px auto' }}>
+    <div style={{ maxWidth: 480, margin: "40px auto" }}>
       <Card tabIndex={0} aria-label="Résumé fiche de paie">
         <CardHeader>
           <CardTitle>Résumé</CardTitle>
@@ -104,4 +119,4 @@ Testing scenario: Card is focusable and has an ARIA label.\n- Tab to focus\n- In
       },
     },
   },
-}; 
+};

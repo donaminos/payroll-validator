@@ -40,6 +40,7 @@ HR and payroll managers spend significant time on:
 ### Primary Persona: Thomas - HR Manager at Manufacturing Company
 
 **Profile**:
+
 - Manages 150+ employees across multiple departments
 - Needs to maintain accurate employee records for payroll processing
 - Requires quick access to employee details and ability to add new hires
@@ -50,6 +51,7 @@ HR and payroll managers spend significant time on:
 **Trigger**: Need to view employee list, search for specific employee, or add new employee
 
 **Steps**:
+
 1. Navigate to employees section → **Dashboard**
 2. View paginated employee table with search → **DataTable**
 3. Search for specific employee by name/email → **Real-time search**
@@ -64,6 +66,7 @@ HR and payroll managers spend significant time on:
 ### Secondary Persona: Marie - Payroll Administrator at Accounting Firm
 
 **Profile**:
+
 - Processes payroll for multiple client companies
 - Needs quick access to employee data for payroll calculations
 - Requires validation of employee information against French labor laws
@@ -74,6 +77,7 @@ HR and payroll managers spend significant time on:
 **Trigger**: Need to verify employee information for payroll processing
 
 **Steps**:
+
 1. Access employee management system → **Secure login**
 2. Search for specific employee → **Advanced search filters**
 3. Review employee details → **Comprehensive information display**
@@ -98,7 +102,7 @@ HR and payroll managers spend significant time on:
 
 **Acceptance Criteria**:
 
-- **Employee Table**: 
+- **Employee Table**:
   - Paginated display (50 items per page)
   - Real-time search across name, email, employee number
   - Advanced filters (department, status, contract type)
@@ -200,6 +204,7 @@ HR and payroll managers spend significant time on:
   - Data validation before submission
 
 **Employee Data Structure**:
+
 ```tsx
 interface Employee {
   id: string;
@@ -211,10 +216,10 @@ interface Employee {
   department: string;
   position: string;
   hireDate: string;
-  contractType: 'CDI' | 'CDD' | 'Interim' | 'Stage';
+  contractType: "CDI" | "CDD" | "Interim" | "Stage";
   salary: number;
   weeklyHours: number;
-  status: 'active' | 'inactive' | 'on_leave';
+  status: "active" | "inactive" | "on_leave";
   employeeNumber: string;
   socialSecurityNumber: string;
   address: {
@@ -297,6 +302,7 @@ payroll-validator/
 ### Current Implementation Status
 
 **✅ Completed**:
+
 - API infrastructure for employees (GET, POST, PUT, DELETE)
 - 1000 realistic French employee records
 - DataTable component with search and pagination
@@ -306,11 +312,13 @@ payroll-validator/
 - TypeScript interfaces and validation
 
 **🔄 In Progress**:
+
 - Employee management frontend integration
 - Employee details drawer implementation
 - Add employee form with validation
 
 **⏳ Future Enhancements** (Post-MVP):
+
 - File upload and validation features
 - Export functionality
 - Real-time validation with Web Workers
@@ -339,6 +347,7 @@ payroll-validator/
 ### Employee Management UI Patterns:
 
 **Table Design**:
+
 - Sticky header with search and filters
 - Row hover states with click feedback
 - Status badges with color coding (green=active, gray=inactive, orange=on_leave)
@@ -347,6 +356,7 @@ payroll-validator/
 - Sortable columns with visual indicators
 
 **Drawer Patterns**:
+
 - Desktop: Right-side drawer (400px width)
 - Mobile: Bottom sheet (full width, 80% height)
 - Smooth animations and focus management
@@ -354,6 +364,7 @@ payroll-validator/
 - Proper ARIA labels for accessibility
 
 **Form Design**:
+
 - Progressive disclosure for complex forms
 - Real-time validation with error messages
 - Auto-save draft functionality
@@ -381,18 +392,21 @@ payroll-validator/
 ### Employee Management Context
 
 **French Employment Types**:
+
 - **CDI**: Permanent contract (most common)
 - **CDD**: Fixed-term contract
 - **Interim**: Temporary work
 - **Stage**: Internship
 
 **Required Employee Information**:
+
 - Social security number (format validation)
 - French address with postal code
 - Emergency contact information
 - Contract details and salary information
 
 **Validation Requirements**:
+
 - Salary must meet SMIC minimum
 - Working hours within legal limits
 - Valid French phone number format

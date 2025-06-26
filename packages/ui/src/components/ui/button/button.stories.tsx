@@ -10,8 +10,7 @@ const meta: Meta<typeof Button> = {
   parameters: {
     docs: {
       description: {
-        component:
-          `
+        component: `
           The Button component is a versatile, accessible, and themeable button for all primary actions. Built with strict TypeScript, Tailwind, and Radix UI for accessibility. Supports variants, sizes, icons, and loading/disabled states.\n\n**Accessibility:**\n- Keyboard and screen reader friendly\n- Proper ARIA attributes\n- Focus ring and disabled state\n\n**Best Practices:**\n- Use semantic labels\n- Prefer type="button" unless submitting a form\n- Use aria-label for icon-only buttons
           `,
       },
@@ -42,7 +41,7 @@ type Story = StoryObj<typeof Button>;
 
 export const Playground: Story = {
   render: (args) => (
-    <div style={{ maxWidth: 400, margin: '40px auto' }}>
+    <div style={{ maxWidth: 400, margin: "40px auto" }}>
       <Button {...args} />
     </div>
   ),
@@ -56,7 +55,15 @@ export const Playground: Story = {
 
 export const Variants: Story = {
   render: () => (
-    <div style={{ maxWidth: 400, margin: '40px auto', display: 'flex', flexDirection: 'column', gap: 16 }}>
+    <div
+      style={{
+        maxWidth: 400,
+        margin: "40px auto",
+        display: "flex",
+        flexDirection: "column",
+        gap: 16,
+      }}
+    >
       <Button variant="default">Default</Button>
       <Button variant="secondary">Secondary</Button>
       <Button variant="destructive">Destructive</Button>
@@ -70,7 +77,15 @@ export const Variants: Story = {
 
 export const Sizes: Story = {
   render: () => (
-    <div style={{ maxWidth: 400, margin: '40px auto', display: 'flex', gap: 16, alignItems: 'center' }}>
+    <div
+      style={{
+        maxWidth: 400,
+        margin: "40px auto",
+        display: "flex",
+        gap: 16,
+        alignItems: "center",
+      }}
+    >
       <Button size="sm">Small</Button>
       <Button size="default">Default</Button>
       <Button size="lg">Large</Button>
@@ -84,7 +99,15 @@ export const Sizes: Story = {
 
 export const WithIcons: Story = {
   render: () => (
-    <div style={{ maxWidth: 400, margin: '40px auto', display: 'flex', flexDirection: 'column', gap: 16 }}>
+    <div
+      style={{
+        maxWidth: 400,
+        margin: "40px auto",
+        display: "flex",
+        flexDirection: "column",
+        gap: 16,
+      }}
+    >
       <Button variant="default">
         <Upload className="mr-2" />
         Upload
@@ -104,7 +127,9 @@ export const WithIcons: Story = {
 
 export const Disabled: Story = {
   render: () => (
-    <div style={{ maxWidth: 400, margin: '40px auto', display: 'flex', gap: 16 }}>
+    <div
+      style={{ maxWidth: 400, margin: "40px auto", display: "flex", gap: 16 }}
+    >
       <Button disabled>Disabled</Button>
       <Button variant="secondary" disabled>
         Disabled Secondary
@@ -121,7 +146,7 @@ export const LoadingMock: Story = {
   render: () => {
     const [loading, setLoading] = useState(false);
     return (
-      <div style={{ maxWidth: 400, margin: '40px auto' }}>
+      <div style={{ maxWidth: 400, margin: "40px auto" }}>
         <Button
           onClick={() => {
             setLoading(true);
@@ -161,8 +186,7 @@ export const LoadingMock: Story = {
   parameters: {
     docs: {
       description: {
-        story:
-          `
+        story: `
           This story demonstrates a mock async loading state.\n\n**Testing scenario:**\n- Click the button to simulate a loading state.\n- Button is disabled while loading.\n- Spinner is visible for 1.5s.\n\n**Test:**\n- Use user-event to click and assert disabled state and spinner.\n          `,
       },
     },

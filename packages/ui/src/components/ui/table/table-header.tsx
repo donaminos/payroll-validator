@@ -12,4 +12,4 @@ function TableHeader({ className, ...props }: React.ComponentProps<"thead">) {
   );
 }
 
-export { TableHeader }; 
+export { TableHeader };

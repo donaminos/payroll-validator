@@ -37,7 +37,7 @@ function DataTable<T extends Record<string, any>>({
   // Filter data based on search
   const filteredData = React.useMemo(() => {
     if (!searchValue || !searchKey) return data;
-    
+
     return data.filter((item) => {
       const value = item[searchKey];
       if (typeof value === "string") {
@@ -84,16 +84,17 @@ function DataTable<T extends Record<string, any>>({
           <TableHeader>
             <TableRow>
               {columns.map((column) => (
-                <TableHead key={String(column.key)}>
-                  {column.header}
-                </TableHead>
+                <TableHead key={String(column.key)}>{column.header}</TableHead>
               ))}
             </TableRow>
           </TableHeader>
           <TableBody>
             {paginatedData.length === 0 ? (
               <TableRow>
-                <TableCell colSpan={columns.length} className="h-24 text-center">
+                <TableCell
+                  colSpan={columns.length}
+                  className="h-24 text-center"
+                >
                   No results found.
                 </TableCell>
               </TableRow>
@@ -102,7 +103,9 @@ function DataTable<T extends Record<string, any>>({
                 <TableRow key={index}>
                   {columns.map((column) => (
                     <TableCell key={String(column.key)}>
-                      {column.cell ? column.cell(item) : String(item[column.key] ?? "")}
+                      {column.cell
+                        ? column.cell(item)
+                        : String(item[column.key] ?? "")}
                     </TableCell>
                   ))}
                 </TableRow>
@@ -124,4 +127,4 @@ function DataTable<T extends Record<string, any>>({
   );
 }
 
-export { DataTable }; 
+export { DataTable };

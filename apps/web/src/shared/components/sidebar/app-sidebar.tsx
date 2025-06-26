@@ -1,8 +1,15 @@
 import * as React from "react";
-import { User2, FileText, Wallet, CalendarCheck, BarChart2, Settings } from "lucide-react";
+import {
+  User2,
+  FileText,
+  Wallet,
+  CalendarCheck,
+  BarChart2,
+  Settings,
+} from "lucide-react";
 
 import { SearchForm } from "@/shared/components/search-form";
-import { VersionSwitcher } from "@/shared/components/version-switcher";
+
 import {
   Sidebar,
   SidebarContent,
@@ -15,6 +22,7 @@ import {
   SidebarMenuItem,
   SidebarRail,
 } from "@payroll/ui/components/ui/sidebar/sidebar";
+import { SidebarProfileSwitcher } from "./sidebar-profile-switcher";
 
 /**
  * Sidebar navigation item type for AppSidebar.
@@ -57,20 +65,20 @@ const sectionIcons: Record<string, React.ReactNode> = {
  * @param data - Sidebar data (versions and navigation groups)
  * @param props - Additional Sidebar props
  */
-export function AppSidebar({ data, ...props }: React.ComponentProps<typeof Sidebar> & { data: AppSidebarData }) {
+
+export function AppSidebar({
+  data,
+  ...props
+}: React.ComponentProps<typeof Sidebar> & { data: AppSidebarData }) {
   return (
     <Sidebar {...props}>
       <SidebarHeader>
-        <VersionSwitcher
-          versions={data.versions}
-          defaultVersion={data.versions[0] || ""}
-        />
+        <SidebarProfileSwitcher />
         <SearchForm />
       </SidebarHeader>
       <SidebarContent>
         {data.navMain.map((group) => (
-          <SidebarGroup
-            key={group.title}>
+          <SidebarGroup key={group.title}>
             <SidebarGroupLabel className="text-sm font-medium text-gray-700 mb-2 mt-2 tracking-tight uppercase flex items-center">
               {sectionIcons[group.title]}
               {group.title}

@@ -15,4 +15,4 @@ function TableCell({ className, ...props }: React.ComponentProps<"td">) {
   );
 }
 
-export { TableCell }; 
+export { TableCell };

@@ -73,7 +73,9 @@ export const WithCheckboxAndRadio: Story = {
           <DropdownMenuLabel>Vue</DropdownMenuLabel>
           <DropdownMenuRadioGroup value={view} onValueChange={setView}>
             <DropdownMenuRadioItem value="mois">Par mois</DropdownMenuRadioItem>
-            <DropdownMenuRadioItem value="annee">Par année</DropdownMenuRadioItem>
+            <DropdownMenuRadioItem value="annee">
+              Par année
+            </DropdownMenuRadioItem>
           </DropdownMenuRadioGroup>
         </DropdownMenuContent>
       </DropdownMenu>
@@ -143,4 +145,4 @@ Testing scenario: Open menu with keyboard, navigate with arrows, and verify focu
       },
     },
   },
-}; 
+};

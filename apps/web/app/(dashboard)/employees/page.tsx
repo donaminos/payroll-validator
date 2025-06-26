@@ -1,4 +1,4 @@
-import { EmployeesView } from '@/views/employees/employees-view';
+import { EmployeesView } from "@/views/employees/employees-view";
 
 interface EmployeesPageProps {
   searchParams: Record<string, string | string[] | undefined>;

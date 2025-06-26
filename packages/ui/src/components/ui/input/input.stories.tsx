@@ -34,7 +34,7 @@ export const Default: Story = {
     placeholder: "Nom de l'employé",
   },
   render: (args: any) => (
-    <div style={{ maxWidth: 400, margin: '40px auto' }}>
+    <div style={{ maxWidth: 400, margin: "40px auto" }}>
       <Input {...args} />
     </div>
   ),
@@ -44,10 +44,10 @@ export const WithMockData: Story = {
   render: () => {
     const [value, setValue] = useState("Jean Dupont");
     return (
-      <div style={{ maxWidth: 400, margin: '40px auto' }}>
+      <div style={{ maxWidth: 400, margin: "40px auto" }}>
         <Input
           value={value}
-          onChange={e => setValue(e.target.value)}
+          onChange={(e) => setValue(e.target.value)}
           placeholder="Nom de l'employé"
         />
       </div>
@@ -62,7 +62,7 @@ export const Password: Story = {
     placeholder: "Mot de passe...",
   },
   render: (args: any) => (
-    <div style={{ maxWidth: 400, margin: '40px auto' }}>
+    <div style={{ maxWidth: 400, margin: "40px auto" }}>
       <Input {...args} />
     </div>
   ),
@@ -75,7 +75,7 @@ export const Disabled: Story = {
     disabled: true,
   },
   render: (args: any) => (
-    <div style={{ maxWidth: 400, margin: '40px auto' }}>
+    <div style={{ maxWidth: 400, margin: "40px auto" }}>
       <Input {...args} />
     </div>
   ),
@@ -86,10 +86,18 @@ export const ValidationTest: Story = {
     const [value, setValue] = useState("");
     const isInvalid = value.length > 0 && value.length < 3;
     return (
-      <div style={{ maxWidth: 400, margin: '40px auto', display: "flex", flexDirection: "column", gap: 8 }}>
+      <div
+        style={{
+          maxWidth: 400,
+          margin: "40px auto",
+          display: "flex",
+          flexDirection: "column",
+          gap: 8,
+        }}
+      >
         <Input
           value={value}
-          onChange={e => setValue(e.target.value)}
+          onChange={(e) => setValue(e.target.value)}
           placeholder="Code employé (min 3 caractères)"
           aria-invalid={isInvalid}
         />
@@ -111,4 +119,4 @@ Testing scenario: Shows validation error and aria-invalid.\n- Try less than 3 ch
       },
     },
   },
-}; 
+};

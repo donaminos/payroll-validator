@@ -72,4 +72,4 @@ export const WithBorder = {
       </Table>
     </div>
   ),
-}; 
+};

@@ -26,7 +26,14 @@ export const Default: Story = {
 
 export const InCard: Story = {
   render: () => (
-    <div style={{ border: "1px solid #eee", borderRadius: 8, padding: 16, maxWidth: 320 }}>
+    <div
+      style={{
+        border: "1px solid #eee",
+        borderRadius: 8,
+        padding: 16,
+        maxWidth: 320,
+      }}
+    >
       <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
         <Skeleton style={{ width: 120, height: 24 }} />
         <Skeleton style={{ width: 80, height: 16 }} />
@@ -41,7 +48,10 @@ export const AccessibilityTest: Story = {
   render: () => (
     <div>
       <span id="skeleton-label">Chargement...</span>
-      <Skeleton aria-labelledby="skeleton-label" style={{ width: 120, height: 24 }} />
+      <Skeleton
+        aria-labelledby="skeleton-label"
+        style={{ width: 120, height: 24 }}
+      />
     </div>
   ),
   name: "Accessibility & Color Contrast",
@@ -54,4 +64,4 @@ Testing scenario: Skeleton is labelled for screen readers and has sufficient col
       },
     },
   },
-}; 
+};

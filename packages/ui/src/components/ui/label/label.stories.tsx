@@ -21,7 +21,7 @@ type Story = StoryObj<typeof Label>;
 
 export const Default: Story = {
   render: (args: any) => (
-    <div style={{ maxWidth: 400, margin: '40px auto' }}>
+    <div style={{ maxWidth: 400, margin: "40px auto" }}>
       <Label {...args} />
     </div>
   ),
@@ -32,7 +32,15 @@ export const Default: Story = {
 
 export const WithInput: Story = {
   render: () => (
-    <div style={{ maxWidth: 400, margin: '40px auto', display: "flex", flexDirection: "column", gap: 8 }}>
+    <div
+      style={{
+        maxWidth: 400,
+        margin: "40px auto",
+        display: "flex",
+        flexDirection: "column",
+        gap: 8,
+      }}
+    >
       <Label htmlFor="employee-name">Nom de l'employé</Label>
       <Input id="employee-name" placeholder="Jean Dupont" />
     </div>
@@ -42,7 +50,15 @@ export const WithInput: Story = {
 
 export const Disabled: Story = {
   render: () => (
-    <div style={{ maxWidth: 400, margin: '40px auto', display: "flex", flexDirection: "column", gap: 8 }}>
+    <div
+      style={{
+        maxWidth: 400,
+        margin: "40px auto",
+        display: "flex",
+        flexDirection: "column",
+        gap: 8,
+      }}
+    >
       <Label htmlFor="disabled-input">Champ désactivé</Label>
       <Input id="disabled-input" placeholder="Désactivé" disabled />
     </div>
@@ -51,7 +67,15 @@ export const Disabled: Story = {
 
 export const AccessibilityTest: Story = {
   render: () => (
-    <div style={{ maxWidth: 400, margin: '40px auto', display: "flex", flexDirection: "column", gap: 8 }}>
+    <div
+      style={{
+        maxWidth: 400,
+        margin: "40px auto",
+        display: "flex",
+        flexDirection: "column",
+        gap: 8,
+      }}
+    >
       <Label htmlFor="test-access">Champ accessible</Label>
       <Input id="test-access" aria-required placeholder="Test" />
     </div>
@@ -66,4 +90,4 @@ Testing scenario: Label is associated with input via htmlFor.\n- Click label to 
       },
     },
   },
-}; 
+};

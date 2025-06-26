@@ -90,14 +90,14 @@ function EmployeeTable() {
 
 ### DataTable Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `data` | `T[]` | - | Array of data items to display |
-| `columns` | `Column<T>[]` | - | Column definitions |
-| `searchKey` | `keyof T` | - | Key to search by (optional) |
-| `searchPlaceholder` | `string` | "Search..." | Placeholder text for search input |
-| `itemsPerPage` | `number` | `10` | Number of items per page |
-| `className` | `string` | - | Additional CSS classes |
+| Prop                | Type          | Default     | Description                       |
+| ------------------- | ------------- | ----------- | --------------------------------- |
+| `data`              | `T[]`         | -           | Array of data items to display    |
+| `columns`           | `Column<T>[]` | -           | Column definitions                |
+| `searchKey`         | `keyof T`     | -           | Key to search by (optional)       |
+| `searchPlaceholder` | `string`      | "Search..." | Placeholder text for search input |
+| `itemsPerPage`      | `number`      | `10`        | Number of items per page          |
+| `className`         | `string`      | -           | Additional CSS classes            |
 
 ### Column Definition
 
@@ -137,7 +137,7 @@ function CustomTable() {
         value={searchValue}
         onValueChange={setSearchValue}
       />
-      
+
       <Table>
         <TableHeader>
           <TableRow>
@@ -154,7 +154,7 @@ function CustomTable() {
           ))}
         </TableBody>
       </Table>
-      
+
       <TablePagination
         currentPage={currentPage}
         totalPages={totalPages}
@@ -192,7 +192,8 @@ The table component is specifically designed for French payroll validation with:
 ## Examples
 
 See the Storybook stories for complete examples:
+
 - Basic table with search and pagination
 - Table without search functionality
 - Large dataset handling
-- Custom styling and layout 
+- Custom styling and layout

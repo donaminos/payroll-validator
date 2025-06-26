@@ -61,4 +61,4 @@ Testing scenario: Tooltip is accessible via keyboard and screen reader.\n- Tab t
       },
     },
   },
-}; 
+};

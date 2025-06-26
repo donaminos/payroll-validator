@@ -1,16 +1,22 @@
 "use client";
 
 import { useState } from "react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@payroll/ui/components/ui/card/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@payroll/ui/components/ui/card/card";
 import { Badge } from "@payroll/ui/components/ui/badge/badge";
 import { Button } from "@payroll/ui/components/ui/button/button";
 
-import { 
-  AlertTriangle, 
-  CheckCircle, 
-  Download, 
-  Users, 
-  FileText, 
+import {
+  AlertTriangle,
+  CheckCircle,
+  Download,
+  Users,
+  FileText,
   Clock,
   Euro,
   Calendar,
@@ -20,7 +26,7 @@ import {
   Phone,
   Briefcase,
   ChevronDown,
-  ChevronRight
+  ChevronRight,
 } from "lucide-react";
 
 import { stats } from "./data";
@@ -29,24 +35,32 @@ export function DashboardView() {
   const [isOnboardingOpen, setIsOnboardingOpen] = useState(false);
   const [isOffboardingOpen, setIsOffboardingOpen] = useState(false);
 
-
-
   const getStatusBadge = (status: string) => {
     switch (status) {
-      case 'pending':
-        return <Badge variant="secondary" className="flex items-center gap-1"><Clock className="h-3 w-3" />En attente</Badge>;
-      case 'in_progress':
-        return <Badge variant="default" className="flex items-center gap-1"><CheckCircle className="h-3 w-3" />En cours</Badge>;
+      case "pending":
+        return (
+          <Badge variant="secondary" className="flex items-center gap-1">
+            <Clock className="h-3 w-3" />
+            En attente
+          </Badge>
+        );
+      case "in_progress":
+        return (
+          <Badge variant="default" className="flex items-center gap-1">
+            <CheckCircle className="h-3 w-3" />
+            En cours
+          </Badge>
+        );
       default:
         return <Badge variant="outline">Inconnu</Badge>;
     }
   };
 
   const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat('fr-FR', {
-      style: 'currency',
-      currency: 'EUR',
-      minimumFractionDigits: 0
+    return new Intl.NumberFormat("fr-FR", {
+      style: "currency",
+      currency: "EUR",
+      minimumFractionDigits: 0,
     }).format(amount);
   };
 
@@ -64,7 +78,8 @@ export function DashboardView() {
       <div className="flex flex-col gap-2">
         <h1 className="text-3xl font-bold tracking-tight">Tableau de bord</h1>
         <p className="text-muted-foreground">
-          Vue d'ensemble de votre système de validation de paie. Surveillez la conformité et gérez vos données.
+          Vue d'ensemble de votre système de validation de paie. Surveillez la
+          conformité et gérez vos données.
         </p>
       </div>
 
@@ -72,7 +87,9 @@ export function DashboardView() {
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Total Employés</CardTitle>
+            <CardTitle className="text-sm font-medium">
+              Total Employés
+            </CardTitle>
             <Users className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
@@ -85,7 +102,9 @@ export function DashboardView() {
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Validations en attente</CardTitle>
+            <CardTitle className="text-sm font-medium">
+              Validations en attente
+            </CardTitle>
             <Clock className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
@@ -98,7 +117,9 @@ export function DashboardView() {
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Taux de conformité</CardTitle>
+            <CardTitle className="text-sm font-medium">
+              Taux de conformité
+            </CardTitle>
             <CheckCircle className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
@@ -111,11 +132,15 @@ export function DashboardView() {
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Violations SMIC</CardTitle>
+            <CardTitle className="text-sm font-medium">
+              Violations SMIC
+            </CardTitle>
             <AlertTriangle className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-destructive">{stats.smicViolations}</div>
+            <div className="text-2xl font-bold text-destructive">
+              {stats.smicViolations}
+            </div>
             <p className="text-xs text-muted-foreground">
               Nécessitent correction immédiate
             </p>
@@ -136,14 +161,19 @@ export function DashboardView() {
               <div className="flex items-start gap-2">
                 <UserPlus className="h-5 w-5 text-green-600 relative top-[2px]" />
                 <div className="text-left">
-                  <CardTitle className="text-lg leading-none">Arrivées prévues</CardTitle>
+                  <CardTitle className="text-lg leading-none">
+                    Arrivées prévues
+                  </CardTitle>
                   <CardDescription>
                     Nouveaux employés à intégrer dans le système de paie
                   </CardDescription>
                 </div>
               </div>
               <div className="flex items-center gap-2">
-                <Badge variant="outline" className="text-green-600 border-green-600 text-sm">
+                <Badge
+                  variant="outline"
+                  className="text-green-600 border-green-600 text-sm"
+                >
                   {stats.upcomingOnboarding.length}
                 </Badge>
                 {isOnboardingOpen ? (
@@ -157,29 +187,46 @@ export function DashboardView() {
           {isOnboardingOpen && (
             <CardContent className="space-y-4 pt-0">
               {stats.upcomingOnboarding.map((employee) => (
-                <div key={employee.id} className="border rounded-lg p-4 space-y-3">
+                <div
+                  key={employee.id}
+                  className="border rounded-lg p-4 space-y-3"
+                >
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
                       <h4 className="font-medium text-sm">{employee.name}</h4>
-                      <p className="text-sm text-muted-foreground">{employee.position}</p>
+                      <p className="text-sm text-muted-foreground">
+                        {employee.position}
+                      </p>
                       <div className="flex items-center gap-2 mt-1">
                         <Briefcase className="h-3 w-3 text-muted-foreground" />
-                        <span className="text-xs text-muted-foreground">{employee.department}</span>
+                        <span className="text-xs text-muted-foreground">
+                          {employee.department}
+                        </span>
                       </div>
                     </div>
                     {getStatusBadge(employee.status)}
                   </div>
-                  
+
                   <div className="grid grid-cols-2 gap-4 text-sm">
                     <div>
                       <span className="text-muted-foreground">Début:</span>
-                      <div className="font-medium">{new Date(employee.startDate).toLocaleDateString('fr-FR')}</div>
-                      <div className="text-xs text-muted-foreground">{getDaysUntilText(employee.daysUntil)}</div>
+                      <div className="font-medium">
+                        {new Date(employee.startDate).toLocaleDateString(
+                          "fr-FR",
+                        )}
+                      </div>
+                      <div className="text-xs text-muted-foreground">
+                        {getDaysUntilText(employee.daysUntil)}
+                      </div>
                     </div>
                     <div>
                       <span className="text-muted-foreground">Salaire:</span>
-                      <div className="font-medium">{formatCurrency(employee.salary)}</div>
-                      <div className="text-xs text-muted-foreground">brut annuel</div>
+                      <div className="font-medium">
+                        {formatCurrency(employee.salary)}
+                      </div>
+                      <div className="text-xs text-muted-foreground">
+                        brut annuel
+                      </div>
                     </div>
                   </div>
 
@@ -211,14 +258,19 @@ export function DashboardView() {
               <div className="flex items-start gap-2">
                 <UserMinus className="h-5 w-5 text-red-600 relative top-[2px]" />
                 <div className="text-left">
-                  <CardTitle className="text-lg leading-none">Départs prévus</CardTitle>
+                  <CardTitle className="text-lg leading-none">
+                    Départs prévus
+                  </CardTitle>
                   <CardDescription>
                     Employés à retirer du système de paie
                   </CardDescription>
                 </div>
               </div>
               <div className="flex items-center gap-2">
-                <Badge variant="outline" className="text-red-600 border-red-600 text-sm">
+                <Badge
+                  variant="outline"
+                  className="text-red-600 border-red-600 text-sm"
+                >
                   {stats.upcomingOffboarding.length}
                 </Badge>
                 {isOffboardingOpen ? (
@@ -232,29 +284,47 @@ export function DashboardView() {
           {isOffboardingOpen && (
             <CardContent className="space-y-4 pt-0">
               {stats.upcomingOffboarding.map((employee) => (
-                <div key={employee.id} className="border rounded-lg p-4 space-y-3">
+                <div
+                  key={employee.id}
+                  className="border rounded-lg p-4 space-y-3"
+                >
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
                       <h4 className="font-medium text-sm">{employee.name}</h4>
-                      <p className="text-sm text-muted-foreground">{employee.position}</p>
+                      <p className="text-sm text-muted-foreground">
+                        {employee.position}
+                      </p>
                       <div className="flex items-center gap-2 mt-1">
                         <Briefcase className="h-3 w-3 text-muted-foreground" />
-                        <span className="text-xs text-muted-foreground">{employee.department}</span>
+                        <span className="text-xs text-muted-foreground">
+                          {employee.department}
+                        </span>
                       </div>
                     </div>
                     {getStatusBadge(employee.status)}
                   </div>
-                  
+
                   <div className="grid grid-cols-2 gap-4 text-sm">
                     <div>
                       <span className="text-muted-foreground">Fin:</span>
-                      <div className="font-medium">{new Date(employee.endDate).toLocaleDateString('fr-FR')}</div>
-                      <div className="text-xs text-muted-foreground">{getDaysUntilText(employee.daysUntil)}</div>
+                      <div className="font-medium">
+                        {new Date(employee.endDate).toLocaleDateString("fr-FR")}
+                      </div>
+                      <div className="text-xs text-muted-foreground">
+                        {getDaysUntilText(employee.daysUntil)}
+                      </div>
                     </div>
                     <div>
                       <span className="text-muted-foreground">Motif:</span>
-                      <div className="font-medium text-xs">{employee.reason}</div>
-                      <div className="text-xs text-muted-foreground">Dernière paie: {new Date(employee.lastPayroll).toLocaleDateString('fr-FR')}</div>
+                      <div className="font-medium text-xs">
+                        {employee.reason}
+                      </div>
+                      <div className="text-xs text-muted-foreground">
+                        Dernière paie:{" "}
+                        {new Date(employee.lastPayroll).toLocaleDateString(
+                          "fr-FR",
+                        )}
+                      </div>
                     </div>
                   </div>
 
@@ -298,7 +368,9 @@ export function DashboardView() {
                   <action.icon className="mr-3 h-5 w-5" />
                   <div className="text-left">
                     <div className="font-medium">{action.title}</div>
-                    <div className="text-sm text-muted-foreground">{action.description}</div>
+                    <div className="text-sm text-muted-foreground">
+                      {action.description}
+                    </div>
                   </div>
                 </a>
               </Button>
@@ -317,7 +389,10 @@ export function DashboardView() {
           <CardContent>
             <div className="space-y-4">
               {stats.recentUploads.map((upload) => (
-                <div key={upload.id} className="flex items-center justify-between">
+                <div
+                  key={upload.id}
+                  className="flex items-center justify-between"
+                >
                   <div className="flex items-center space-x-4">
                     <div className="flex-shrink-0">
                       <FileText className="h-8 w-8 text-muted-foreground" />
@@ -327,16 +402,19 @@ export function DashboardView() {
                         {upload.name}
                       </p>
                       <p className="text-sm text-gray-500">
-                        {upload.records} enregistrements • {new Date(upload.date).toLocaleDateString('fr-FR')}
+                        {upload.records} enregistrements •{" "}
+                        {new Date(upload.date).toLocaleDateString("fr-FR")}
                       </p>
                     </div>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <Badge 
-                      variant={upload.status === 'validated' ? 'default' : 'secondary'}
+                    <Badge
+                      variant={
+                        upload.status === "validated" ? "default" : "secondary"
+                      }
                       className="flex items-center gap-1"
                     >
-                      {upload.status === 'validated' ? (
+                      {upload.status === "validated" ? (
                         <>
                           <CheckCircle className="h-3 w-3" />
                           Validé
@@ -375,29 +453,46 @@ export function DashboardView() {
                 <span className="text-sm text-muted-foreground">1398,69€</span>
               </div>
               <div className="w-full bg-gray-200 rounded-full h-2">
-                <div className="bg-green-600 h-2 rounded-full" style={{ width: '98.5%' }}></div>
+                <div
+                  className="bg-green-600 h-2 rounded-full"
+                  style={{ width: "98.5%" }}
+                ></div>
               </div>
-              <p className="text-xs text-muted-foreground">98,5% de conformité</p>
+              <p className="text-xs text-muted-foreground">
+                98,5% de conformité
+              </p>
             </div>
 
             <div className="space-y-2">
               <div className="flex items-center justify-between">
                 <span className="text-sm font-medium">Heures légales</span>
-                <span className="text-sm text-muted-foreground">35h/semaine</span>
+                <span className="text-sm text-muted-foreground">
+                  35h/semaine
+                </span>
               </div>
               <div className="w-full bg-gray-200 rounded-full h-2">
-                <div className="bg-yellow-500 h-2 rounded-full" style={{ width: '92%' }}></div>
+                <div
+                  className="bg-yellow-500 h-2 rounded-full"
+                  style={{ width: "92%" }}
+                ></div>
               </div>
               <p className="text-xs text-muted-foreground">92% de conformité</p>
             </div>
 
             <div className="space-y-2">
               <div className="flex items-center justify-between">
-                <span className="text-sm font-medium">Heures supplémentaires</span>
-                <span className="text-sm text-muted-foreground">Max 48h/semaine</span>
+                <span className="text-sm font-medium">
+                  Heures supplémentaires
+                </span>
+                <span className="text-sm text-muted-foreground">
+                  Max 48h/semaine
+                </span>
               </div>
               <div className="w-full bg-gray-200 rounded-full h-2">
-                <div className="bg-red-500 h-2 rounded-full" style={{ width: '85%' }}></div>
+                <div
+                  className="bg-red-500 h-2 rounded-full"
+                  style={{ width: "85%" }}
+                ></div>
               </div>
               <p className="text-xs text-muted-foreground">85% de conformité</p>
             </div>
@@ -421,7 +516,8 @@ export function DashboardView() {
                 <div>
                   <h4 className="font-medium">SMIC 2024</h4>
                   <p className="text-sm text-muted-foreground">
-                    Salaire minimum interprofessionnel de croissance fixé à 1398,69€ brut mensuel
+                    Salaire minimum interprofessionnel de croissance fixé à
+                    1398,69€ brut mensuel
                   </p>
                 </div>
               </div>

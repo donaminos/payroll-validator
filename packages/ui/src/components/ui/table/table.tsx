@@ -14,4 +14,4 @@ function Table({ className, ...props }: React.ComponentProps<"table">) {
   );
 }
 
-export { Table }; 
+export { Table };

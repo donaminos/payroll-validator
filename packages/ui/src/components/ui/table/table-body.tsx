@@ -12,4 +12,4 @@ function TableBody({ className, ...props }: React.ComponentProps<"tbody">) {
   );
 }
 
-export { TableBody }; 
+export { TableBody };

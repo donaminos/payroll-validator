@@ -27,9 +27,15 @@ export const Default: Story = {
         <div style={{ padding: 16 }}>
           <strong>Navigation</strong>
           <ul style={{ margin: 0, padding: 0, listStyle: "none" }}>
-            <li><Button variant="link">Accueil</Button></li>
-            <li><Button variant="link">Employés</Button></li>
-            <li><Button variant="link">Fiches de paie</Button></li>
+            <li>
+              <Button variant="link">Accueil</Button>
+            </li>
+            <li>
+              <Button variant="link">Employés</Button>
+            </li>
+            <li>
+              <Button variant="link">Fiches de paie</Button>
+            </li>
           </ul>
         </div>
       </Sidebar>
@@ -44,8 +50,12 @@ export const WithActions: Story = {
       <Sidebar>
         <div style={{ padding: 16 }}>
           <strong>Actions</strong>
-          <Button size="sm" style={{ marginRight: 8 }}>Ajouter employé</Button>
-          <Button size="sm" variant="destructive">Supprimer</Button>
+          <Button size="sm" style={{ marginRight: 8 }}>
+            Ajouter employé
+          </Button>
+          <Button size="sm" variant="destructive">
+            Supprimer
+          </Button>
         </div>
       </Sidebar>
     </SidebarProvider>
@@ -66,7 +76,9 @@ export const AccessibilityTest: Story = {
   render: () => (
     <SidebarProvider>
       <Sidebar>
-        <div style={{ padding: 16 }}>Tab to focus, keyboard shortcuts enabled, mobile support.</div>
+        <div style={{ padding: 16 }}>
+          Tab to focus, keyboard shortcuts enabled, mobile support.
+        </div>
       </Sidebar>
     </SidebarProvider>
   ),
@@ -80,4 +92,4 @@ Testing scenario: Sidebar supports keyboard navigation, shortcuts, and mobile.\n
       },
     },
   },
-}; 
+};

@@ -15,4 +15,4 @@ function TableHead({ className, ...props }: React.ComponentProps<"th">) {
   );
 }
 
-export { TableHead }; 
+export { TableHead };
