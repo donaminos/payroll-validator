@@ -18,7 +18,6 @@
   --primary: oklch(0.45 0.20 264);              /* #0061ff */
   --primary-foreground: oklch(1 0 0);           /* #ffffff */
   
-  /* --secondary: oklch(0.94 0.003 240);           #eef2f6 */
   --secondary: oklch(0.9593 0.0069 247.9);           /* #eef2f6 */
   --secondary-foreground: oklch(0.40 0.01 240); /* #4b5865 */
   

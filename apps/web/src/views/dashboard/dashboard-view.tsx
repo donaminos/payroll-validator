@@ -10,6 +10,12 @@ import {
 } from "@payroll/ui/components/ui/card/card";
 import { Badge } from "@payroll/ui/components/ui/badge/badge";
 import { Button } from "@payroll/ui/components/ui/button/button";
+import { PageTitle } from "@/shared/components/page-title/page-title";
+import { StatusBadge } from "@payroll/ui/composites/status-badge/status-badge";
+import {
+  formatCurrency,
+  getDaysUntilText,
+} from "@/shared/utils/display-helpers";
 
 import {
   AlertTriangle,
@@ -35,53 +41,13 @@ export function DashboardView() {
   const [isOnboardingOpen, setIsOnboardingOpen] = useState(false);
   const [isOffboardingOpen, setIsOffboardingOpen] = useState(false);
 
-  const getStatusBadge = (status: string) => {
-    switch (status) {
-      case "pending":
-        return (
-          <Badge variant="secondary" className="flex items-center gap-1">
-            <Clock className="h-3 w-3" />
-            En attente
-          </Badge>
-        );
-      case "in_progress":
-        return (
-          <Badge variant="default" className="flex items-center gap-1">
-            <CheckCircle className="h-3 w-3" />
-            En cours
-          </Badge>
-        );
-      default:
-        return <Badge variant="outline">Inconnu</Badge>;
-    }
-  };
-
-  const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat("fr-FR", {
-      style: "currency",
-      currency: "EUR",
-      minimumFractionDigits: 0,
-    }).format(amount);
-  };
-
-  const getDaysUntilText = (days: number) => {
-    if (days === 0) return "Aujourd'hui";
-    if (days === 1) return "Demain";
-    if (days < 7) return `Dans ${days} jours`;
-    if (days < 30) return `Dans ${Math.floor(days / 7)} semaines`;
-    return `Dans ${Math.floor(days / 30)} mois`;
-  };
-
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex flex-col gap-2">
-        <h1 className="text-3xl font-bold tracking-tight">Tableau de bord</h1>
-        <p className="text-muted-foreground">
-          Vue d'ensemble de votre système de validation de paie. Surveillez la
-          conformité et gérez vos données.
-        </p>
-      </div>
+      <PageTitle
+        title="Tableau de bord"
+        description="Vue d'ensemble de votre système de validation de paie. Surveillez la conformité et gérez vos données."
+      />
 
       {/* Key Metrics */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
@@ -204,7 +170,7 @@ export function DashboardView() {
                         </span>
                       </div>
                     </div>
-                    {getStatusBadge(employee.status)}
+                    <StatusBadge status={employee.status} />
                   </div>
 
                   <div className="grid grid-cols-2 gap-4 text-sm">
@@ -301,7 +267,7 @@ export function DashboardView() {
                         </span>
                       </div>
                     </div>
-                    {getStatusBadge(employee.status)}
+                    <StatusBadge status={employee.status} />
                   </div>
 
                   <div className="grid grid-cols-2 gap-4 text-sm">

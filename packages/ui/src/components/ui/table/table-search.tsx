@@ -1,4 +1,5 @@
-import * as React from "react";
+"use client";
+
 import { Search } from "lucide-react";
 
 import { cn } from "@payroll/ui/lib/utils";

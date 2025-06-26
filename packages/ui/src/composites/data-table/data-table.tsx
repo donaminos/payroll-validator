@@ -26,57 +26,54 @@ interface DataTableProps<T> {
 function DataTable<T extends Record<string, any>>({
   data,
   columns,
-  searchKey,
   searchPlaceholder,
   itemsPerPage = 10,
   className,
 }: DataTableProps<T>) {
-  const [searchValue, setSearchValue] = React.useState("");
-  const [currentPage, setCurrentPage] = React.useState(1);
+  // const [searchValue, setSearchValue] = React.useState("");
+  // const [currentPage, setCurrentPage] = React.useState(1);
 
   // Filter data based on search
-  const filteredData = React.useMemo(() => {
-    if (!searchValue || !searchKey) return data;
+  // const filteredData = React.useMemo(() => {
+  //   if (!searchValue || !searchKey) return data;
 
-    return data.filter((item) => {
-      const value = item[searchKey];
-      if (typeof value === "string") {
-        return value.toLowerCase().includes(searchValue.toLowerCase());
-      }
-      if (typeof value === "number") {
-        return value.toString().includes(searchValue);
-      }
-      return false;
-    });
-  }, [data, searchValue, searchKey]);
-
+  //   return data.filter((item) => {
+  //     const value = item[searchKey];
+  //     if (typeof value === "string") {
+  //       return value.toLowerCase().includes(searchValue.toLowerCase());
+  //     }
+  //     if (typeof value === "number") {
+  //       return value.toString().includes(searchValue);
+  //     }
+  //     return false;
+  //   });
+  // }, [data, searchValue, searchKey]);
+  let currentPage = 1;
+  let searchValue = "";
   // Paginate data
-  const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+  const totalPages = Math.ceil(data.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-  const paginatedData = filteredData.slice(startIndex, endIndex);
+  const paginatedData = data.slice(startIndex, endIndex);
 
   // Reset to first page when search changes
-  React.useEffect(() => {
-    setCurrentPage(1);
-  }, [searchValue]);
+  // React.useEffect(() => {
+  //   setCurrentPage(1);
+  // }, [searchValue]);
 
   return (
     <div className={cn(" bg-white", className)}>
-      {/* Search */}
-      {searchKey && (
-        <div className="flex items-center justify-between px-6 py-4">
-          <TableSearch
-            placeholder={searchPlaceholder}
-            value={searchValue}
-            onValueChange={setSearchValue}
-            className="w-[300px]"
-          />
-          <div className="text-sm text-muted-foreground">
-            {filteredData.length} of {data.length} items
-          </div>
+      <div className="flex items-center justify-between px-6 py-4">
+        <TableSearch
+          placeholder={searchPlaceholder}
+          value={searchValue}
+          //  onValueChange={setSearchValue}
+          className="w-[300px]"
+        />
+        <div className="text-sm text-muted-foreground">
+          {data.length} of {data.length} items
         </div>
-      )}
+      </div>
 
       {/* Table */}
       <div className="border">
@@ -115,14 +112,11 @@ function DataTable<T extends Record<string, any>>({
         </Table>
       </div>
 
-      {/* Pagination */}
-      {totalPages > 1 && (
-        <TablePagination
-          currentPage={currentPage}
-          totalPages={totalPages}
-          onPageChange={setCurrentPage}
-        />
-      )}
+      <TablePagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        // onPageChange={() => {}}
+      />
     </div>
   );
 }
