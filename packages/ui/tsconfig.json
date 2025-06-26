@@ -6,6 +6,6 @@
       "@payroll/ui/*": ["./src/*"]
     }
   },
-  "include": ["."],
+  "include": [".", "../../apps/web/src/shared/components/sidebar/profile-switcher.tsx"],
   "exclude": ["node_modules", "dist"]
 }

@@ -4,7 +4,6 @@ import { TableBody } from "./table-body";
 import { TableHead } from "./table-head";
 import { TableRow } from "./table-row";
 import { TableCell } from "./table-cell";
-import React from "react";
 
 export default {
   title: "COMPONENTS/Table/Table",

@@ -1,14 +1,14 @@
 import * as React from "react";
 
 import { cn } from "@payroll/ui/lib/utils";
-import { Table } from "./table";
-import { TableHeader } from "./table-header";
-import { TableBody } from "./table-body";
-import { TableHead } from "./table-head";
-import { TableRow } from "./table-row";
-import { TableCell } from "./table-cell";
-import { TableSearch } from "./table-search";
-import { TablePagination } from "./table-pagination";
+import { Table } from "../../components/ui/table/table";
+import { TableHeader } from "../../components/ui/table/table-header";
+import { TableBody } from "../../components/ui/table/table-body";
+import { TableHead } from "../../components/ui/table/table-head";
+import { TableRow } from "../../components/ui/table/table-row";
+import { TableCell } from "../../components/ui/table/table-cell";
+import { TableSearch } from "../../components/ui/table/table-search";
+import { TablePagination } from "../../components/ui/table/table-pagination";
 
 interface DataTableProps<T> {
   data: T[];

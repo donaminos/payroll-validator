@@ -1,9 +1,10 @@
-import { Badge } from "../badge/badge";
-import { Button } from "../button/button";
+import { Badge } from "../../components/ui/badge/badge";
+import { Button } from "../../components/ui/button/button";
+
 import { DataTable } from "./data-table";
 
 export default {
-  title: "COMPONENTS/Table/DataTable",
+  title: "COMPOSITES/DataTable",
   component: DataTable,
   parameters: {
     layout: "padded",
@@ -172,7 +173,7 @@ const columns = [
   {
     key: "actions" as const,
     header: "Actions",
-    cell: (item: (typeof sampleData)[0]) => (
+    cell: () => (
       <div className="flex gap-2">
         <Button size="sm" variant="outline">
           Edit
