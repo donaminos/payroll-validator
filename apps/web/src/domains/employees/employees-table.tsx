@@ -1,7 +1,11 @@
+"use client";
+
+import { useRouter } from "next/navigation";
 import { DataTable } from "@payroll/ui/composites/data-table/data-table";
 import { Badge } from "@payroll/ui/components/ui/badge/badge";
 import React from "react";
 import { Employee } from "../../../app/api/employees/data";
+import { type EmployeesSearchParams } from "./types";
 
 const columns = [
   { key: "firstName" as const, header: "Prénom" },
@@ -48,17 +52,33 @@ const columns = [
   },
 ];
 
-export async function EmployeesTable({
+export function EmployeesTable({
   initialData,
+  searchParams,
 }: {
   initialData: Employee[];
+  searchParams: EmployeesSearchParams;
 }) {
+  const router = useRouter();
+
+  const handlePageChange = (nextPage: number) => {
+    React.startTransition(() => {
+      const params = new URLSearchParams(
+        searchParams as unknown as URLSearchParams,
+      );
+      params.set("page", nextPage.toString());
+      console.log("handlePageChange: ", searchParams);
+      router.push(`/employees?${params.toString()}`);
+    });
+  };
+
   return (
     <DataTable
       data={initialData}
       columns={columns}
       searchPlaceholder="Rechercher un employé..."
-      itemsPerPage={10}
+      onPageChange={handlePageChange}
+      currentPage={searchParams.page || 1}
     />
   );
 }

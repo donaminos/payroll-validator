@@ -1,86 +1,64 @@
+import { z } from "zod";
+
 import { NextRequest, NextResponse } from "next/server";
 import { employeesData, type Employee } from "./data";
 
-/**
- * GET /api/employees
- * Returns a list of employees with optional filtering and pagination
- */
+const EmployeeQuerySchema = z.object({
+  page: z.coerce.number().int().min(1).default(1),
+  limit: z.coerce.number().int().min(1).max(100).default(50),
+  search: z.string().trim().optional(),
+  slug: z.string().optional(),
+  sortBy: z
+    .enum(["firstName", "lastName", "department", "createdAt"])
+    .default("firstName"),
+  sortOrder: z.enum(["asc", "desc"]).default("asc"),
+});
+
+const getPaginatedEmployees = ({
+  employees,
+  validatedParams,
+}: {
+  employees: Employee[];
+  validatedParams: EmployeeQuery;
+}) => {
+  const { page, limit } = validatedParams;
+
+  const startIndex = (page - 1) * limit;
+  const endIndex = startIndex + limit;
+  const paginatedEmployees = employees.slice(startIndex, endIndex);
+
+  return paginatedEmployees;
+};
+
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
+    const queryParams = Object.fromEntries(searchParams.entries());
+    const validatedParams = EmployeeQuerySchema.parse(queryParams);
 
-    // Extract query parameters
-    const page = parseInt(searchParams.get("page") || "1");
-    const limit = parseInt(searchParams.get("limit") || "50");
-    const search = searchParams.get("search") || "";
-    const department = searchParams.get("department") || "";
-    const status = searchParams.get("status") || "";
-    const contractType = searchParams.get("contractType") || "";
-    const slug = searchParams.get("slug") || "";
-
-    // Validate pagination parameters
-    const validPage = Math.max(1, page);
-    const validLimit = Math.min(100, Math.max(1, limit)); // Max 100 items per page
-
-    // Filter employees based on search criteria
-    let filteredEmployees = employeesData.filter((employee: Employee) => {
-      // Search in name, email, employee number, or slug
-      const searchMatch =
-        !search ||
-        employee.firstName.toLowerCase().includes(search.toLowerCase()) ||
-        employee.lastName.toLowerCase().includes(search.toLowerCase()) ||
-        employee.email.toLowerCase().includes(search.toLowerCase()) ||
-        employee.employeeNumber.toLowerCase().includes(search.toLowerCase()) ||
-        employee.slug.toLowerCase().includes(search.toLowerCase());
-
-      // Filter by slug (exact match)
-      const slugMatch = !slug || employee.slug === slug;
-
-      // Filter by department
-      const departmentMatch = !department || employee.department === department;
-
-      // Filter by status
-      const statusMatch = !status || employee.status === status;
-
-      // Filter by contract type
-      const contractMatch =
-        !contractType || employee.contractType === contractType;
-
-      return (
-        searchMatch &&
-        slugMatch &&
-        departmentMatch &&
-        statusMatch &&
-        contractMatch
-      );
+    const paginatedEmployees = getPaginatedEmployees({
+      employees: employeesData,
+      validatedParams,
     });
 
-    // Calculate pagination
-    const totalItems = filteredEmployees.length;
-    const totalPages = Math.ceil(totalItems / validLimit);
-    const startIndex = (validPage - 1) * validLimit;
-    const endIndex = startIndex + validLimit;
-
-    // Get paginated results
-    const paginatedEmployees = filteredEmployees.slice(startIndex, endIndex);
-
-    // Prepare response data
+    const totalItems = employeesData.length;
+    const totalPages = Math.ceil(totalItems / validatedParams.limit);
+    console.log("totalPages: ", totalPages);
     const response = {
       data: paginatedEmployees,
       pagination: {
-        page: validPage,
-        limit: validLimit,
+        page: validatedParams.page,
+        limit: validatedParams.limit,
         totalItems,
         totalPages,
-        hasNextPage: validPage < totalPages,
-        hasPreviousPage: validPage > 1,
+        hasNextPage: validatedParams.page < totalPages,
+        hasPreviousPage: validatedParams.page > 1,
       },
       filters: {
-        search,
-        slug,
-        department,
-        status,
-        contractType,
+        search: validatedParams.search,
+        slug: validatedParams.slug,
+        sortBy: validatedParams.sortBy,
+        sortOrder: validatedParams.sortOrder,
       },
     };
 
@@ -110,10 +88,6 @@ export async function GET(request: NextRequest) {
   }
 }
 
-/**
- * POST /api/employees
- * Creates a new employee (placeholder for future implementation)
- */
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();

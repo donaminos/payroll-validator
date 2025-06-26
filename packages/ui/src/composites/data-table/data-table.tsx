@@ -1,3 +1,5 @@
+"use client";
+
 import * as React from "react";
 
 import { cn } from "@payroll/ui/lib/utils";
@@ -11,7 +13,17 @@ import { TableSearch } from "../../components/ui/table/table-search";
 import { TablePagination } from "../../components/ui/table/table-pagination";
 
 interface DataTableProps<T> {
-  data: T[];
+  data: {
+    data: T[];
+    pagination: {
+      page: number;
+      limit: number;
+      totalItems: number;
+      totalPages: number;
+      hasNextPage: boolean;
+      hasPreviousPage: boolean;
+    };
+  };
   columns: {
     key: keyof T;
     header: string;
@@ -21,45 +33,23 @@ interface DataTableProps<T> {
   searchPlaceholder?: string;
   itemsPerPage?: number;
   className?: string;
+  onPageChange: (page: number) => void;
+  currentPage: number;
 }
 
-function DataTable<T extends Record<string, any>>({
+export function DataTable<T extends Record<string, any>>({
   data,
   columns,
   searchPlaceholder,
-  itemsPerPage = 10,
   className,
+  onPageChange,
+  currentPage,
 }: DataTableProps<T>) {
-  // const [searchValue, setSearchValue] = React.useState("");
-  // const [currentPage, setCurrentPage] = React.useState(1);
-
-  // Filter data based on search
-  // const filteredData = React.useMemo(() => {
-  //   if (!searchValue || !searchKey) return data;
-
-  //   return data.filter((item) => {
-  //     const value = item[searchKey];
-  //     if (typeof value === "string") {
-  //       return value.toLowerCase().includes(searchValue.toLowerCase());
-  //     }
-  //     if (typeof value === "number") {
-  //       return value.toString().includes(searchValue);
-  //     }
-  //     return false;
-  //   });
-  // }, [data, searchValue, searchKey]);
-  let currentPage = 1;
   let searchValue = "";
+  console.log("data: ", data);
   // Paginate data
-  const totalPages = Math.ceil(data.length / itemsPerPage);
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const paginatedData = data.slice(startIndex, endIndex);
-
-  // Reset to first page when search changes
-  // React.useEffect(() => {
-  //   setCurrentPage(1);
-  // }, [searchValue]);
+  const { data: paginatedData, pagination } = data;
+  const totalPages = pagination.totalPages;
 
   return (
     <div className={cn(" bg-white", className)}>
@@ -71,7 +61,7 @@ function DataTable<T extends Record<string, any>>({
           className="w-[300px]"
         />
         <div className="text-sm text-muted-foreground">
-          {data.length} of {data.length} items
+          {paginatedData.length} of {paginatedData.length} items
         </div>
       </div>
 
@@ -115,10 +105,8 @@ function DataTable<T extends Record<string, any>>({
       <TablePagination
         currentPage={currentPage}
         totalPages={totalPages}
-        // onPageChange={() => {}}
+        onPageChange={onPageChange}
       />
     </div>
   );
 }
-
-export { DataTable };

@@ -16,6 +16,7 @@ export async function EmployeesView(props: { searchParams: SearchParams }) {
   const sortBy = searchParams?.sortBy || "lastName";
   const order = searchParams?.order || "asc";
   const slug = searchParams?.slug || "";
+
   const params = {
     page,
     limit,

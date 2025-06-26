@@ -1,6 +1,5 @@
 "use client";
 
-import * as React from "react";
 import {
   ChevronLeft,
   ChevronRight,
@@ -38,7 +37,7 @@ function TablePagination({
         <Button
           variant="outline"
           size="xs"
-          // onClick={() => onPageChange(1)}
+          onClick={() => onPageChange(1)}
           disabled={currentPage === 1}
         >
           <ChevronsLeft className="h-2 w-2" />
@@ -46,7 +45,7 @@ function TablePagination({
         <Button
           variant="outline"
           size="xs"
-          // onClick={() => onPageChange(currentPage - 1)}
+          onClick={() => onPageChange(currentPage - 1)}
           disabled={currentPage === 1}
         >
           <ChevronLeft className="h-2 w-2" />
@@ -54,7 +53,7 @@ function TablePagination({
         <Button
           variant="outline"
           size="xs"
-          // onClick={() => onPageChange(currentPage + 1)}
+          onClick={() => onPageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
         >
           <ChevronRight className="h-2 w-2" />
@@ -62,7 +61,7 @@ function TablePagination({
         <Button
           variant="outline"
           size="xs"
-          // onClick={() => onPageChange(totalPages)}
+          onClick={() => onPageChange(totalPages)}
           disabled={currentPage === totalPages}
         >
           <ChevronsRight className="h-2 w-2" />

@@ -12,11 +12,13 @@ export async function EmployeesTableFetcher({
 }) {
   try {
     const validatedParams = EmployeesSearchParamsSchema.parse(searchParams);
-    const { data } = await getEmployees({ searchParams: validatedParams });
+    console.log("validatedParams: ", validatedParams);
+    const data = await getEmployees({ searchParams: validatedParams });
 
-    return <EmployeesTable initialData={data} />;
+    return <EmployeesTable initialData={data} searchParams={searchParams} />;
   } catch (error) {
     if (error) {
+      // TODO: Handle error
       console.error(error);
     }
     throw error;
