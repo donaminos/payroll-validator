@@ -1,0 +1,95 @@
+import { Upload, Users, BarChart3, Settings } from "lucide-react";
+
+  // Mock data - in real app this would come from API
+  export const stats = {
+    totalEmployees: 247,
+    pendingValidations: 12,
+    completedThisMonth: 89,
+    complianceRate: 98.5,
+    smicViolations: 3,
+    overtimeIssues: 7,
+    recentUploads: [
+      { id: 1, name: "Paie_Janvier_2024.csv", status: "validated", date: "2024-01-15", records: 247 },
+      { id: 2, name: "Paie_Décembre_2023.xlsx", status: "pending", date: "2024-01-10", records: 245 },
+      { id: 3, name: "Paie_Novembre_2023.csv", status: "validated", date: "2024-01-05", records: 243 },
+    ],
+    quickActions: [
+      { title: "Importer un fichier", description: "Valider de nouvelles données de paie", icon: Upload, href: "/payroll/validation" },
+      { title: "Gérer les employés", description: "Consulter et modifier les données", icon: Users, href: "/employees" },
+      { title: "Rapports", description: "Analyser les tendances et conformité", icon: BarChart3, href: "/reports" },
+      { title: "Configuration", description: "Paramètres et règles de validation", icon: Settings, href: "/settings" },
+    ],
+    upcomingOnboarding: [
+      {
+        id: 1,
+        name: "Marie Dubois",
+        position: "Développeuse Full-Stack",
+        startDate: "2024-02-01",
+        department: "IT",
+        salary: 45000,
+        status: "pending",
+        daysUntil: 5,
+        contact: { email: "marie.dubois@email.com", phone: "06 12 34 56 78" }
+      },
+      {
+        id: 2,
+        name: "Thomas Martin",
+        position: "Comptable Senior",
+        startDate: "2024-02-05",
+        department: "Finance",
+        salary: 52000,
+        status: "in_progress",
+        daysUntil: 9,
+        contact: { email: "thomas.martin@email.com", phone: "06 98 76 54 32" }
+      },
+      {
+        id: 3,
+        name: "Sophie Bernard",
+        position: "Chargée de Recrutement",
+        startDate: "2024-02-12",
+        department: "RH",
+        salary: 38000,
+        status: "pending",
+        daysUntil: 16,
+        contact: { email: "sophie.bernard@email.com", phone: "06 45 67 89 01" }
+      }
+    ],
+    upcomingOffboarding: [
+      {
+        id: 1,
+        name: "Pierre Leroy",
+        position: "Chef de Projet",
+        endDate: "2024-02-15",
+        department: "Gestion de Projet",
+        reason: "Retraite",
+        status: "pending",
+        daysUntil: 19,
+        lastPayroll: "2024-02-28",
+        contact: { email: "pierre.leroy@email.com", phone: "06 23 45 67 89" }
+      },
+      {
+        id: 2,
+        name: "Julie Moreau",
+        position: "Designer UI/UX",
+        endDate: "2024-02-28",
+        department: "Design",
+        reason: "Démission",
+        status: "in_progress",
+        daysUntil: 32,
+        lastPayroll: "2024-03-15",
+        contact: { email: "julie.moreau@email.com", phone: "06 78 90 12 34" }
+      },
+      {
+        id: 3,
+        name: "Marc Petit",
+        position: "Commercial",
+        endDate: "2024-03-10",
+        department: "Ventes",
+        reason: "Fin de contrat CDD",
+        status: "pending",
+        daysUntil: 42,
+        lastPayroll: "2024-03-31",
+        contact: { email: "marc.petit@email.com", phone: "06 56 78 90 12" }
+      }
+    ]
+  };

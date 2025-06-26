@@ -1,5 +1,5 @@
 import * as React from "react";
-import { User2, FileText, Wallet, CalendarCheck, Clock, BarChart2, Settings } from "lucide-react";
+import { User2, FileText, Wallet, CalendarCheck, BarChart2, Settings } from "lucide-react";
 
 import { SearchForm } from "@/shared/components/search-form";
 import { VersionSwitcher } from "@/shared/components/version-switcher";
