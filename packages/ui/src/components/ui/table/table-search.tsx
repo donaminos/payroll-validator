@@ -25,7 +25,7 @@ function TableSearch({
         placeholder={placeholder}
         value={value}
         onChange={(e) => onValueChange(e.target.value)}
-        className="pl-8"
+        className="pl-8 rounded-4xl"
       />
     </div>
   );

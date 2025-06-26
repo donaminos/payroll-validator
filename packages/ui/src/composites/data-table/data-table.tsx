@@ -52,20 +52,19 @@ export function DataTable<T extends Record<string, any>>({
   const totalPages = pagination.totalPages;
 
   return (
-    <div className={cn(" bg-white", className)}>
+    <div className={cn("bg-white rounded-xl shadow-sm", className)}>
       <div className="flex items-center justify-between px-6 py-4">
         <TableSearch
           placeholder={searchPlaceholder}
           value={searchValue}
           //  onValueChange={setSearchValue}
-          className="w-[300px]"
+          className="w-56"
         />
         <div className="text-sm text-muted-foreground">
-          {paginatedData.length} of {paginatedData.length} items
+          {paginatedData.length} of {pagination.totalItems} items
         </div>
       </div>
 
-      {/* Table */}
       <div className="border">
         <Table className="min-h-96">
           <TableHeader>
