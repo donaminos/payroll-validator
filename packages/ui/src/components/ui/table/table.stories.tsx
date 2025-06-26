@@ -6,7 +6,7 @@ import { TableRow } from "./table-row";
 import { TableCell } from "./table-cell";
 
 export default {
-  title: "COMPONENTS/Table/Table",
+  title: "COMPONENTS/Table",
   component: Table,
   parameters: {
     layout: "padded",
@@ -47,7 +47,7 @@ export const Default = {
 
 export const WithBorder = {
   render: () => (
-    <div className="rounded-md border">
+    <div className="rounded-md border ">
       <Table>
         <TableHeader>
           <TableRow>

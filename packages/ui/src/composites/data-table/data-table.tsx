@@ -62,10 +62,10 @@ function DataTable<T extends Record<string, any>>({
   }, [searchValue]);
 
   return (
-    <div className={cn("space-y-4", className)}>
+    <div className={cn(" bg-white", className)}>
       {/* Search */}
       {searchKey && (
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between px-6 py-4">
           <TableSearch
             placeholder={searchPlaceholder}
             value={searchValue}
@@ -79,8 +79,8 @@ function DataTable<T extends Record<string, any>>({
       )}
 
       {/* Table */}
-      <div className="rounded-md border">
-        <Table>
+      <div className="border">
+        <Table className="min-h-96">
           <TableHeader>
             <TableRow>
               {columns.map((column) => (
