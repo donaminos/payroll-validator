@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { Home, User2, FileText, Settings2 } from "lucide-react";
-import { SearchForm } from "@/shared/components/search-form";
+import { SearchForm } from "@/shared/components/sidebar/search-form";
 
 import {
   Sidebar,

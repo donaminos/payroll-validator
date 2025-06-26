@@ -34,9 +34,6 @@ export interface Employee {
   lastUpdated: string;
 }
 
-/**
- * French departments for realistic employee distribution
- */
 const DEPARTMENTS = [
   "Ressources Humaines",
   "Comptabilité",
@@ -55,9 +52,6 @@ const DEPARTMENTS = [
   "Sécurité",
 ] as const;
 
-/**
- * Common French job positions
- */
 const POSITIONS = [
   "Directeur Général",
   "Directeur RH",
@@ -92,9 +86,6 @@ const POSITIONS = [
   "Stagiaire Informatique",
 ] as const;
 
-/**
- * French cities for realistic address distribution
- */
 const CITIES = [
   { city: "Paris", postalCode: "75001" },
   { city: "Lyon", postalCode: "69001" },
@@ -118,9 +109,6 @@ const CITIES = [
   { city: "Saint-Denis", postalCode: "93200" },
 ] as const;
 
-/**
- * Common French first names
- */
 const FIRST_NAMES = [
   "Jean",
   "Pierre",
@@ -214,9 +202,6 @@ const FIRST_NAMES = [
   "Alexander",
 ] as const;
 
-/**
- * Common French last names
- */
 const LAST_NAMES = [
   "Martin",
   "Bernard",
@@ -310,9 +295,6 @@ const LAST_NAMES = [
   "Dumas",
 ] as const;
 
-/**
- * Street names for realistic addresses
- */
 const STREETS = [
   "Rue de la Paix",
   "Avenue des Champs-Élysées",
@@ -351,9 +333,6 @@ const STREETS = [
   "Boulevard de la Villette",
 ] as const;
 
-/**
- * Generate a random French phone number
- */
 function generatePhoneNumber(): string {
   const prefixes = ["01", "02", "03", "04", "05", "06", "07", "08", "09"];
   const prefix = prefixes[Math.floor(Math.random() * prefixes.length)];
@@ -361,9 +340,6 @@ function generatePhoneNumber(): string {
   return `${prefix}${number}`;
 }
 
-/**
- * Generate a random French social security number
- */
 function generateSocialSecurityNumber(): string {
   const gender = Math.random() > 0.5 ? 1 : 2;
   const year = Math.floor(Math.random() * 50) + 50; // 1950-1999
@@ -375,18 +351,12 @@ function generateSocialSecurityNumber(): string {
   return `${gender}${year.toString().padStart(2, "0")}${month.toString().padStart(2, "0")}${department.toString().padStart(2, "0")}${cityCode.toString().padStart(3, "0")}${order.toString().padStart(3, "0")}`;
 }
 
-/**
- * Generate a random employee number
- */
 function generateEmployeeNumber(): string {
   const year = new Date().getFullYear();
   const number = Math.floor(Math.random() * 9999) + 1;
   return `EMP${year}${number.toString().padStart(4, "0")}`;
 }
 
-/**
- * Generate a random salary based on position and experience
- */
 function generateSalary(position: string): number {
   const baseSalaries: Record<string, number> = {
     "Directeur Général": 8000,
@@ -427,9 +397,6 @@ function generateSalary(position: string): number {
   return Math.round(baseSalary * (1 + variation) * 100) / 100;
 }
 
-/**
- * Generate a random hire date within the last 10 years
- */
 function generateHireDate(): string {
   const start = new Date(2014, 0, 1);
   const end = new Date();
@@ -439,9 +406,6 @@ function generateHireDate(): string {
   return randomDate.toISOString().split("T")[0];
 }
 
-/**
- * Generate a random weekly hours based on contract type
- */
 function generateWeeklyHours(contractType: string): number {
   switch (contractType) {
     case "CDI":
@@ -456,9 +420,6 @@ function generateWeeklyHours(contractType: string): number {
   }
 }
 
-/**
- * Generate a UUID v4 for employee slug
- */
 function generateUUID(): string {
   return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
     const r = (Math.random() * 16) | 0;
@@ -467,9 +428,6 @@ function generateUUID(): string {
   });
 }
 
-/**
- * Generate 1000 employee records
- */
 export function generateEmployees(): Employee[] {
   const employees: Employee[] = [];
 
@@ -532,7 +490,4 @@ export function generateEmployees(): Employee[] {
   return employees;
 }
 
-/**
- * Pre-generated employee data
- */
 export const employeesData: Employee[] = generateEmployees();
