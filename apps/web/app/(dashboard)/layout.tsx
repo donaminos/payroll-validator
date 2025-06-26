@@ -34,7 +34,7 @@ export default function DashboardLayout({
       <body>
         <SidebarProvider>
           <AppSidebar />
-          <SidebarInset className="bg-[#F3F4F8]">
+          <SidebarInset className="bg-[fF3f4f8]">
             <SidebarHeader />
             <div className="flex flex-1 flex-col gap-4 py-10 px-16 ">
               {children}
