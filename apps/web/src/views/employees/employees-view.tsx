@@ -9,8 +9,7 @@ type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
 
 export async function EmployeesView(props: { searchParams: SearchParams }) {
   const searchParams = await props.searchParams;
-  console.log("EmployeesView searchParams: ", JSON.stringify(searchParams));
-  console.log("--------------------------------");
+
   const params = {
     page: Number(searchParams?.page) || 1,
     limit: Number(searchParams?.limit) || 10,

@@ -1,20 +1,17 @@
 "use client";
 
-import { type LucideIcon } from "lucide-react";
 import Link from "next/link";
-import { usePathname } from 'next/navigation';
+import { usePathname } from "next/navigation";
 
 import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@payroll/ui/components/sidebar/sidebar";
 
+import type { MenuEntry } from "./types";
+
 type MenuEntryProps = {
-  entry: {
-    title: string;
-    url: string;
-    icon?: LucideIcon;
-  };
+  entry: MenuEntry;
 };
 
 export function MenuEntry({ entry }: MenuEntryProps) {
@@ -22,7 +19,11 @@ export function MenuEntry({ entry }: MenuEntryProps) {
 
   return (
     <SidebarMenuItem>
-      <SidebarMenuButton tooltip={entry.title} asChild isActive={pathname === entry.url}>
+      <SidebarMenuButton
+        tooltip={entry.title}
+        asChild
+        isActive={pathname === entry.url}
+      >
         <Link href={entry.url}>
           {entry.icon && <entry.icon />}
           <span>{entry.title}</span>

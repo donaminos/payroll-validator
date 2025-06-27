@@ -7,9 +7,9 @@ import {
 } from "@payroll/ui/components/sidebar/sidebar";
 
 import { MenuEntry } from "./menu-entry";
-import { MenuGroupProps } from "./types";
+import type { MenuGroup as MenuGroupType } from "./types";
 
-export function MenuGroup({ menu }: { menu: MenuGroupProps }) {
+export function MenuGroup({ menu }: { menu: MenuGroupType }) {
   return (
     <SidebarGroup className="p-0 px-2 py-1">
       {menu.items && menu.items.length > 0 ? (

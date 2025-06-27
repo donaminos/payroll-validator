@@ -67,9 +67,9 @@ export function ProfileSwitcher({
             </DropdownMenuLabel>
             {profiles.map((profile, index) => (
               <DropdownMenuItem
-                key={profile.name}
+                key={profile.plan}
                 onClick={() => setActiveTeam(profile)}
-                className="gap-2 p-2"
+                className="gap-2 p-2 cursor-pointer"
               >
                 {profile.plan}
                 <DropdownMenuShortcut>⌘{index + 1}</DropdownMenuShortcut>

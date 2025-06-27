@@ -1,10 +1,10 @@
 "use client";
 
 import { MenuGroup } from "./menu-group";
-import { MenuGroupProps } from "./types";
+import type { MenuGroup as MenuGroupType } from "./types";
 
 type NavMainProps = {
-  items: Array<MenuGroupProps>;
+  items: Array<MenuGroupType>;
 };
 
 export function NavMain({ items }: NavMainProps) {
