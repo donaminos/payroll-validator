@@ -5,11 +5,11 @@ import {
   CardDescription,
   CardContent,
   CardFooter,
-} from "@payroll/ui/components/ui/card/card";
-import { Input } from "@payroll/ui/components/ui/input/input";
-import { Button } from "@payroll/ui/components/ui/button/button";
-import { Label } from "@payroll/ui/components/ui/label/label";
-import { Separator } from "@payroll/ui/components/ui/separator/separator";
+} from "@payroll/ui/components/card/card";
+import { Input } from "@payroll/ui/components/input/input";
+import { Button } from "@payroll/ui/components/button/button";
+import { Label } from "@payroll/ui/components/label/label";
+import { Separator } from "@payroll/ui/components/separator/separator";
 
 export function SignInView() {
   return (

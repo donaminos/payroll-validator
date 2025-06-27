@@ -8,7 +8,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@payroll/ui/components/ui/sidebar/sidebar";
+} from "@payroll/ui/components/sidebar/sidebar";
 import Link from "next/link";
 
 type MenuGroupProps = {

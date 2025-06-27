@@ -7,23 +7,23 @@ import { PanelLeftIcon } from "lucide-react";
 
 import { useIsMobile } from "@payroll/ui/hooks/use-mobile";
 import { cn } from "@payroll/ui/lib/utils";
-import { Button } from "@payroll/ui/components/ui/button/button";
-import { Input } from "@payroll/ui/components/ui/input/input";
-import { Separator } from "@payroll/ui/components/ui/separator/separator";
+import { Button } from "@payroll/ui/components/button/button";
+import { Input } from "@payroll/ui/components/input/input";
+import { Separator } from "@payroll/ui/components/separator/separator";
 import {
   Sheet,
   SheetContent,
   SheetDescription,
   SheetHeader,
   SheetTitle,
-} from "@payroll/ui/components/ui/sheet/sheet";
-import { Skeleton } from "@payroll/ui/components/ui/skeleton/skeleton";
+} from "@payroll/ui/components/sheet/sheet";
+import { Skeleton } from "@payroll/ui/components/skeleton/skeleton";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@payroll/ui/components/ui/tooltip/tooltip";
+} from "@payroll/ui/components/tooltip/tooltip";
 
 const SIDEBAR_COOKIE_NAME = "sidebar_state";
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7;

@@ -1,4 +1,4 @@
-import { Badge } from "@payroll/ui/components/ui/badge/badge";
+import { Badge } from "@payroll/ui/components/badge/badge";
 import { Clock, CheckCircle } from "lucide-react";
 
 export function StatusBadge({ status }: { status: string }) {

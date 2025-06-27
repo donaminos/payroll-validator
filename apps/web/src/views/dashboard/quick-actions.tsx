@@ -4,9 +4,10 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@payroll/ui/components/ui/card/card";
+} from "@payroll/ui/components/card/card";
 import { stats } from "./data";
-import { Button } from "@payroll/ui/components/ui/button/button";
+import { Button } from "@payroll/ui/components/button/button";
+import { StatusBadge } from "@payroll/ui/composites/status-badge/status-badge";
 
 export function QuickActions() {
   return (

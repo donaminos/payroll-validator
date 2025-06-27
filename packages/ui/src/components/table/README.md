@@ -14,7 +14,7 @@ A comprehensive table component with search and pagination functionality, design
 ## Basic Usage
 
 ```tsx
-import { DataTable } from "@payroll/ui/components/ui/table";
+import { DataTable } from "@payroll/ui/components/table";
 
 interface Employee {
   id: string;
@@ -127,7 +127,7 @@ import {
   TableCell,
   TableSearch,
   TablePagination,
-} from "@payroll/ui/components/ui/table";
+} from "@payroll/ui/components/table";
 
 function CustomTable() {
   return (

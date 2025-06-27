@@ -4,9 +4,9 @@ import {
   CardContent,
   CardTitle,
   CardDescription,
-} from "@payroll/ui/components/ui/card/card";
-import { Badge } from "@payroll/ui/components/ui/badge/badge";
-import { Button } from "@payroll/ui/components/ui/button/button";
+} from "@payroll/ui/components/card/card";
+import { Badge } from "@payroll/ui/components/badge/badge";
+import { Button } from "@payroll/ui/components/button/button";
 import { StatusBadge } from "@payroll/ui/composites/status-badge/status-badge";
 import {
   UserMinus,

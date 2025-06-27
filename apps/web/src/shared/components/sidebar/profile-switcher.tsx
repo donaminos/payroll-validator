@@ -10,17 +10,18 @@ import {
   DropdownMenuLabel,
   DropdownMenuShortcut,
   DropdownMenuTrigger,
-} from "@payroll/ui/components/ui/dropdown-menu/dropdown-menu";
+} from "@payroll/ui/components/dropdown-menu/dropdown-menu";
 import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
-} from "@payroll/ui/components/ui/sidebar/sidebar";
+} from "@payroll/ui/components/sidebar/sidebar";
 import {
   Avatar,
   AvatarFallback,
-} from "@payroll/ui/components/ui/avatar/avatar";
+  AvatarImage,
+} from "@payroll/ui/components/avatar/avatar";
 
 export function ProfileSwitcher({
   profiles,

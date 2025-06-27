@@ -1,7 +1,7 @@
 import React from "react";
 import { Badge } from "../badge/badge";
 import { Button } from "../button/button";
-import { DataTable } from "../../../composites/data-table/data-table";
+import { DataTable } from "../../composites/data-table/data-table";
 
 // Example data type for French payroll employees
 interface PayrollEmployee {

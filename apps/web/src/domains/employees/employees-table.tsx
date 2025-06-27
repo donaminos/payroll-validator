@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { DataTable } from "@payroll/ui/composites/data-table/data-table";
-import { Badge } from "@payroll/ui/components/ui/badge/badge";
+import { Badge } from "@payroll/ui/components/badge/badge";
 import React from "react";
 import { Employee } from "../../../app/api/employees/data";
 import { type EmployeesSearchParams } from "./types";

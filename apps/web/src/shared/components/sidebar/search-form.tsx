@@ -1,11 +1,19 @@
 import { Search } from "lucide-react";
+import { Label } from "@payroll/ui/components/label/label";
+import { Input } from "@payroll/ui/components/input/input";
+import { Button } from "@payroll/ui/components/button/button";
+import { Separator } from "@payroll/ui/components/separator/separator";
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarFooter,
+} from "@payroll/ui/components/sidebar/sidebar";
 
-import { Label } from "@payroll/ui/components/ui/label/label";
 import {
   SidebarGroup,
   SidebarGroupContent,
   SidebarInput,
-} from "@payroll/ui/components/ui/sidebar/sidebar";
+} from "@payroll/ui/components/sidebar/sidebar";
 
 export function SearchForm({ ...props }: React.ComponentProps<"form">) {
   return (

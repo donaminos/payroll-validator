@@ -13,7 +13,7 @@
     "aliases": {
       "components": "@payroll/ui/components",
       "utils": "@payroll/ui/lib/utils",
-      "ui": "@payroll/ui/components/ui",
+      "ui": "@payroll/ui/components",
       "lib": "@payroll/ui/lib",
       "hooks": "@payroll/ui/hooks"
     },

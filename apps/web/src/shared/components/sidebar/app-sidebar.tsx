@@ -8,7 +8,7 @@ import {
   SidebarContent,
   SidebarHeader,
   SidebarRail,
-} from "@payroll/ui/components/ui/sidebar/sidebar";
+} from "@payroll/ui/components/sidebar/sidebar";
 import { ProfileSwitcher } from "./profile-switcher";
 import { NavMain } from "./nav-main";
 export interface AppSidebarNavItem {

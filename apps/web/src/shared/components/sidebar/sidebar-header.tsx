@@ -1,4 +1,13 @@
-import { SidebarTrigger } from "@payroll/ui/components/ui/sidebar/sidebar";
+import { SidebarTrigger } from "@payroll/ui/components/sidebar/sidebar";
+import { Button } from "@payroll/ui/components/button/button";
+import { Input } from "@payroll/ui/components/input/input";
+import { Separator } from "@payroll/ui/components/separator/separator";
+import { Skeleton } from "@payroll/ui/components/skeleton/skeleton";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@payroll/ui/components/tooltip/tooltip";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -6,8 +15,7 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@payroll/ui/components/ui/breadcrumb/breadcrumb";
-import { Separator } from "@payroll/ui/components/ui/separator/separator";
+} from "@payroll/ui/components/breadcrumb/breadcrumb";
 
 export function SidebarHeader() {
   return (

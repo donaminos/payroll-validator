@@ -1,5 +1,5 @@
-import { Badge } from "../../components/ui/badge/badge";
-import { Button } from "../../components/ui/button/button";
+import { Badge } from "@payroll/ui/components/badge/badge";
+import { Button } from "@payroll/ui/components/button/button";
 
 import { DataTable } from "./data-table";
 
@@ -14,10 +14,30 @@ export default {
     itemsPerPage: {
       control: { type: "number", min: 1, max: 50 },
     },
+    data: {
+      control: { type: "object" },
+    },
+    columns: {
+      control: { type: "object" },
+    },
+    searchKey: {
+      control: { type: "string" },
+    },
+    searchPlaceholder: {
+      control: { type: "string" },
+    },
+    className: {
+      control: { type: "string" },
+    },
+    onPageChange: {
+      control: { type: "function" },
+    },
+    currentPage: {
+      control: { type: "number", min: 1, max: 50 },
+    },
   },
 };
 
-// Sample data for stories
 const sampleData = [
   {
     id: "1",
@@ -188,47 +208,70 @@ const columns = [
 
 export const Default = {
   args: {
-    data: sampleData,
+    data: {
+      data: sampleData,
+      pagination: {
+        page: 1,
+        limit: 10,
+        totalItems: sampleData.length,
+        totalPages: Math.ceil(sampleData.length / 10),
+        hasNextPage: false,
+        hasPreviousPage: false,
+      },
+    },
     columns,
     searchKey: "name",
     searchPlaceholder: "Search employees...",
-    itemsPerPage: 5,
+    currentPage: 1,
+    className: "max-w-7xl mx-auto",
   },
 };
 
 export const WithoutSearch = {
   args: {
-    data: sampleData,
-    columns: columns.slice(0, 6), // Remove actions column
-    itemsPerPage: 8,
+    data: {
+      data: sampleData,
+      pagination: {
+        page: 1,
+        limit: 10,
+        totalItems: sampleData.length,
+        totalPages: Math.ceil(sampleData.length / 10),
+        hasNextPage: false,
+        hasPreviousPage: false,
+      },
+    },
+    searchDisabled: true,
+    columns,
+    currentPage: 1,
+    className: "max-w-7xl mx-auto",
   },
 };
 
 export const LargeDataset = {
   args: {
-    data: Array.from({ length: 100 }, (_, i) => ({
-      id: String(i + 1),
-      name: `Employee ${i + 1}`,
-      email: `employee${i + 1}@example.com`,
-      department: ["Engineering", "Marketing", "Sales", "HR"][i % 4],
-      salary: 35000 + i * 500,
-      status: i % 10 === 0 ? "inactive" : "active",
-      startDate: new Date(2023, 0, 1 + i).toISOString().split("T")[0],
-    })),
-    columns: columns.slice(0, 6), // Remove actions column
+    data: {
+      data: Array.from({ length: 100 }, (_, i) => ({
+        id: String(i + 1),
+        name: `Employee ${i + 1}`,
+        email: `employee${i + 1}@example.com`,
+        department: ["Engineering", "Marketing", "Sales", "HR"][i % 4],
+        salary: 35000 + i * 500,
+        status: i % 10 === 0 ? "inactive" : "active",
+        startDate: new Date(2023, 0, 1 + i).toISOString().split("T")[0],
+      })),
+      pagination: {
+        page: 1,
+        limit: 100,
+        totalItems: 100,
+        totalPages: 1,
+        hasNextPage: false,
+        hasPreviousPage: false,
+      },
+    },
+    columns,
     searchKey: "name",
     searchPlaceholder: "Search by name...",
-    itemsPerPage: 10,
-  },
-};
-
-export const CustomStyling = {
-  args: {
-    data: sampleData,
-    columns,
-    searchKey: "department",
-    searchPlaceholder: "Filter by department...",
-    itemsPerPage: 6,
-    className: "max-w-4xl mx-auto",
+    currentPage: 1,
+    className: "max-w-7xl mx-auto",
   },
 };

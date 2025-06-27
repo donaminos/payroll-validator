@@ -7,7 +7,7 @@ import {
   CardContent,
   CardHeader,
   CardTitle,
-} from "@payroll/ui/components/ui/card/card";
+} from "@payroll/ui/components/card/card";
 
 import { PageTitle } from "@/shared/components/page-title/page-title";
 

@@ -1,13 +1,13 @@
 import * as React from "react";
 
 import { cn } from "@payroll/ui/lib/utils";
-import { Skeleton } from "@payroll/ui/components/ui/skeleton/skeleton";
-import { Table } from "@payroll/ui/components/ui/table/table";
-import { TableBody } from "@payroll/ui/components/ui/table/table-body";
-import { TableCell } from "@payroll/ui/components/ui/table/table-cell";
-import { TableHead } from "@payroll/ui/components/ui/table/table-head";
-import { TableHeader } from "@payroll/ui/components/ui/table/table-header";
-import { TableRow } from "@payroll/ui/components/ui/table/table-row";
+import { Skeleton } from "@payroll/ui/components/skeleton/skeleton";
+import { Table } from "@payroll/ui/components/table/table";
+import { TableBody } from "@payroll/ui/components/table/table-body";
+import { TableCell } from "@payroll/ui/components/table/table-cell";
+import { TableHead } from "@payroll/ui/components/table/table-head";
+import { TableHeader } from "@payroll/ui/components/table/table-header";
+import { TableRow } from "@payroll/ui/components/table/table-row";
 
 export interface DataTableSkeletonProps {
   /**

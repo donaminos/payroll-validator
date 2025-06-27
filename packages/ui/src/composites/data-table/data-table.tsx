@@ -3,14 +3,14 @@
 import * as React from "react";
 
 import { cn } from "@payroll/ui/lib/utils";
-import { Table } from "../../components/ui/table/table";
-import { TableHeader } from "../../components/ui/table/table-header";
-import { TableBody } from "../../components/ui/table/table-body";
-import { TableHead } from "../../components/ui/table/table-head";
-import { TableRow } from "../../components/ui/table/table-row";
-import { TableCell } from "../../components/ui/table/table-cell";
-import { TableSearch } from "../../components/ui/table/table-search";
-import { TablePagination } from "../../components/ui/table/table-pagination";
+import { Table } from "../../components/table/table";
+import { TableHeader } from "../../components/table/table-header";
+import { TableBody } from "../../components/table/table-body";
+import { TableHead } from "../../components/table/table-head";
+import { TableRow } from "../../components/table/table-row";
+import { TableCell } from "../../components/table/table-cell";
+import { TableSearch } from "../../components/table/table-search";
+import { TablePagination } from "../../components/table/table-pagination";
 
 interface DataTableProps<T> {
   data: {
@@ -31,10 +31,10 @@ interface DataTableProps<T> {
   }[];
   searchKey?: keyof T;
   searchPlaceholder?: string;
-  itemsPerPage?: number;
   className?: string;
   onPageChange: (page: number) => void;
   currentPage: number;
+  searchDisabled?: boolean;
 }
 
 export function DataTable<T extends Record<string, any>>({
@@ -44,6 +44,7 @@ export function DataTable<T extends Record<string, any>>({
   className,
   onPageChange,
   currentPage,
+  searchDisabled,
 }: DataTableProps<T>) {
   let searchValue = "";
   console.log("data: ", data);
@@ -54,13 +55,15 @@ export function DataTable<T extends Record<string, any>>({
   return (
     <div className={cn("bg-white rounded-xl shadow-sm", className)}>
       <div className="flex items-center justify-between px-6 py-4">
-        <TableSearch
-          placeholder={searchPlaceholder}
-          value={searchValue}
-          //  onValueChange={setSearchValue}
-          className="w-56"
-        />
-        <div className="text-sm text-muted-foreground">
+        {!searchDisabled && (
+          <TableSearch
+            placeholder={searchPlaceholder}
+            value={searchValue}
+            //  onValueChange={setSearchValue}
+            className="w-56"
+          />
+        )}
+        <div className="text-sm text-muted-foreground text-right w-full">
           {paginatedData.length} of {pagination.totalItems} items
         </div>
       </div>

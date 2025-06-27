@@ -4,7 +4,7 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@payroll/ui/components/ui/card/card";
+} from "@payroll/ui/components/card/card";
 
 export function Compliance() {
   return (
