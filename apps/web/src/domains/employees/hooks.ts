@@ -1,12 +1,15 @@
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 import { type EmployeeQueryParams } from "./types";
 
-export function useURLParams() {
+export function useURLParams({
+  searchParams,
+}: {
+  searchParams: EmployeeQueryParams;
+}) {
   const router = useRouter();
-  const searchParams = useSearchParams();
-  
+
   const updateUrlParams = React.useCallback(
     (params: Partial<EmployeeQueryParams>) => {
       const newParams = { ...searchParams, ...params };

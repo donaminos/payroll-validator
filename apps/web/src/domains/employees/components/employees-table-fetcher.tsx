@@ -11,6 +11,11 @@ export async function EmployeesTableFetcher({
 }) {
   try {
     const validatedParams = EmployeeQuerySchema.parse(searchParams);
+    console.log(
+      "EmployeesTableFetcher validatedParams: ",
+      JSON.stringify(validatedParams),
+    );
+    console.log("--------------------------------");
     const data = await getEmployees({ searchParams: validatedParams });
 
     return <EmployeesTable initialData={data} searchParams={searchParams} />;

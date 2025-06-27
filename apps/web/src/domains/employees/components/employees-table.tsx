@@ -105,27 +105,32 @@ export function EmployeesTable({
   initialData: PaginatedResponse<Employee>;
   searchParams: EmployeeQueryParams;
 }) {
-  const [search, setSearch] = React.useState(searchParams.search || "");
-  const debouncedSearch = useDebounce(search, 400);
-  const { updateUrlParams } = useURLParams();
+  const currentSearch = searchParams.search || "";
+  const currentPage = searchParams.page || 1;
+
+  const [inputValue, setInputValue] = React.useState(currentSearch);
+  const debouncedSearch = useDebounce(inputValue, 400);
+
+  const { updateUrlParams } = useURLParams({ searchParams });
+
+  React.useEffect(() => {
+    setInputValue(currentSearch);
+  }, [currentSearch]);
+
+  React.useEffect(() => {
+    // if the debounced search is different from the current search, it means it's pagination of search value results
+    if (debouncedSearch !== currentSearch) {
+      updateUrlParams({ search: debouncedSearch, page: 1 });
+    }
+  }, [debouncedSearch, currentSearch, updateUrlParams]);
 
   const handleSearch = (value: string) => {
-    setSearch(value);
+    setInputValue(value);
   };
 
   const handlePageChange = (nextPage: number) => {
     updateUrlParams({ page: nextPage });
   };
-
-  const searchQuery = React.useMemo(() => {
-    return searchParams.search?.toString() || "";
-  }, [searchParams.search]);
-
-  React.useEffect(() => {
-    if (debouncedSearch.toString() !== searchQuery) {
-      updateUrlParams({ search: debouncedSearch, page: 1 });
-    }
-  }, [debouncedSearch, searchQuery, updateUrlParams]);
 
   return (
     <DataTable<Employee>
@@ -133,8 +138,8 @@ export function EmployeesTable({
       columns={columns}
       searchPlaceholder="Rechercher un employé..."
       onPageChange={handlePageChange}
-      currentPage={searchParams.page || 1}
-      searchKey={search}
+      currentPage={currentPage}
+      searchKey={inputValue}
       onSearchChange={handleSearch}
     />
   );
