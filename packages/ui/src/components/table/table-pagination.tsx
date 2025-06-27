@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 
 import { cn } from "@payroll/ui/lib/utils";
+
 import { Button } from "../button/button";
 
 interface TablePaginationProps {

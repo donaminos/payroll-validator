@@ -28,6 +28,13 @@ type DataTableProps<T> = {
     key: string;
     header: string;
     cell?: (item: T) => React.ReactNode;
+    /**
+     * Tailwind classes for column styling and width.
+     * Common width classes: w-24 (96px), w-32 (128px), w-40 (160px),
+     * w-48 (192px), w-64 (256px), w-72 (288px), w-96 (384px)
+     * Example: "w-48 text-center" for fixed width with center alignment
+     */
+    className?: string;
   }>;
   searchKey: string;
   searchPlaceholder?: string;
@@ -73,7 +80,12 @@ export function DataTable<T>({
           <TableHeader>
             <TableRow>
               {columns.map((column) => (
-                <TableHead key={String(column.key)}>{column.header}</TableHead>
+                <TableHead
+                  key={String(column.key)}
+                  className={cn("whitespace-nowrap", column.className)}
+                >
+                  {column.header}
+                </TableHead>
               ))}
             </TableRow>
           </TableHeader>
@@ -91,7 +103,10 @@ export function DataTable<T>({
               paginatedData.map((item, index) => (
                 <TableRow key={index}>
                   {columns.map((column) => (
-                    <TableCell key={String(column.key)}>
+                    <TableCell
+                      key={String(column.key)}
+                      className={cn("whitespace-nowrap", column.className)}
+                    >
                       {column.cell
                         ? column.cell(item)
                         : String(item[column.key as keyof T] ?? "")}

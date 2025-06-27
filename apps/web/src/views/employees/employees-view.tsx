@@ -10,14 +10,10 @@ type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
 export async function EmployeesView(props: { searchParams: SearchParams }) {
   const searchParams = await props.searchParams;
 
-  const page = Number(searchParams?.page) || 1;
-  const limit = Number(searchParams?.limit) || 10;
-  const search = searchParams?.search || "";
-
   const params = {
-    page,
-    limit,
-    search,
+    page: Number(searchParams?.page) || 1,
+    limit: Number(searchParams?.limit) || 10,
+    search: searchParams?.search,
   } as EmployeeQueryParams;
 
   return (
