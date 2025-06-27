@@ -2,6 +2,7 @@
 
 import { type LucideIcon } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from 'next/navigation';
 
 import {
   SidebarMenuButton,
@@ -17,9 +18,11 @@ type MenuEntryProps = {
 };
 
 export function MenuEntry({ entry }: MenuEntryProps) {
+  const pathname = usePathname();
+
   return (
     <SidebarMenuItem>
-      <SidebarMenuButton tooltip={entry.title} asChild>
+      <SidebarMenuButton tooltip={entry.title} asChild isActive={pathname === entry.url}>
         <Link href={entry.url}>
           {entry.icon && <entry.icon />}
           <span>{entry.title}</span>
