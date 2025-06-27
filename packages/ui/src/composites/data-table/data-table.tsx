@@ -9,7 +9,7 @@ import { TableBody } from "../../components/table/table-body";
 import { TableHead } from "../../components/table/table-head";
 import { TableRow } from "../../components/table/table-row";
 import { TableCell } from "../../components/table/table-cell";
-import { TableSearch } from "../../components/table/table-search";
+import { SearchInput } from "../../components/form/search-input/searh-input";
 import { TablePagination } from "../../components/table/table-pagination";
 
 interface DataTableProps<T> {
@@ -56,11 +56,11 @@ export function DataTable<T extends Record<string, any>>({
     <div className={cn("bg-white rounded-xl shadow-sm", className)}>
       <div className="flex items-center justify-between px-6 py-4">
         {!searchDisabled && (
-          <TableSearch
+          <SearchInput
             placeholder={searchPlaceholder}
             value={searchValue}
             //  onValueChange={setSearchValue}
-            className="w-56"
+            className="w-72"
           />
         )}
         <div className="text-sm text-muted-foreground text-right w-full">

@@ -8,7 +8,7 @@ import { PanelLeftIcon } from "lucide-react";
 import { useIsMobile } from "@payroll/ui/hooks/use-mobile";
 import { cn } from "@payroll/ui/lib/utils";
 import { Button } from "@payroll/ui/components/button/button";
-import { Input } from "@payroll/ui/components/input/input";
+import { Input } from "@payroll/ui/components/form/input/input";
 import { Separator } from "@payroll/ui/components/separator/separator";
 import {
   Sheet,

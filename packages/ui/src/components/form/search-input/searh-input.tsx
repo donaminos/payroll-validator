@@ -5,19 +5,20 @@ import { Search } from "lucide-react";
 import { cn } from "@payroll/ui/lib/utils";
 import { Input } from "../input/input";
 
-interface TableSearchProps {
+interface SearchInputProps {
   placeholder?: string;
   value: string;
   onValueChange: (value: string) => void;
   className?: string;
 }
 
-function TableSearch({
+function SearchInput({
   placeholder = "Search...",
   value,
   onValueChange,
   className,
-}: TableSearchProps) {
+  ...props
+}: SearchInputProps & React.ComponentProps<typeof Input>) {
   return (
     <div className={cn("relative", className)}>
       <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
@@ -25,10 +26,11 @@ function TableSearch({
         placeholder={placeholder}
         value={value}
         onChange={(e) => onValueChange(e.target.value)}
-        className="pl-8 rounded-4xl"
+        className="pl-8 rounded-4xl h-8.5"
+        {...props}
       />
     </div>
   );
 }
 
-export { TableSearch };
+export { SearchInput };
