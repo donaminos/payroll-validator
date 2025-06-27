@@ -92,7 +92,9 @@ export function DataTable<T>({
                 <TableRow key={index}>
                   {columns.map((column) => (
                     <TableCell key={String(column.key)}>
-                      {column.cell ? column.cell(item) : ""}
+                      {column.cell
+                        ? column.cell(item)
+                        : String(item[column.key as keyof T] ?? "")}
                     </TableCell>
                   ))}
                 </TableRow>
