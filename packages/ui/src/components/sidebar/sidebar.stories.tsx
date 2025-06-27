@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { SidebarProvider } from "./sidebar";
 import { Sidebar } from "./sidebar";
 import { Button } from "../button/button";
