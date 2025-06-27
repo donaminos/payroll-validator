@@ -6,16 +6,28 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.8-blue.svg)](https://www.typescriptlang.org/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-A modern, feature-rich payroll validation system designed for French HR professionals. Built with Next.js 15, React 19, and a comprehensive design system, this application provides efficient employee management and payroll data validation capabilities.
+A proof-of-concept (POC) demonstrating modern frontend architecture for scalable SaaS applications. This monorepo showcases best practices for building maintainable, type-safe, and performant React applications using Next.js 15, React 19, and a comprehensive design system.
 
-## 🚀 Features
+## 🎯 Project Goals
 
-- **Employee Management**: Complete CRUD operations for employee records
-- **Dashboard Analytics**: Real-time compliance monitoring and key metrics
-- **Responsive Design**: Interface optimized for desktop and tablet usage
-- **French Labor Law Compliance**: Built-in validation for French employment requirements
-- **Advanced Search & Filtering**: Powerful data discovery capabilities
-- **Type-Safe Architecture**: Full TypeScript implementation with strict typing
+This POC demonstrates:
+- **Scalable Monorepo Architecture**: Feature-based organization with shared packages
+- **Modern Frontend Stack**: Next.js 15, React 19, TypeScript, Tailwind CSS 4
+- **Design System Integration**: Shadcn/ui components with Storybook 9 documentation
+- **Server-Side Performance**: Server pagination, search, and data fetching patterns
+- **Type Safety**: Comprehensive TypeScript implementation with Zod validation
+
+## 🚀 Main Feature
+
+### Employees Page (`/employees`)
+
+The primary demonstration feature showcasing modern data table patterns:
+
+- **Server Pagination**: Efficient data loading with configurable page sizes
+- **Real-time Search**: Instant search across employee records with debounced API calls
+- **Responsive Data Table**: Advanced table with sorting, filtering, and mobile optimization
+- **Type-Safe API Integration**: Full TypeScript coverage for API contracts
+- **Loading States**: Comprehensive loading and error state management
 
 ## 📋 Prerequisites
 
@@ -80,27 +92,23 @@ payroll-validator/
 - **`packages/ui/`**: Design system with Storybook documentation
 - **`packages/types/`**: Shared TypeScript type definitions
 
-## 🎯 Main Pages
+## 🎯 Pages
 
 ### Dashboard (`/`)
 
-The dashboard provides a comprehensive overview of your payroll system:
-
-- **Key Metrics**: Employee headcount, compliance levels, pending validations
-- **Compliance Monitoring**: SMIC compliance tracking and legal reminders
-- **Recent Activity**: Latest employee updates and system activities
-- **Quick Actions**: Common tasks and shortcuts
-- **Upcoming Events**: Onboarding and offboarding schedules
+A demonstration dashboard showing:
+- **Key Metrics**: Sample data visualization components
+- **Compliance Monitoring**: Example monitoring widgets
+- **Recent Activity**: Activity feed components
+- **Quick Actions**: Action button patterns
 
 ### Employees (`/employees`)
 
-A sophisticated employee management interface featuring:
+The main demonstration page featuring:
 
-- **Data Table**: Paginated employee list with advanced filtering
+- **Server Pagination**: Efficient data loading with configurable page sizes
 - **Search Functionality**: Real-time search across multiple fields
-- **Employee Details**: Comprehensive employee information display
-- **Add Employee**: Form for creating new employee records
-- **Responsive Interface**: Optimized for desktop and tablet usage
+- **Employee Pagination**: Comprehensive employee information display
 
 ## 🚀 Available Scripts
 
@@ -173,14 +181,7 @@ Storybook runs on **http://localhost:6006** and provides:
 
 ### Package Management
 - **pnpm**: Fast, disk space efficient package manager
-- **Workspace**: Monorepo package management
 
-## 🔒 Security & Compliance
-
-- **French Labor Law Compliance**: Built-in validation for employment requirements
-- **Data Privacy**: RGPD-compliant data handling
-- **Type Safety**: Comprehensive TypeScript implementation
-- **Input Validation**: Zod schema validation throughout
 
 ## 🧪 Development
 
@@ -209,33 +210,12 @@ The project uses strict TypeScript configuration with:
 - Zod schema validation
 - Strict null checks
 
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
 ### Code Style
 
 - Follow TypeScript strict mode
 - Use function components with hooks
 - Implement proper error boundaries
-- Add JSDoc for public APIs
 - Follow the established naming conventions
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🆘 Support
-
-For support and questions:
-
-- 📧 Email: support@payroll-validator.com
-- 📖 Documentation: [docs/](docs/)
-- 🐛 Issues: [GitHub Issues](https://github.com/your-org/payroll-validator/issues)
 
 ## 🙏 Acknowledgments
 
@@ -246,4 +226,4 @@ For support and questions:
 
 ---
 
-**Made with ❤️ for Payroll*
+**Made with ❤️ for Payroll**
