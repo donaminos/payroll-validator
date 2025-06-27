@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 
-import { EmployeesTableFetcher } from "@/domains/employees/employees-table-fetcher";
+import { EmployeesTableFetcher } from "@/domains/employees/components/employees-table-fetcher";
 import { DataTableSkeleton } from "@payroll/ui/composites/data-table-skeleton/data-table-skeleton";
 import { PageTitle } from "@/shared/components/page-title/page-title";
 import { type EmployeesSearchParams } from "@/domains/employees/types";

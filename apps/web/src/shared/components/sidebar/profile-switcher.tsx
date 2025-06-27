@@ -17,10 +17,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@payroll/ui/components/sidebar/sidebar";
-import {
-  Avatar,
-  AvatarFallback,
-} from "@payroll/ui/components/avatar/avatar";
+import { Avatar, AvatarFallback } from "@payroll/ui/components/avatar/avatar";
 
 export function ProfileSwitcher({
   profiles,

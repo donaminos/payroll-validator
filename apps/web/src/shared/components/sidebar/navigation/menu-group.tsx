@@ -40,4 +40,4 @@ export function MenuGroup({ menu }: { menu: MenuGroupProps }) {
       )}
     </SidebarGroup>
   );
-} 
+}

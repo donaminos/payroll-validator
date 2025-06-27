@@ -403,7 +403,7 @@ function generateHireDate(): string {
   const randomDate = new Date(
     start.getTime() + Math.random() * (end.getTime() - start.getTime()),
   );
-  return randomDate.toISOString().split("T")[0];
+  return randomDate.toISOString().split("T")[0] ?? "";
 }
 
 function generateWeeklyHours(contractType: string): number {
@@ -448,15 +448,15 @@ export function generateEmployees(): Employee[] {
     const employee: Employee = {
       id: `emp_${i.toString().padStart(4, "0")}`,
       slug: generateUUID(),
-      firstName,
-      lastName,
-      email: `${firstName.toLowerCase()}.${lastName.toLowerCase()}@entreprise.fr`,
+      firstName: firstName ?? "",
+      lastName: lastName ?? "",
+      email: `${firstName?.toLowerCase()}.${lastName?.toLowerCase()}@entreprise.fr`,
       phone: generatePhoneNumber(),
-      department,
-      position,
+      department: department ?? "",
+      position: position ?? "",
       hireDate: generateHireDate(),
       contractType,
-      salary: generateSalary(position),
+      salary: generateSalary(position ?? ""),
       weeklyHours: generateWeeklyHours(contractType),
       status:
         Math.random() > 0.1
@@ -470,15 +470,16 @@ export function generateEmployees(): Employee[] {
       socialSecurityNumber: generateSocialSecurityNumber(),
       address: {
         street: `${streetNumber} ${street}`,
-        city: city.city,
-        postalCode: city.postalCode,
+        city: city?.city ?? "",
+        postalCode: city?.postalCode ?? "",
         country: "France",
       },
       emergencyContact: {
         name: `${FIRST_NAMES[Math.floor(Math.random() * FIRST_NAMES.length)]} ${LAST_NAMES[Math.floor(Math.random() * LAST_NAMES.length)]}`,
-        relationship: ["Conjoint", "Parent", "Enfant", "Ami"][
-          Math.floor(Math.random() * 4)
-        ],
+        relationship:
+          ["Conjoint", "Parent", "Enfant", "Ami"][
+            Math.floor(Math.random() * 4)
+          ] ?? "",
         phone: generatePhoneNumber(),
       },
       lastUpdated: new Date().toISOString(),

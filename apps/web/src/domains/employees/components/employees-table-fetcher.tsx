@@ -1,9 +1,9 @@
-import { getEmployees } from "./service";
+import { getEmployees } from "../service";
 import { EmployeesTable } from "./employees-table";
 import {
   EmployeesSearchParamsSchema,
   type EmployeesSearchParams,
-} from "./types";
+} from "../types";
 
 export async function EmployeesTableFetcher({
   searchParams,

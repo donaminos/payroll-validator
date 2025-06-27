@@ -48,7 +48,7 @@ export const AccessibilityTest: Story = {
       <TooltipTrigger asChild>
         <Button>Test accessibilité</Button>
       </TooltipTrigger>
-      <TooltipContent>Accessible via clavier et lecteur d'écran</TooltipContent>
+      <TooltipContent>Accessible via clavier et lecteur d&apos;écran</TooltipContent>
     </Tooltip>
   ),
   name: "Accessibility & Keyboard Navigation",

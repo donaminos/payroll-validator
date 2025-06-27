@@ -3,17 +3,16 @@
 import { UpcomingOnboarding } from "@/domains/onboarding/upcoming-onboarding";
 import { UpcomingOffboarding } from "@/domains/offboarding/upcoming-offboarding";
 import { PageTitle } from "@/shared/components/page-title/page-title";
+import { SmicUnmet } from "@/domains/compliance/smic-unmet";
+import { ComplianceLevel } from "@/domains/compliance/compliance-level";
+import { Headcount } from "@/domains/employees/components/headcount";
+import { PendingValidation } from "@/domains/compliance/pending-validation";
 
 import { LegalReminders } from "./legal-reminders";
 import { stats } from "./data";
 import { QuickActions } from "./quick-actions";
 import { Compliance } from "./compliance";
 import { RecentActivity } from "./recent-activity";
-import { SmicUnmet } from "@/domains/compliance/smic-unmet";
-import { ComplianceLevel } from "@/domains/compliance/compliance-level";
-import { Headcount } from "@/domains/employees/headcount";
-import { PendingValidation } from "@/domains/compliance/pending-validation";
-
 
 export function DashboardView() {
   return (
@@ -24,7 +23,7 @@ export function DashboardView() {
       />
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-       <Headcount stats={stats} />
+        <Headcount stats={stats} />
 
         <PendingValidation stats={stats} />
         <ComplianceLevel stats={stats} />

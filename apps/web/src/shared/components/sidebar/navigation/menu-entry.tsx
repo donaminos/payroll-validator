@@ -27,4 +27,4 @@ export function MenuEntry({ entry }: MenuEntryProps) {
       </SidebarMenuButton>
     </SidebarMenuItem>
   );
-} 
+}
