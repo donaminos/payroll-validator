@@ -191,6 +191,9 @@ importers:
       '@payroll/eslint-config':
         specifier: workspace:*
         version: link:../eslint-config
+      '@payroll/types':
+        specifier: workspace:*
+        version: link:../types
       '@payroll/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config

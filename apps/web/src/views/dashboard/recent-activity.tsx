@@ -15,7 +15,7 @@ type RecentUpload = {
   records: number;
   date: string;
   status: string;
-}
+};
 
 type RecentActivityProps = {
   recentUploads: Array<RecentUpload>;

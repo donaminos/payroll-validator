@@ -399,8 +399,8 @@ function generateUUID(): string {
   });
 }
 
-export function generateEmployees(): Employee[] {
-  const employees: Employee[] = [];
+export function generateEmployees(): Array<Employee> {
+  const employees: Array<Employee> = [];
 
   for (let i = 1; i <= 1000; i++) {
     const firstName =
@@ -462,4 +462,4 @@ export function generateEmployees(): Employee[] {
   return employees;
 }
 
-export const employeesData: Employee[] = generateEmployees();
+export const employeesData: Array<Employee> = generateEmployees();

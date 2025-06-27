@@ -1,15 +1,7 @@
 "use client";
 
-import { type LucideIcon } from "lucide-react";
-
 import { MenuGroup } from "./menu-group";
-
-type MenuGroupProps = {
-  title: string;
-  items: Array<{ title: string; url: string; icon?: LucideIcon }>;
-  icon?: LucideIcon;
-  url?: string;
-};
+import { MenuGroupProps } from "./types";
 
 type NavMainProps = {
   items: Array<MenuGroupProps>;

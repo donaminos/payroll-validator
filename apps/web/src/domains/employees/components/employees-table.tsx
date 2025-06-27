@@ -8,17 +8,16 @@ import { DataTable } from "@payroll/ui/composites/data-table/data-table";
 import { Badge } from "@payroll/ui/components/badge/badge";
 import type { Employee, PaginatedResponse } from "@payroll/types";
 
-
 import { type EmployeeQueryParams } from "../types";
 
 const columns = [
-  { key: "firstName" as const, header: "Prénom" },
-  { key: "lastName" as const, header: "Nom" },
-  { key: "email" as const, header: "Email" },
-  { key: "department" as const, header: "Département" },
-  { key: "contractType" as const, header: "Contrat" },
+  { key: "firstName", header: "Prénom" },
+  { key: "lastName", header: "Nom" },
+  { key: "email", header: "Email" },
+  { key: "department", header: "Département" },
+  { key: "contractType", header: "Contrat" },
   {
-    key: "salary" as const,
+    key: "salary",
     header: "Salaire brut (€)",
     cell: (item: Employee) => (
       <span className="font-mono">
@@ -30,12 +29,12 @@ const columns = [
     ),
   },
   {
-    key: "weeklyHours" as const,
+    key: "weeklyHours",
     header: "Heures/semaine",
     cell: (item: Employee) => <span>{item.weeklyHours}h</span>,
   },
   {
-    key: "status" as const,
+    key: "status",
     header: "Statut",
     cell: (item: Employee) => (
       <Badge variant={item.status === "active" ? "default" : "secondary"}>
@@ -48,7 +47,7 @@ const columns = [
     ),
   },
   {
-    key: "hireDate" as const,
+    key: "hireDate",
     header: "Date d'embauche",
     cell: (item: Employee) => (
       <span>{new Date(item.hireDate).toLocaleDateString("fr-FR")}</span>
@@ -91,13 +90,13 @@ export function EmployeesTable({
   };
 
   return (
-    <DataTable
+    <DataTable<Employee>
       data={initialData}
       columns={columns}
       searchPlaceholder="Rechercher un employé..."
       onPageChange={handlePageChange}
       currentPage={searchParams.page || 1}
-      searchValue={debouncedSearch}
+      searchKey={debouncedSearch}
       onSearchChange={handleSearch}
     />
   );

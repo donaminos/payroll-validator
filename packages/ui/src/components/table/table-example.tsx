@@ -1,148 +1,160 @@
-import React from "react";
 import { Badge } from "../badge/badge";
 import { Button } from "../button/button";
 import { DataTable } from "../../composites/data-table/data-table";
+import type { Employee } from "@payroll/types";
+import React from "react";
 
-// Example data type for French payroll employees
-interface PayrollEmployee {
-  id: string;
-  name: string;
-  email: string;
-  department: string;
-  salary: number;
-  status: "active" | "inactive";
-  startDate: string;
-  hoursWorked: number;
-  overtimeHours: number;
-}
-
-// Example data
-const payrollData: PayrollEmployee[] = [
+const payrollData: Array<Employee> = [
   {
     id: "1",
-    name: "Jean Dupont",
+    firstName: "Jean",
+    lastName: "Dupont",
     email: "jean.dupont@entreprise.fr",
     department: "Ingénierie",
     salary: 45000,
     status: "active",
-    startDate: "2023-01-15",
-    hoursWorked: 160,
-    overtimeHours: 8,
+    hireDate: "2023-01-15",
+    weeklyHours: 35,
+    contractType: "CDI",
+    slug: "jean-dupont",
+    phone: "06 12 34 56 78",
+    address: {
+      street: "123 Rue de la Paix",
+      city: "Paris",
+      postalCode: "75000",
+      country: "France",
+    },
+    lastUpdated: "2023-01-15",
   },
   {
     id: "2",
-    name: "Marie Martin",
+    firstName: "Marie",
+    lastName: "Martin",
     email: "marie.martin@entreprise.fr",
     department: "Marketing",
     salary: 42000,
     status: "active",
-    startDate: "2023-03-20",
-    hoursWorked: 152,
-    overtimeHours: 0,
+    hireDate: "2023-03-20",
+    weeklyHours: 35,
+    contractType: "CDI",
+    slug: "marie-martin",
+    phone: "06 12 34 56 78",
   },
   {
     id: "3",
-    name: "Pierre Durand",
+    firstName: "Pierre",
+    lastName: "Durand",
     email: "pierre.durand@entreprise.fr",
     department: "Ventes",
     salary: 48000,
     status: "inactive",
-    startDate: "2022-11-10",
-    hoursWorked: 0,
-    overtimeHours: 0,
+    hireDate: "2022-11-10",
+    weeklyHours: 35,
+    contractType: "CDI",
+    slug: "pierre-durand",
+    phone: "06 12 34 56 78",
   },
   {
     id: "4",
-    name: "Sophie Bernard",
+    firstName: "Sophie",
+    lastName: "Bernard",
     email: "sophie.bernard@entreprise.fr",
     department: "Ingénierie",
     salary: 52000,
     status: "active",
-    startDate: "2023-02-05",
-    hoursWorked: 168,
-    overtimeHours: 12,
+    hireDate: "2023-02-05",
+    weeklyHours: 35,
+    contractType: "CDI",
+    slug: "sophie-bernard",
+    phone: "06 12 34 56 78",
   },
   {
     id: "5",
-    name: "Lucas Petit",
+    firstName: "Lucas",
+    lastName: "Petit",
     email: "lucas.petit@entreprise.fr",
     department: "RH",
     salary: 38000,
     status: "active",
-    startDate: "2023-04-12",
-    hoursWorked: 160,
-    overtimeHours: 0,
+    hireDate: "2023-04-12",
+    position: "Développeur Full-Stack",
+    slug: "lucas-petit",
+    phone: "06 12 34 56 78",
+    contractType: "CDD",
   },
 ];
 
-// Column definitions
-const columns = [
+const columns: Array<{
+  key: keyof Employee;
+  header: string;
+  cell?: (item: Employee) => React.ReactNode;
+}> = [
   {
-    key: "name" as keyof PayrollEmployee,
+    key: "firstName",
     header: "Nom",
   },
   {
-    key: "email" as keyof PayrollEmployee,
+    key: "email",
     header: "Email",
   },
   {
-    key: "department" as keyof PayrollEmployee,
+    key: "department",
     header: "Département",
   },
   {
-    key: "salary" as keyof PayrollEmployee,
+    key: "salary",
     header: "Salaire",
-    cell: (item: PayrollEmployee) => (
+    cell: (item: Employee) => (
       <span className="font-mono">
         {new Intl.NumberFormat("fr-FR", {
           style: "currency",
           currency: "EUR",
-        }).format(item.salary)}
+        }).format(item.salary ?? 0)}
       </span>
     ),
   },
   {
-    key: "hoursWorked" as keyof PayrollEmployee,
+    key: "weeklyHours",
     header: "Heures travaillées",
-    cell: (item: PayrollEmployee) => (
-      <span className="font-mono">{item.hoursWorked}h</span>
+    cell: (item: Employee) => (
+      <span className="font-mono">{item.weeklyHours}h</span>
     ),
   },
   {
-    key: "overtimeHours" as keyof PayrollEmployee,
+    key: "weeklyHours",
     header: "Heures supplémentaires",
-    cell: (item: PayrollEmployee) => (
+    cell: (item: Employee) => (
       <span
         className={
-          item.overtimeHours > 0
+          item.weeklyHours && item.weeklyHours > 0
             ? "text-orange-600 font-medium"
             : "text-muted-foreground"
         }
       >
-        {item.overtimeHours}h
+        {item.weeklyHours && item.weeklyHours > 0 ? item.weeklyHours - 35 : 0}h
       </span>
     ),
   },
   {
-    key: "status" as keyof PayrollEmployee,
+    key: "status",
     header: "Statut",
-    cell: (item: PayrollEmployee) => (
+    cell: (item: Employee) => (
       <Badge variant={item.status === "active" ? "default" : "secondary"}>
         {item.status === "active" ? "Actif" : "Inactif"}
       </Badge>
     ),
   },
   {
-    key: "startDate" as keyof PayrollEmployee,
+    key: "hireDate",
     header: "Date de début",
-    cell: (item: PayrollEmployee) => (
-      <span>{new Date(item.startDate).toLocaleDateString("fr-FR")}</span>
+    cell: (item: Employee) => (
+      <span>{new Date(item.hireDate).toLocaleDateString("fr-FR")}</span>
     ),
   },
   {
-    key: "actions" as keyof PayrollEmployee,
+    key: "id",
     header: "Actions",
-    cell: (item: PayrollEmployee) => (
+    cell: () => (
       <div className="flex gap-2">
         <Button size="sm" variant="outline">
           Modifier
@@ -155,7 +167,19 @@ const columns = [
   },
 ];
 
+const pagination = {
+  page: 1,
+  limit: 5,
+  totalItems: payrollData.length,
+  totalPages: 1,
+  hasNextPage: false,
+  hasPreviousPage: false,
+};
+
 export function PayrollTableExample() {
+  const [currentPage, setCurrentPage] = React.useState(1);
+  const [searchValue, setSearchValue] = React.useState("");
+
   return (
     <div className="p-6 space-y-6">
       <div>
@@ -166,13 +190,18 @@ export function PayrollTableExample() {
         </p>
       </div>
 
-      <DataTable
-        data={payrollData}
+      <DataTable<Employee>
+        data={{
+          data: payrollData,
+          pagination,
+        }}
         columns={columns}
-        searchKey="name"
+        searchKey={searchValue}
         searchPlaceholder="Rechercher un employé..."
-        itemsPerPage={5}
         className="max-w-7xl"
+        onPageChange={setCurrentPage}
+        onSearchChange={setSearchValue}
+        currentPage={currentPage}
       />
     </div>
   );

@@ -67,7 +67,9 @@ export function UpcomingOffboarding({ offboarding }: UpcomingOffboardingProps) {
             <div key={employee.id} className="border rounded-lg p-4 space-y-3">
               <div className="flex items-start justify-between">
                 <div className="flex-1">
-                  <h4 className="font-medium text-sm">{employee.firstName} {employee.lastName}</h4>
+                  <h4 className="font-medium text-sm">
+                    {employee.firstName} {employee.lastName}
+                  </h4>
                   <p className="text-sm text-muted-foreground">
                     {employee.position}
                   </p>

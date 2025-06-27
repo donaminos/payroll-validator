@@ -12,7 +12,7 @@ import { TableCell } from "@payroll/ui/components/table/table-cell";
 import { SearchInput } from "@payroll/ui/components/form/search-input/searh-input";
 import { TablePagination } from "@payroll/ui/components/table/table-pagination";
 
-interface DataTableProps<T> {
+type DataTableProps<T> = {
   data: {
     data: Array<T>;
     pagination: {
@@ -25,7 +25,7 @@ interface DataTableProps<T> {
     };
   };
   columns: Array<{
-    key: keyof T;
+    key: string;
     header: string;
     cell?: (item: T) => React.ReactNode;
   }>;
@@ -36,9 +36,9 @@ interface DataTableProps<T> {
   onSearchChange: (value: string) => void;
   currentPage: number;
   searchDisabled?: boolean;
-}
+};
 
-export function DataTable<T extends Record<string, unknown>>({
+export function DataTable<T>({
   data,
   columns,
   searchPlaceholder,
@@ -92,9 +92,7 @@ export function DataTable<T extends Record<string, unknown>>({
                 <TableRow key={index}>
                   {columns.map((column) => (
                     <TableCell key={String(column.key)}>
-                      {column.cell
-                        ? column.cell(item)
-                        : String(item[column.key] ?? "")}
+                      {column.cell ? column.cell(item) : ""}
                     </TableCell>
                   ))}
                 </TableRow>

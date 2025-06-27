@@ -33,16 +33,22 @@ export function DashboardView() {
 
       <div className="grid gap-6 md:grid-cols-2 items-start">
         <UpcomingOnboarding
-          onboarding={stats.upcomingOnboarding.map((e) => ({
-            ...e,
-            id: String(e.id),
-          }) as unknown as Employee)} // for demo purposes only
+          onboarding={stats.upcomingOnboarding.map(
+            (e) =>
+              ({
+                ...e,
+                id: String(e.id),
+              }) as unknown as Employee,
+          )} // for demo purposes only
         />
         <UpcomingOffboarding
-          offboarding={stats.upcomingOffboarding.map((e) => ({
-            ...e,
-            id: String(e.id),
-          }) as unknown as Employee)} // for demo purposes only
+          offboarding={stats.upcomingOffboarding.map(
+            (e) =>
+              ({
+                ...e,
+                id: String(e.id),
+              }) as unknown as Employee,
+          )} // for demo purposes only
         />
       </div>
 

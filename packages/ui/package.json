@@ -21,6 +21,7 @@
     "@payroll/eslint-config": "workspace:*",
     "@payroll/tailwind-config": "workspace:*",
     "@payroll/typescript-config": "workspace:*",
+    "@payroll/types": "workspace:*",
     "@storybook/addon-a11y": "^9.0.13",
     "@storybook/addon-docs": "^9.0.13",
     "@storybook/addon-onboarding": "^9.0.13",

@@ -1,7 +1,5 @@
 "use client";
 
-import { type LucideIcon } from "lucide-react";
-
 import {
   SidebarGroup,
   SidebarGroupLabel,
@@ -9,18 +7,12 @@ import {
 } from "@payroll/ui/components/sidebar/sidebar";
 
 import { MenuEntry } from "./menu-entry";
-
-type MenuGroupProps = {
-  title: string;
-  items: Array<{ title: string; url: string; icon?: LucideIcon }>;
-  icon?: LucideIcon;
-  url?: string;
-};
+import { MenuGroupProps } from "./types";
 
 export function MenuGroup({ menu }: { menu: MenuGroupProps }) {
   return (
     <SidebarGroup className="p-0 px-2 py-1">
-      {menu.items?.length > 0 ? (
+      {menu.items && menu.items.length > 0 ? (
         <>
           <SidebarGroupLabel className="text-xs text-muted-foreground">
             {menu.title}
@@ -32,7 +24,7 @@ export function MenuGroup({ menu }: { menu: MenuGroupProps }) {
           </SidebarMenu>
         </>
       ) : (
-        <SidebarMenu className="">
+        <SidebarMenu>
           <MenuEntry
             entry={{ title: menu.title, url: menu.url || "", icon: menu.icon }}
           />
