@@ -30,20 +30,47 @@ const getPaginatedEmployees = ({
   return paginatedEmployees;
 };
 
+const filterEmployees = ({
+  employees,
+  validatedParams,
+}: {
+  employees: Employee[];
+  validatedParams: EmployeeQuery;
+}) => {
+  return employees.filter((employee) => {
+    return (
+      employee.firstName
+        .toLowerCase()
+        .includes(validatedParams.search?.toLowerCase() ?? "") ||
+      employee.lastName
+        .toLowerCase()
+        .includes(validatedParams.search?.toLowerCase() ?? "") ||
+      employee.email
+        .toLowerCase()
+        .includes(validatedParams.search?.toLowerCase() ?? "")
+    );
+  });
+};
+
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
     const queryParams = Object.fromEntries(searchParams.entries());
     const validatedParams = EmployeeQuerySchema.parse(queryParams);
 
-    const paginatedEmployees = getPaginatedEmployees({
+    const filteredEmployees = filterEmployees({
       employees: employeesData,
       validatedParams,
     });
 
-    const totalItems = employeesData.length;
+    const paginatedEmployees = getPaginatedEmployees({
+      employees: filteredEmployees,
+      validatedParams,
+    });
+
+    const totalItems = filteredEmployees.length;
     const totalPages = Math.ceil(totalItems / validatedParams.limit);
-    console.log("totalPages: ", totalPages);
+
     const response = {
       data: paginatedEmployees,
       pagination: {

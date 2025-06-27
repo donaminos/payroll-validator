@@ -13,17 +13,11 @@ export async function EmployeesView(props: { searchParams: SearchParams }) {
   const page = Number(searchParams?.page) || 1;
   const limit = Number(searchParams?.limit) || 10;
   const search = searchParams?.search || "";
-  const sortBy = searchParams?.sortBy || "lastName";
-  const order = searchParams?.order || "asc";
-  const slug = searchParams?.slug || "";
 
   const params = {
     page,
     limit,
     search,
-    sortBy,
-    order,
-    slug,
   } as EmployeesSearchParams;
 
   return (

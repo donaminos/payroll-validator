@@ -6,6 +6,7 @@ import { Badge } from "@payroll/ui/components/badge/badge";
 import React from "react";
 import { Employee } from "../../../../app/api/employees/data";
 import { type EmployeesSearchParams } from "../types";
+import { useDebounce } from "@uidotdev/usehooks";
 
 const columns = [
   { key: "firstName" as const, header: "Prénom" },
@@ -60,14 +61,28 @@ export function EmployeesTable({
   searchParams: EmployeesSearchParams;
 }) {
   const router = useRouter();
+  const [search, setSearch] = React.useState("");
+  const debouncedSearch = useDebounce(search, 500);
+
+  const handleSearch = (value: string) => {
+    setSearch(value);
+  };
+
+  const params = new URLSearchParams(
+    searchParams as unknown as URLSearchParams,
+  );
+
+  React.useEffect(() => {
+    console.log("debouncedSearch: ", debouncedSearch);
+    React.startTransition(() => {
+      params.set("search", debouncedSearch);
+      router.push(`/employees?${params.toString()}`);
+    });
+  }, [debouncedSearch, router]);
 
   const handlePageChange = (nextPage: number) => {
     React.startTransition(() => {
-      const params = new URLSearchParams(
-        searchParams as unknown as URLSearchParams,
-      );
       params.set("page", nextPage.toString());
-      console.log("handlePageChange: ", searchParams);
       router.push(`/employees?${params.toString()}`);
     });
   };
@@ -79,6 +94,8 @@ export function EmployeesTable({
       searchPlaceholder="Rechercher un employé..."
       onPageChange={handlePageChange}
       currentPage={searchParams.page || 1}
+      searchValue={debouncedSearch}
+      onSearchChange={handleSearch}
     />
   );
 }

@@ -14,7 +14,7 @@ import { TablePagination } from "@payroll/ui/components/table/table-pagination";
 
 interface DataTableProps<T> {
   data: {
-    data: T[];
+    data: Array<T>;
     pagination: {
       page: number;
       limit: number;
@@ -24,31 +24,31 @@ interface DataTableProps<T> {
       hasPreviousPage: boolean;
     };
   };
-  columns: {
+  columns: Array<{
     key: keyof T;
     header: string;
     cell?: (item: T) => React.ReactNode;
-  }[];
-  searchKey?: keyof T;
+  }>;
+  searchKey: string;
   searchPlaceholder?: string;
   className?: string;
   onPageChange: (page: number) => void;
+  onSearchChange: (value: string) => void;
   currentPage: number;
   searchDisabled?: boolean;
 }
 
-export function DataTable<T extends Record<string, any>>({
+export function DataTable<T extends Record<string, unknown>>({
   data,
   columns,
   searchPlaceholder,
   className,
   onPageChange,
+  onSearchChange,
+  searchKey,
   currentPage,
   searchDisabled,
 }: DataTableProps<T>) {
-  let searchValue = "";
-  console.log("data: ", data);
-  // Paginate data
   const { data: paginatedData, pagination } = data;
   const totalPages = pagination.totalPages;
 
@@ -58,8 +58,8 @@ export function DataTable<T extends Record<string, any>>({
         {!searchDisabled && (
           <SearchInput
             placeholder={searchPlaceholder}
-            value={searchValue}
-            //  onValueChange={setSearchValue}
+            value={searchKey}
+            onValueChange={onSearchChange}
             className="w-72"
           />
         )}

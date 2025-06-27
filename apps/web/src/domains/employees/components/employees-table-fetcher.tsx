@@ -1,9 +1,10 @@
 import { getEmployees } from "../service";
-import { EmployeesTable } from "./employees-table";
 import {
   EmployeesSearchParamsSchema,
   type EmployeesSearchParams,
 } from "../types";
+
+import { EmployeesTable } from "./employees-table";
 
 export async function EmployeesTableFetcher({
   searchParams,
@@ -12,7 +13,6 @@ export async function EmployeesTableFetcher({
 }) {
   try {
     const validatedParams = EmployeesSearchParamsSchema.parse(searchParams);
-    console.log("validatedParams: ", validatedParams);
     const data = await getEmployees({ searchParams: validatedParams });
 
     return <EmployeesTable initialData={data} searchParams={searchParams} />;
