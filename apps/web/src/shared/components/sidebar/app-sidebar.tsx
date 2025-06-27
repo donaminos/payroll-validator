@@ -10,7 +10,7 @@ import {
   SidebarRail,
 } from "@payroll/ui/components/sidebar/sidebar";
 import { ProfileSwitcher } from "./profile-switcher";
-import { NavMain } from "./nav-main";
+import { NavMain } from "./navigation/nav-main";
 export interface AppSidebarNavItem {
   title: string;
   url: string;

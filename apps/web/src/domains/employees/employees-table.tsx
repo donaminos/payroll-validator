@@ -56,7 +56,7 @@ export function EmployeesTable({
   initialData,
   searchParams,
 }: {
-  initialData: Employee[];
+  initialData: Array<Employee>;
   searchParams: EmployeesSearchParams;
 }) {
   const router = useRouter();

@@ -18,7 +18,7 @@ async function getEmployees({ searchParams }: { searchParams: unknown }) {
   if (!res.ok) throw new Error("Server error: cannot fetch employees");
 
   return res.json() as Promise<{
-    data: Employee[];
+    data: Array<Employee>;
     pagination: {
       page: number;
       limit: number;

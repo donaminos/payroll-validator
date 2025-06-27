@@ -6,32 +6,18 @@ import {
   SidebarGroup,
   SidebarGroupLabel,
   SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
 } from "@payroll/ui/components/sidebar/sidebar";
-import Link from "next/link";
+
+import { MenuEntry } from "./menu-entry";
 
 type MenuGroupProps = {
   title: string;
-  items: { title: string; url: string; icon?: LucideIcon }[];
+  items: Array<{ title: string; url: string; icon?: LucideIcon }>;
   icon?: LucideIcon;
   url?: string;
 };
 
-const MenuEntry = ({ entry }: { entry: MenuGroupProps["items"][number] }) => {
-  return (
-    <SidebarMenuItem>
-      <SidebarMenuButton tooltip={entry.title} asChild>
-        <Link href={entry.url}>
-          {entry.icon && <entry.icon />}
-          <span>{entry.title}</span>
-        </Link>
-      </SidebarMenuButton>
-    </SidebarMenuItem>
-  );
-};
-
-const MenuGroup = ({ menu }: { menu: MenuGroupProps }) => {
+export function MenuGroup({ menu }: { menu: MenuGroupProps }) {
   return (
     <SidebarGroup className="p-0 px-2 py-1">
       {menu.items?.length > 0 ? (
@@ -54,17 +40,4 @@ const MenuGroup = ({ menu }: { menu: MenuGroupProps }) => {
       )}
     </SidebarGroup>
   );
-};
-type NavMainProps = {
-  items: MenuGroupProps[];
-};
-
-export function NavMain({ items }: NavMainProps) {
-  return (
-    <div>
-      {items.map((item) => {
-        return <MenuGroup key={item.title} menu={item} />;
-      })}
-    </div>
-  );
-}
+} 
