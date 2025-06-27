@@ -1,9 +1,9 @@
-import type { Employee } from "../../../app/api/employees/data";
-import { EmployeesSearchParamsSchema } from "./types";
+import type { Employee } from "@payroll/types";
+import { EmployeeQuerySchema } from "@payroll/schemas/employee";
 import { API_EMPLOYEES_URL } from "@/shared/constants/routes";
 
 async function getEmployees({ searchParams }: { searchParams: unknown }) {
-  const params = EmployeesSearchParamsSchema.parse(searchParams);
+  const params = EmployeeQuerySchema.parse(searchParams);
   const url = new URL(API_EMPLOYEES_URL);
 
   url.searchParams.set("page", params.page.toString());
@@ -24,7 +24,6 @@ async function getEmployees({ searchParams }: { searchParams: unknown }) {
       hasNextPage: boolean;
       hasPreviousPage: boolean;
     };
-    filters: Record<string, string>;
   }>;
 }
 

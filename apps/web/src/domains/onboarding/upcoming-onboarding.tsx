@@ -1,3 +1,15 @@
+
+import {
+  UserPlus,
+  ChevronDown,
+  ChevronRight,
+  Briefcase,
+  Mail,
+  Phone,
+} from "lucide-react";
+import { useState } from "react";
+
+import { formatCurrency } from "@/shared/utils/display-helpers";
 import {
   Card,
   CardHeader,
@@ -8,34 +20,11 @@ import {
 import { Badge } from "@payroll/ui/components/badge/badge";
 import { Button } from "@payroll/ui/components/button/button";
 import { StatusBadge } from "@payroll/ui/composites/status-badge/status-badge";
-import {
-  UserPlus,
-  ChevronDown,
-  ChevronRight,
-  Briefcase,
-  Mail,
-  Phone,
-} from "lucide-react";
-import {
-  formatCurrency,
-  getDaysUntilText,
-} from "@/shared/utils/display-helpers";
-import { useState } from "react";
+import type { Employee } from "@payroll/types";
 
-interface Employee {
-  id: string;
-  name: string;
-  position: string;
-  department: string;
-  status: string;
-  startDate: string;
-  daysUntil: number;
-  salary: number;
-}
-
-interface UpcomingOnboardingProps {
-  onboarding: Employee[];
-}
+type UpcomingOnboardingProps = {
+  onboarding: Array<Employee>;
+};
 
 export function UpcomingOnboarding({ onboarding }: UpcomingOnboardingProps) {
   const [isOpen, setIsOpen] = useState(false);
@@ -79,7 +68,7 @@ export function UpcomingOnboarding({ onboarding }: UpcomingOnboardingProps) {
             <div key={employee.id} className="border rounded-lg p-4 space-y-3">
               <div className="flex items-start justify-between">
                 <div className="flex-1">
-                  <h4 className="font-medium text-sm">{employee.name}</h4>
+                  <h4 className="font-medium text-sm">{employee.firstName} {employee.lastName}</h4>
                   <p className="text-sm text-muted-foreground">
                     {employee.position}
                   </p>
@@ -97,10 +86,7 @@ export function UpcomingOnboarding({ onboarding }: UpcomingOnboardingProps) {
                 <div>
                   <span className="text-muted-foreground">Début:</span>
                   <div className="font-medium">
-                    {new Date(employee.startDate).toLocaleDateString("fr-FR")}
-                  </div>
-                  <div className="text-xs text-muted-foreground">
-                    {getDaysUntilText(employee.daysUntil)}
+                    {new Date(employee.hireDate).toLocaleDateString("fr-FR")}
                   </div>
                 </div>
                 <div>

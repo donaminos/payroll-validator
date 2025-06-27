@@ -1,18 +1,12 @@
+import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
-import { NextRequest, NextResponse } from "next/server";
-import { employeesData, type Employee } from "./data";
+import { EmployeeQuerySchema } from "@payroll/schemas/employee";
+import type { Employee } from "@payroll/types";
 
-const EmployeeQuerySchema = z.object({
-  page: z.coerce.number().int().min(1).default(1),
-  limit: z.coerce.number().int().min(1).max(100).default(50),
-  search: z.string().trim().optional(),
-  slug: z.string().optional(),
-  sortBy: z
-    .enum(["firstName", "lastName", "department", "createdAt"])
-    .default("firstName"),
-  sortOrder: z.enum(["asc", "desc"]).default("asc"),
-});
+import { employeesData } from "./data";
+
+type EmployeeQuery = z.infer<typeof EmployeeQuerySchema>;
 
 const getPaginatedEmployees = ({
   employees,
@@ -34,7 +28,7 @@ const filterEmployees = ({
   employees,
   validatedParams,
 }: {
-  employees: Employee[];
+  employees: Array<Employee>;
   validatedParams: EmployeeQuery;
 }) => {
   return employees.filter((employee) => {

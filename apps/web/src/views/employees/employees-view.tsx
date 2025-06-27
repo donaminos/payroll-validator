@@ -3,7 +3,7 @@ import { Suspense } from "react";
 import { EmployeesTableFetcher } from "@/domains/employees/components/employees-table-fetcher";
 import { DataTableSkeleton } from "@payroll/ui/composites/data-table-skeleton/data-table-skeleton";
 import { PageTitle } from "@/shared/components/page-title/page-title";
-import { type EmployeesSearchParams } from "@/domains/employees/types";
+import { type EmployeeQueryParams } from "@/domains/employees/types";
 
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
 
@@ -18,7 +18,7 @@ export async function EmployeesView(props: { searchParams: SearchParams }) {
     page,
     limit,
     search,
-  } as EmployeesSearchParams;
+  } as EmployeeQueryParams;
 
   return (
     <>

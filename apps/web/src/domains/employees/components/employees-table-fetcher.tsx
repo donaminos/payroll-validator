@@ -1,18 +1,16 @@
 import { getEmployees } from "../service";
-import {
-  EmployeesSearchParamsSchema,
-  type EmployeesSearchParams,
-} from "../types";
+import { EmployeeQuerySchema } from "@payroll/schemas/employee";
+import { type EmployeeQueryParams } from "../types";
 
 import { EmployeesTable } from "./employees-table";
 
 export async function EmployeesTableFetcher({
   searchParams,
 }: {
-  searchParams: EmployeesSearchParams;
+  searchParams: EmployeeQueryParams;
 }) {
   try {
-    const validatedParams = EmployeesSearchParamsSchema.parse(searchParams);
+    const validatedParams = EmployeeQuerySchema.parse(searchParams);
     const data = await getEmployees({ searchParams: validatedParams });
 
     return <EmployeesTable initialData={data} searchParams={searchParams} />;

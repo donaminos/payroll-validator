@@ -9,7 +9,7 @@ import { Badge } from "@payroll/ui/components/badge/badge";
 import { Button } from "@payroll/ui/components/button/button";
 import { FileText, CheckCircle, Clock, Download } from "lucide-react";
 
-interface RecentUpload {
+type RecentUpload = {
   id: string;
   name: string;
   records: number;
@@ -17,9 +17,9 @@ interface RecentUpload {
   status: string;
 }
 
-interface RecentActivityProps {
-  recentUploads: RecentUpload[];
-}
+type RecentActivityProps = {
+  recentUploads: Array<RecentUpload>;
+};
 
 export function RecentActivity({ recentUploads }: RecentActivityProps) {
   return (

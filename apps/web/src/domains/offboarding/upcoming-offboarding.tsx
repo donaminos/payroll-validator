@@ -1,14 +1,4 @@
 import {
-  Card,
-  CardHeader,
-  CardContent,
-  CardTitle,
-  CardDescription,
-} from "@payroll/ui/components/card/card";
-import { Badge } from "@payroll/ui/components/badge/badge";
-import { Button } from "@payroll/ui/components/button/button";
-import { StatusBadge } from "@payroll/ui/composites/status-badge/status-badge";
-import {
   UserMinus,
   ChevronDown,
   ChevronRight,
@@ -18,24 +8,25 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 
-interface Employee {
-  id: string;
-  name: string;
-  position: string;
-  department: string;
-  status: string;
-  endDate: string;
-  daysUntil: number;
-  reason: string;
-  lastPayroll: string;
-}
+import {
+  Card,
+  CardHeader,
+  CardContent,
+  CardTitle,
+  CardDescription,
+} from "@payroll/ui/components/card/card";
+import { Badge } from "@payroll/ui/components/badge/badge";
+import { Button } from "@payroll/ui/components/button/button";
+import { StatusBadge } from "@payroll/ui/composites/status-badge/status-badge";
+import type { Employee } from "@payroll/types";
 
 interface UpcomingOffboardingProps {
-  offboarding: Employee[];
+  offboarding: Array<Employee>;
 }
 
 export function UpcomingOffboarding({ offboarding }: UpcomingOffboardingProps) {
   const [isOpen, setIsOpen] = useState(false);
+
   return (
     <Card>
       <CardHeader>
@@ -76,7 +67,7 @@ export function UpcomingOffboarding({ offboarding }: UpcomingOffboardingProps) {
             <div key={employee.id} className="border rounded-lg p-4 space-y-3">
               <div className="flex items-start justify-between">
                 <div className="flex-1">
-                  <h4 className="font-medium text-sm">{employee.name}</h4>
+                  <h4 className="font-medium text-sm">{employee.firstName} {employee.lastName}</h4>
                   <p className="text-sm text-muted-foreground">
                     {employee.position}
                   </p>
@@ -94,18 +85,15 @@ export function UpcomingOffboarding({ offboarding }: UpcomingOffboardingProps) {
                 <div>
                   <span className="text-muted-foreground">Fin:</span>
                   <div className="font-medium">
-                    {new Date(employee.endDate).toLocaleDateString("fr-FR")}
-                  </div>
-                  <div className="text-xs text-muted-foreground">
-                    {employee.daysUntil}
+                    {new Date(employee.hireDate).toLocaleDateString("fr-FR")}
                   </div>
                 </div>
                 <div>
-                  <span className="text-muted-foreground">Motif:</span>
-                  <div className="font-medium text-xs">{employee.reason}</div>
+                  <span className="text-muted-foreground">Poste:</span>
+                  <div className="font-medium text-xs">{employee.position}</div>
                   <div className="text-xs text-muted-foreground">
                     Dernière paie:{" "}
-                    {new Date(employee.lastPayroll).toLocaleDateString("fr-FR")}
+                    {new Date(employee.hireDate).toLocaleDateString("fr-FR")}
                   </div>
                 </div>
               </div>

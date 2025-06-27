@@ -23,6 +23,8 @@
   "devDependencies": {
     "@payroll/eslint-config": "workspace:*",
     "@payroll/typescript-config": "workspace:*",
+    "@payroll/types": "workspace:*",
+    "@payroll/schemas": "workspace:*",
     "@types/node": "^22.15.3",
     "@types/react": "19.1.0",
     "@types/react-dom": "19.1.1",

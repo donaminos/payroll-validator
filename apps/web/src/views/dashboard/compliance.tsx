@@ -10,7 +10,7 @@ export function Compliance() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Vue d'ensemble de la conformité</CardTitle>
+        <CardTitle>Vue d&apos;ensemble de la conformité</CardTitle>
         <CardDescription>
           Résumé des validations selon la législation française
         </CardDescription>
@@ -33,7 +33,7 @@ export function Compliance() {
 
           <div className="space-y-2">
             <div className="flex items-center justify-between">
-              <span className="text-sm font-medium">Heures légales</span>
+              <span className="text-sm font-medium">Heures l&acute;gales</span>
               <span className="text-sm text-muted-foreground">35h/semaine</span>
             </div>
             <div className="w-full bg-gray-200 rounded-full h-2">

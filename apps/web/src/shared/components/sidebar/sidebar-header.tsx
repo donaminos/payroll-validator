@@ -1,6 +1,5 @@
 import { SidebarTrigger } from "@payroll/ui/components/sidebar/sidebar";
 import { Separator } from "@payroll/ui/components/separator/separator";
-
 import {
   Breadcrumb,
   BreadcrumbItem,

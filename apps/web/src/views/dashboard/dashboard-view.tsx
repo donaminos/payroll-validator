@@ -7,6 +7,7 @@ import { SmicUnmet } from "@/domains/compliance/smic-unmet";
 import { ComplianceLevel } from "@/domains/compliance/compliance-level";
 import { Headcount } from "@/domains/employees/components/headcount";
 import { PendingValidation } from "@/domains/compliance/pending-validation";
+import type { Employee } from "@payroll/types";
 
 import { LegalReminders } from "./legal-reminders";
 import { stats } from "./data";
@@ -35,13 +36,13 @@ export function DashboardView() {
           onboarding={stats.upcomingOnboarding.map((e) => ({
             ...e,
             id: String(e.id),
-          }))}
+          }) as unknown as Employee)} // for demo purposes only
         />
         <UpcomingOffboarding
           offboarding={stats.upcomingOffboarding.map((e) => ({
             ...e,
             id: String(e.id),
-          }))}
+          }) as unknown as Employee)} // for demo purposes only
         />
       </div>
 

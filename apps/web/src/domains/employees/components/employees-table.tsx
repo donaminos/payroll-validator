@@ -1,12 +1,15 @@
 "use client";
 
+import React from "react";
 import { useRouter } from "next/navigation";
+import { useDebounce } from "@uidotdev/usehooks";
+
 import { DataTable } from "@payroll/ui/composites/data-table/data-table";
 import { Badge } from "@payroll/ui/components/badge/badge";
-import React from "react";
-import { Employee } from "../../../../app/api/employees/data";
-import { type EmployeesSearchParams } from "../types";
-import { useDebounce } from "@uidotdev/usehooks";
+import type { Employee, PaginatedResponse } from "@payroll/types";
+
+
+import { type EmployeeQueryParams } from "../types";
 
 const columns = [
   { key: "firstName" as const, header: "Prénom" },
@@ -57,8 +60,8 @@ export function EmployeesTable({
   initialData,
   searchParams,
 }: {
-  initialData: Array<Employee>;
-  searchParams: EmployeesSearchParams;
+  initialData: PaginatedResponse<Employee>;
+  searchParams: EmployeeQueryParams;
 }) {
   const router = useRouter();
   const [search, setSearch] = React.useState("");

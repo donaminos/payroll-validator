@@ -1,10 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-import { employeesData, type Employee } from "../data";
+import type { Employee } from "@payroll/types";
 
-/**
- * GET /api/employees/[slug]
- * Returns a single employee by their UUID slug
- */
+import { employeesData } from "../data";
+
 export async function GET(
   request: NextRequest,
   { params }: { params: { slug: string } },
@@ -28,7 +26,6 @@ export async function GET(
       );
     }
 
-    // Find employee by slug
     const employee = employeesData.find((emp: Employee) => emp.slug === slug);
 
     if (!employee) {
@@ -85,10 +82,6 @@ export async function GET(
   }
 }
 
-/**
- * PUT /api/employees/[slug]
- * Updates an employee by their UUID slug (placeholder for future implementation)
- */
 export async function PUT(
   request: NextRequest,
   { params }: { params: { slug: string } },
@@ -136,10 +129,6 @@ export async function PUT(
   }
 }
 
-/**
- * DELETE /api/employees/[slug]
- * Deletes an employee by their UUID slug (placeholder for future implementation)
- */
 export async function DELETE(
   request: NextRequest,
   { params }: { params: { slug: string } },

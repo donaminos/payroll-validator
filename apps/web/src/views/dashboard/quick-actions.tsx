@@ -5,9 +5,9 @@ import {
   CardHeader,
   CardTitle,
 } from "@payroll/ui/components/card/card";
-import { stats } from "./data";
 import { Button } from "@payroll/ui/components/button/button";
-import { StatusBadge } from "@payroll/ui/composites/status-badge/status-badge";
+
+import { stats } from "./data";
 
 export function QuickActions() {
   return (

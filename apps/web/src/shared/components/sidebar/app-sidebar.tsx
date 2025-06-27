@@ -11,11 +11,7 @@ import {
 } from "@payroll/ui/components/sidebar/sidebar";
 import { ProfileSwitcher } from "./profile-switcher";
 import { NavMain } from "./navigation/nav-main";
-export interface AppSidebarNavItem {
-  title: string;
-  url: string;
-  isActive?: boolean;
-}
+
 import { data } from "./constants";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {

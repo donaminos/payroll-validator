@@ -48,6 +48,12 @@ importers:
       '@payroll/eslint-config':
         specifier: workspace:*
         version: link:../../packages/eslint-config
+      '@payroll/schemas':
+        specifier: workspace:*
+        version: link:../../packages/schemas
+      '@payroll/types':
+        specifier: workspace:*
+        version: link:../../packages/types
       '@payroll/typescript-config':
         specifier: workspace:*
         version: link:../../packages/typescript-config
@@ -103,6 +109,12 @@ importers:
         specifier: ^8.34.0
         version: 8.34.0(eslint@9.29.0(jiti@2.4.2))(typescript@5.8.2)
 
+  packages/schemas:
+    dependencies:
+      zod:
+        specifier: ^3.25.67
+        version: 3.25.67
+
   packages/tailwind-config:
     dependencies:
       '@tailwindcss/postcss':
@@ -117,6 +129,8 @@ importers:
       tw-animate-css:
         specifier: ^1.3.4
         version: 1.3.4
+
+  packages/types: {}
 
   packages/typescript-config: {}
 

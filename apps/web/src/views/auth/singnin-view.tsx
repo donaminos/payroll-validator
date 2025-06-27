@@ -6,7 +6,7 @@ import {
   CardContent,
   CardFooter,
 } from "@payroll/ui/components/card/card";
-import { Input } from "@payroll/ui/components/input/input";
+import { Input } from "@payroll/ui/components/form/input/input";
 import { Button } from "@payroll/ui/components/button/button";
 import { Label } from "@payroll/ui/components/label/label";
 import { Separator } from "@payroll/ui/components/separator/separator";
