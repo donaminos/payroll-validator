@@ -1,135 +1,249 @@
-# Turborepo starter
+# Payroll Validator
 
-This Turborepo starter is maintained by the Turborepo core team.
+[![Node.js](https://img.shields.io/badge/Node.js-22+-green.svg)](https://nodejs.org/)
+[![Next.js](https://img.shields.io/badge/Next.js-15-blue.svg)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-19-blue.svg)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.8-blue.svg)](https://www.typescriptlang.org/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-## Using this example
+A modern, feature-rich payroll validation system designed for French HR professionals. Built with Next.js 15, React 19, and a comprehensive design system, this application provides efficient employee management and payroll data validation capabilities.
 
-Run the following command:
+## 🚀 Features
 
-```sh
-npx create-turbo@latest
-```
+- **Employee Management**: Complete CRUD operations for employee records
+- **Dashboard Analytics**: Real-time compliance monitoring and key metrics
+- **Responsive Design**: Interface optimized for desktop and tablet usage
+- **French Labor Law Compliance**: Built-in validation for French employment requirements
+- **Advanced Search & Filtering**: Powerful data discovery capabilities
+- **Type-Safe Architecture**: Full TypeScript implementation with strict typing
 
-## What's inside?
+## 📋 Prerequisites
 
-This Turborepo includes the following packages/apps:
+- **Node.js** 22 or higher
+- **pnpm** 9.0.0 or higher (recommended package manager)
+- **Git** for version control
 
-### Apps and Packages
+## 🛠️ Installation
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/your-org/payroll-validator.git
+   cd payroll-validator
+   ```
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+2. **Install dependencies**
+   ```bash
+   pnpm install
+   ```
 
-### Utilities
+3. **Start the development server**
+   ```bash
+   pnpm dev
+   ```
 
-This Turborepo has some additional tools already setup for you:
+4. **Open your browser**
+   - **Web Application**: Navigate to [http://localhost:3000](http://localhost:3000)
+   - **Storybook**: Navigate to [http://localhost:6006](http://localhost:6006)
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+The `pnpm dev` command starts both the main web application and Storybook simultaneously, allowing you to develop components and view the full application in parallel.
 
-### Build
+## 🏗️ Project Structure
 
-To build all apps and packages, run the following command:
-
-```
-cd my-turborepo
-
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo build
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo build
-yarn dlx turbo build
-pnpm exec turbo build
-```
-
-You can build a specific package by using a [filter](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters):
-
-```
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo build --filter=docs
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo build --filter=docs
-yarn exec turbo build --filter=docs
-pnpm exec turbo build --filter=docs
-```
-
-### Develop
-
-To develop all apps and packages, run the following command:
+This project follows a feature-based monorepo architecture using Turborepo:
 
 ```
-cd my-turborepo
-
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo dev
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo dev
-yarn exec turbo dev
-pnpm exec turbo dev
+payroll-validator/
+├── apps/
+│   └── web/                    # Main Next.js application
+│       ├── app/               # Next.js 15 app router
+│       │   ├── (auth)/        # Authentication routes
+│       │   ├── (dashboard)/   # Protected dashboard routes
+│       │   └── api/           # API routes
+│       └── src/
+│           ├── domains/       # Feature-based modules
+│           ├── shared/        # Shared components and utilities
+│           └── views/         # Page-level components
+├── packages/
+│   ├── ui/                    # Design system components
+│   ├── types/                 # Shared TypeScript types
+│   ├── schemas/               # Zod validation schemas
+│   ├── eslint-config/         # ESLint configurations
+│   ├── typescript-config/     # TypeScript configurations
+│   └── tailwind-config/       # Tailwind CSS configuration
+└── docs/                      # Project documentation
 ```
 
-You can develop a specific package by using a [filter](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters):
+### Key Directories
 
+- **`apps/web/src/domains/`**: Feature-based modules (employees, compliance, onboarding)
+- **`apps/web/src/shared/`**: Reusable components, utilities, and constants
+- **`packages/ui/`**: Design system with Storybook documentation
+- **`packages/types/`**: Shared TypeScript type definitions
+
+## 🎯 Main Pages
+
+### Dashboard (`/`)
+
+The dashboard provides a comprehensive overview of your payroll system:
+
+- **Key Metrics**: Employee headcount, compliance levels, pending validations
+- **Compliance Monitoring**: SMIC compliance tracking and legal reminders
+- **Recent Activity**: Latest employee updates and system activities
+- **Quick Actions**: Common tasks and shortcuts
+- **Upcoming Events**: Onboarding and offboarding schedules
+
+### Employees (`/employees`)
+
+A sophisticated employee management interface featuring:
+
+- **Data Table**: Paginated employee list with advanced filtering
+- **Search Functionality**: Real-time search across multiple fields
+- **Employee Details**: Comprehensive employee information display
+- **Add Employee**: Form for creating new employee records
+- **Responsive Interface**: Optimized for desktop and tablet usage
+
+## 🚀 Available Scripts
+
+| Command | Description |
+|---------|-------------|
+| `pnpm dev` | Start development server |
+| `pnpm build` | Build all applications and packages |
+| `pnpm lint` | Run ESLint across all packages |
+| `pnpm check-types` | Type-check all TypeScript files |
+| `pnpm format` | Format code with Prettier |
+
+### Development Commands
+
+```bash
+# Start development server (web app + Storybook)
+pnpm dev
+
+# Build for production
+pnpm build
+
+# Run linting
+pnpm lint
+
+# Type checking
+pnpm check-types
+
+# Clean all node_modules
+pnpm clean:all
 ```
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo dev --filter=web
 
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo dev --filter=web
-yarn exec turbo dev --filter=web
-pnpm exec turbo dev --filter=web
+## 🎨 Design System
+
+The project includes a comprehensive design system built with:
+
+- **Shadcn/ui**: High-quality React components
+- **Tailwind CSS 4**: Utility-first CSS framework
+- **Storybook 9**: Component documentation and testing
+- **Lucide React**: Beautiful icon library
+
+### Component Library
+
+The design system includes:
+- Form components (Input, Textarea, Search)
+- Data display (Table, Badge, Status indicators)
+- Navigation (Sidebar, Breadcrumb)
+- Feedback (Toast, Tooltip, Skeleton)
+- Layout (Card, Sheet, Collapsible)
+
+### Storybook Development
+
+Storybook runs on **http://localhost:6006** and provides:
+- Interactive component documentation
+- Component testing and development
+- Design system showcase
+- Component variations and states
+
+## 🔧 Technology Stack
+
+### Frontend
+- **Next.js 15**: React framework with app router
+- **React 19**: Latest React with concurrent features
+- **TypeScript 5.8**: Type-safe development
+- **Tailwind CSS 4**: Utility-first styling
+
+### Development Tools
+- **Turborepo**: Monorepo build system
+- **ESLint**: Code linting and formatting
+- **Prettier**: Code formatting
+- **Storybook 9**: Component documentation
+
+### Package Management
+- **pnpm**: Fast, disk space efficient package manager
+- **Workspace**: Monorepo package management
+
+## 🔒 Security & Compliance
+
+- **French Labor Law Compliance**: Built-in validation for employment requirements
+- **Data Privacy**: RGPD-compliant data handling
+- **Type Safety**: Comprehensive TypeScript implementation
+- **Input Validation**: Zod schema validation throughout
+
+## 🧪 Development
+
+### Adding New Features
+
+1. Create feature directory in `apps/web/src/domains/`
+2. Add components, hooks, and types
+3. Update navigation in `shared/components/sidebar/constants.ts`
+4. Add API routes in `app/api/` if needed
+
+### Component Development
+
+```bash
+# Start Storybook for component development
+cd packages/ui
+pnpm storybook
 ```
 
-### Remote Caching
+**Note**: Storybook is also automatically started when running `pnpm dev` from the root directory.
 
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
+### Type Safety
 
-Turborepo can use a technique known as [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+The project uses strict TypeScript configuration with:
+- Branded types for business domains
+- Comprehensive type exports
+- Zod schema validation
+- Strict null checks
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
+## 🤝 Contributing
 
-```
-cd my-turborepo
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo login
+### Code Style
 
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo login
-yarn exec turbo login
-pnpm exec turbo login
-```
+- Follow TypeScript strict mode
+- Use function components with hooks
+- Implement proper error boundaries
+- Add JSDoc for public APIs
+- Follow the established naming conventions
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+## 📄 License
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-```
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo link
+## 🆘 Support
 
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo link
-yarn exec turbo link
-pnpm exec turbo link
-```
+For support and questions:
 
-## Useful Links
+- 📧 Email: support@payroll-validator.com
+- 📖 Documentation: [docs/](docs/)
+- 🐛 Issues: [GitHub Issues](https://github.com/your-org/payroll-validator/issues)
 
-Learn more about the power of Turborepo:
+## 🙏 Acknowledgments
 
-- [Tasks](https://turborepo.com/docs/crafting-your-repository/running-tasks)
-- [Caching](https://turborepo.com/docs/crafting-your-repository/caching)
-- [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching)
-- [Filtering](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters)
-- [Configuration Options](https://turborepo.com/docs/reference/configuration)
-- [CLI Usage](https://turborepo.com/docs/reference/command-line-reference)
+- Built with [Next.js 15](https://nextjs.org/)
+- UI components from [Shadcn/ui](https://ui.shadcn.com/)
+- Icons from [Lucide](https://lucide.dev/)
+- Monorepo powered by [Turborepo](https://turborepo.com/)
+
+---
+
+**Made with ❤️ for Payroll*
