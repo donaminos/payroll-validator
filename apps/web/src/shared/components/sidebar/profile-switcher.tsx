@@ -20,7 +20,6 @@ import {
 import {
   Avatar,
   AvatarFallback,
-  AvatarImage,
 } from "@payroll/ui/components/avatar/avatar";
 
 export function ProfileSwitcher({
@@ -48,7 +47,7 @@ export function ProfileSwitcher({
               className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground gap-x-2"
             >
               <div className="text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
-                <Avatar className="">
+                <Avatar>
                   <AvatarFallback className="text-primary bg-[#E6F4FF] font-bold text-lg">
                     {activeTeam.name.charAt(0)}
                   </AvatarFallback>

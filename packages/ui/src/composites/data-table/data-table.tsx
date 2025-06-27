@@ -3,14 +3,14 @@
 import * as React from "react";
 
 import { cn } from "@payroll/ui/lib/utils";
-import { Table } from "../../components/table/table";
-import { TableHeader } from "../../components/table/table-header";
-import { TableBody } from "../../components/table/table-body";
-import { TableHead } from "../../components/table/table-head";
-import { TableRow } from "../../components/table/table-row";
-import { TableCell } from "../../components/table/table-cell";
-import { SearchInput } from "../../components/form/search-input/searh-input";
-import { TablePagination } from "../../components/table/table-pagination";
+import { Table } from "@payroll/ui/components/table/table";
+import { TableHeader } from "@payroll/ui/components/table/table-header";
+import { TableBody } from "@payroll/ui/components/table/table-body";
+import { TableHead } from "@payroll/ui/components/table/table-head";
+import { TableRow } from "@payroll/ui/components/table/table-row";
+import { TableCell } from "@payroll/ui/components/table/table-cell";
+import { SearchInput } from "@payroll/ui/components/form/search-input/searh-input";
+import { TablePagination } from "@payroll/ui/components/table/table-pagination";
 
 interface DataTableProps<T> {
   data: {

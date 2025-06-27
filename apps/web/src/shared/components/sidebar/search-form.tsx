@@ -1,7 +1,6 @@
 import { Label } from "@payroll/ui/components/label/label";
 import { SearchInput } from "@payroll/ui/components/form/search-input/searh-input";
 
-
 import {
   SidebarGroup,
   SidebarGroupContent,

@@ -3,7 +3,7 @@
 import { Search } from "lucide-react";
 
 import { cn } from "@payroll/ui/lib/utils";
-import { Input } from "../input/input";
+import { Input } from "@payroll/ui/components/form/input/input";
 
 interface SearchInputProps {
   placeholder?: string;
