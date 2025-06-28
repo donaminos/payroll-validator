@@ -266,6 +266,18 @@ The project uses strict TypeScript configuration with:
 - Implement proper error boundaries
 - Follow the established naming conventions
 
+## 🧪 End-to-End (E2E) Tests: Playwright MCP Experiment
+
+This project includes an experimental E2E test package using [Playwright MCP](https://github.com/microsoft/playwright).
+
+- **Experiment**: The E2E tests are an experiment to explore Playwright MCP's capabilities for modern app testing.
+- **No Prior Experience**: I have no previous experience with Playwright; this is a learning exercise.
+- **MCP Config**: The Playwright MCP configuration was added directly from the official GitHub repository.
+- **Cursor Assistance**: Cursor was used to verify that Playwright MCP was running correctly and to help configure the package for this monorepo setup.
+- **Test Generation**: Claude was prompted to analyze the app and generate E2E tests for the most critical user paths, based on the application's structure and business logic.
+
+> **Note:** The E2E test suite is experimental and may not cover all edge cases. It serves as a foundation for future, more robust test coverage as familiarity with Playwright MCP grows.
+
 ## 🙏 Acknowledgments
 
 - Built with [Next.js 15](https://nextjs.org/)
