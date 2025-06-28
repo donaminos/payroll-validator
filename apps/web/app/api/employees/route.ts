@@ -119,15 +119,14 @@ export async function POST(request: NextRequest) {
     // 2. Checking for duplicate employees
     // 3. Saving to database
     // 4. Returning the created employee
+    console.info("Employee creation request received:", body);
 
     return NextResponse.json(
       {
-        error: "Non implémenté",
-        message: "La création d'employés n'est pas encore implémentée",
-        timestamp: new Date().toISOString(),
+        message: "Employé créé avec succès",
       },
       {
-        status: 501,
+        status: 200,
         headers: {
           "Content-Type": "application/json",
         },

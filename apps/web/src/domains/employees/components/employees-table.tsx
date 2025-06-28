@@ -6,6 +6,7 @@ import { useDebounce } from "@uidotdev/usehooks";
 import { DataTable } from "@payroll/ui/composites/data-table/data-table";
 import type { Employee, PaginatedResponse } from "@payroll/types";
 import { StatusBadge } from "@payroll/ui/composites/status-badge/status-badge";
+
 import { type EmployeeQueryParams } from "../types";
 import { useURLParams } from "../hooks";
 
