@@ -1,0 +1,28 @@
+[
+  {
+    "id": "1",
+    "firstName": "Jean",
+    "lastName": "Dupont",
+    "email": "jean.dupont@example.com",
+    "department": "RH",
+    "contractType": "CDI",
+    "salary": 2200.00,
+    "weeklyHours": 35,
+    "status": "active",
+    "hireDate": "2022-01-10"
+  },
+  {
+    "id": "2",
+    "firstName": "Marie",
+    "lastName": "Durand",
+    "email": "marie.durand@example.com",
+    "department": "Finance",
+    "contractType": "CDD",
+    "salary": 1801.00,
+    "weeklyHours": 39,
+    "status": "on_leave",
+    "hireDate": "2023-03-15"
+  }
+  // ...repeat/extend to 1000+ records for full test
+]
+// Structure: Array of Employee objects as per @payroll/types 
