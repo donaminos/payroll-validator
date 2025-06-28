@@ -3,10 +3,12 @@ import { Manrope } from "next/font/google";
 
 import "@payroll/tailwind-config/globals.css";
 
+
 import {
   SidebarInset,
   SidebarProvider,
 } from "@payroll/ui/components/sidebar/sidebar";
+import { Toaster } from "@payroll/ui/components/sonner/sonner";
 
 import { AppSidebar } from "@/shared/components/sidebar/app-sidebar";
 import { SidebarHeader } from "@/shared/components/sidebar/sidebar-header";
@@ -46,6 +48,7 @@ export default function DashboardLayout({
             </div>
           </SidebarInset>
         </SidebarProvider>
+        <Toaster position="bottom-left" richColors />
       </body>
     </html>
   );

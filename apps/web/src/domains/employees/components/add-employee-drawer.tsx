@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { ErrorBoundary } from "react-error-boundary";
+import { toast } from "@payroll/ui/components/sonner/sonner";
 
 import {
   Sheet,
@@ -23,6 +24,7 @@ export function AddEmployeeDrawer() {
     const result = await createEmployee(formData);
     if (result.success) {
       setOpen(false);
+      toast.success("Employé créé avec succès");
     }
   };
 
