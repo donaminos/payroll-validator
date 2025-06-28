@@ -20,7 +20,7 @@ export async function EmployeesView(props: { searchParams: SearchParams }) {
     <>
       <PageTitle
         title="Liste des employés"
-        description="Gérez vos employés et leurs informations."
+        description="Gérez vos employés en toute simplicité."
       />
 
       <Suspense fallback={<DataTableSkeleton />}>

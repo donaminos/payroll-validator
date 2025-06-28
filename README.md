@@ -172,6 +172,45 @@ Storybook runs on **http://localhost:6006** and provides:
 - Design system showcase
 - Component variations and states
 
+## ⚠️ Important Notice: Radix UI Maintenance Status
+
+### Current Situation
+
+**Radix UI is currently considered unmaintained** and may not be a reliable option for future-proofing your project. Following its acquisition by WorkOS, many key members have left the project, and the co-creator himself has publicly stated that he felt burnt out. This has resulted in stagnation in development, with over 500 open issues and more than 100 pending pull requests.
+
+### Risk Assessment
+
+Given these challenges, relying on Radix UI for critical or long-term projects carries significant risks:
+
+- **Limited Maintenance**: Reduced bug fixes and security updates
+- **Stagnant Development**: No new features or improvements
+- **Community Concerns**: Uncertainty about long-term viability
+- **Migration Complexity**: Potential need for future component replacement
+
+### Recommended Alternatives
+
+Consider these actively maintained alternatives for your projects:
+
+| Library | Focus | Key Benefits |
+|---------|-------|--------------|
+| **[React Aria](https://react-spectrum.adobe.com/react-aria/)** | Accessibility hooks | No imposed styling, excellent a11y |
+| **[Headless UI](https://headlessui.com/)** | Unstyled components | Tailwind CSS integration, Vue/React support |
+| **[Ariakit](https://ariakit.org/)** | Accessible components | Highly customizable, active development |
+| **[Base UI](https://mui.com/base-ui/)** | Customizable components | Same team as Radix, actively maintained |
+
+### Migration Considerations
+
+If you're currently using Radix UI in production:
+
+1. **Evaluate Impact**: Assess which components are critical to your application
+2. **Plan Migration**: Create a roadmap for gradual component replacement
+3. **Test Alternatives**: Prototype with recommended libraries
+4. **Monitor Updates**: Stay informed about Radix UI's future status
+
+### Project Status
+
+This project currently uses Shadcn/ui components, which are built on top of Radix UI primitives. While functional for demonstration purposes, we recommend evaluating the alternatives above for production deployments.
+
 ## 🔧 Technology Stack
 
 ### Frontend
