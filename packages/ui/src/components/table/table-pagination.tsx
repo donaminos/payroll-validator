@@ -27,11 +27,11 @@ function TablePagination({
   return (
     <div
       className={cn(
-        "flex items-center justify-between text-xs px-4 py-2 border-t border-secondary",
+        "flex items-center justify-between text-xs px-4 py-2 border-t",
         className,
       )}
     >
-      <div className="flex-1text-muted-foreground">
+      <div className="flex-1 text-muted-foreground">
         Page {currentPage} of {totalPages}
       </div>
       <div className="flex items-center space-x-2">

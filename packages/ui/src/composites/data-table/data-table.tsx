@@ -60,7 +60,7 @@ export function DataTable<T>({
   const totalPages = pagination.totalPages;
 
   return (
-    <div className={cn("bg-white rounded-xl shadow-sm", className)}>
+    <div className={cn("bg-white rounded-xl shadow-xs", className)}>
       <div className="flex items-center justify-between px-6 py-4">
         {!searchDisabled && (
           <SearchInput
@@ -70,12 +70,12 @@ export function DataTable<T>({
             className="w-72"
           />
         )}
-        <div className="text-sm text-muted-foreground text-right w-full">
+        <div className="text-xs text-muted-foreground text-right w-full">
           {paginatedData.length} of {pagination.totalItems} items
         </div>
       </div>
 
-      <div className="border">
+      <div className="">
         <Table className="min-h-96">
           <TableHeader>
             <TableRow>

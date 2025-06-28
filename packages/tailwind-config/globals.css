@@ -30,7 +30,7 @@
   --destructive: oklch(0.55 0.22 15);           /* #f03838 */
   --destructive-foreground: oklch(1 0 0);       /* #ffffff */
   
-  --border: oklch(1 0 0);                       /* #ffffff */
+  --border: oklch(0.94 0.003 240);               /* #eef2f6 */
   --input: oklch(0.94 0.003 240);               /* #eef2f6 */
   --ring: oklch(0.45 0.20 264);                 /* #0061ff */
   

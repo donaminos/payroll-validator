@@ -4,9 +4,8 @@ import React from "react";
 import { useDebounce } from "@uidotdev/usehooks";
 
 import { DataTable } from "@payroll/ui/composites/data-table/data-table";
-import { Badge } from "@payroll/ui/components/badge/badge";
 import type { Employee, PaginatedResponse } from "@payroll/types";
-
+import { StatusBadge } from "@payroll/ui/composites/status-badge/status-badge";
 import { type EmployeeQueryParams } from "../types";
 import { useURLParams } from "../hooks";
 
@@ -76,15 +75,15 @@ const columns = [
     key: "status",
     header: "Statut",
     className: "w-24",
-    cell: (item: Employee) => (
-      <Badge variant={item.status === "active" ? "default" : "secondary"}>
-        {item.status === "active"
-          ? "Actif"
-          : item.status === "on_leave"
-            ? "En congé"
-            : "Inactif"}
-      </Badge>
-    ),
+    cell: (item: Employee) => {
+      return item.status === "active" ? (
+        <StatusBadge status="success" label="Actif" />
+      ) : item.status === "on_leave" ? (
+        <StatusBadge status="warning" label="congé" />
+      ) : (
+        <StatusBadge status="error" label="Inactif" />
+      );
+    },
   },
   {
     key: "hireDate",

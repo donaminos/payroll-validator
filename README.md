@@ -11,6 +11,7 @@ A proof-of-concept (POC) demonstrating modern frontend architecture for scalable
 ## 🎯 Project Goals
 
 This POC demonstrates:
+
 - **Scalable Monorepo Architecture**: Feature-based organization with shared packages
 - **Modern Frontend Stack**: Next.js 15, React 19, TypeScript, Tailwind CSS 4
 - **Design System Integration**: Shadcn/ui components with Storybook 9 documentation
@@ -38,17 +39,20 @@ The primary demonstration feature showcasing modern data table patterns:
 ## 🛠️ Installation
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/your-org/payroll-validator.git
    cd payroll-validator
    ```
 
 2. **Install dependencies**
+
    ```bash
    pnpm install
    ```
 
 3. **Start the development server**
+
    ```bash
    pnpm dev
    ```
@@ -97,6 +101,7 @@ payroll-validator/
 ### Dashboard (`/`)
 
 A demonstration dashboard showing:
+
 - **Key Metrics**: Sample data visualization components
 - **Compliance Monitoring**: Example monitoring widgets
 - **Recent Activity**: Activity feed components
@@ -112,13 +117,13 @@ The main demonstration page featuring:
 
 ## 🚀 Available Scripts
 
-| Command | Description |
-|---------|-------------|
-| `pnpm dev` | Start development server |
-| `pnpm build` | Build all applications and packages |
-| `pnpm lint` | Run ESLint across all packages |
-| `pnpm check-types` | Type-check all TypeScript files |
-| `pnpm format` | Format code with Prettier |
+| Command            | Description                         |
+| ------------------ | ----------------------------------- |
+| `pnpm dev`         | Start development server            |
+| `pnpm build`       | Build all applications and packages |
+| `pnpm lint`        | Run ESLint across all packages      |
+| `pnpm check-types` | Type-check all TypeScript files     |
+| `pnpm format`      | Format code with Prettier           |
 
 ### Development Commands
 
@@ -151,6 +156,7 @@ The project includes a comprehensive design system built with:
 ### Component Library
 
 The design system includes:
+
 - Form components (Input, Textarea, Search)
 - Data display (Table, Badge, Status indicators)
 - Navigation (Sidebar, Breadcrumb)
@@ -160,6 +166,7 @@ The design system includes:
 ### Storybook Development
 
 Storybook runs on **http://localhost:6006** and provides:
+
 - Interactive component documentation
 - Component testing and development
 - Design system showcase
@@ -168,20 +175,22 @@ Storybook runs on **http://localhost:6006** and provides:
 ## 🔧 Technology Stack
 
 ### Frontend
+
 - **Next.js 15**: React framework with app router
 - **React 19**: Latest React with concurrent features
 - **TypeScript 5.8**: Type-safe development
 - **Tailwind CSS 4**: Utility-first styling
 
 ### Development Tools
+
 - **Turborepo**: Monorepo build system
 - **ESLint**: Code linting and formatting
 - **Prettier**: Code formatting
 - **Storybook 9**: Component documentation
 
 ### Package Management
-- **pnpm**: Fast, disk space efficient package manager
 
+- **pnpm**: Fast, disk space efficient package manager
 
 ## 🧪 Development
 
@@ -205,6 +214,7 @@ pnpm storybook
 ### Type Safety
 
 The project uses strict TypeScript configuration with:
+
 - Branded types for business domains
 - Comprehensive type exports
 - Zod schema validation

@@ -36,8 +36,8 @@ export function UpcomingOffboarding({ offboarding }: UpcomingOffboardingProps) {
           onClick={() => setIsOpen((v) => !v)}
         >
           <div className="flex items-start gap-2">
-            <UserMinus className="h-5 w-5 text-red-600 relative top-[2px]" />
-            <div className="text-left">
+            <UserMinus className="text-red-600" />
+            <div className="text-left space-y-2">
               <CardTitle className="text-lg leading-none">
                 Départs prévus
               </CardTitle>
@@ -80,7 +80,7 @@ export function UpcomingOffboarding({ offboarding }: UpcomingOffboardingProps) {
                     </span>
                   </div>
                 </div>
-                <StatusBadge status={employee.status} />
+                <StatusBadge status={employee.status} label={employee.status} />
               </div>
 
               <div className="grid grid-cols-2 gap-4 text-sm">

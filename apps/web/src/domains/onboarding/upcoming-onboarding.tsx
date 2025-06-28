@@ -28,7 +28,7 @@ type UpcomingOnboardingProps = {
 export function UpcomingOnboarding({ onboarding }: UpcomingOnboardingProps) {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <Card>
+    <Card className="min-h-20">
       <CardHeader>
         <Button
           variant="ghost"
@@ -37,7 +37,7 @@ export function UpcomingOnboarding({ onboarding }: UpcomingOnboardingProps) {
         >
           <div className="flex items-start gap-2">
             <UserPlus className="h-5 w-5 text-green-600 relative top-[2px]" />
-            <div className="text-left">
+            <div className="text-left space-y-2">
               <CardTitle className="text-lg leading-none">
                 Arrivées prévues
               </CardTitle>
