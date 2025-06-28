@@ -7,7 +7,10 @@
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check-types": "turbo run check-types",
-    "clean:all": "find . -type d -name 'node_modules' -prune -exec rm -rf '{}' +"
+    "clean:all": "find . -type d -name 'node_modules' -prune -exec rm -rf '{}' +",
+    "e2e": "pnpm --filter e2e exec playwright test",
+    "e2e:headed": "pnpm --filter e2e exec playwright test --headed",
+    "e2e:ui": "pnpm --filter e2e exec playwright test --ui"
   },
   "devDependencies": {
     "prettier": "^3.6.0",
