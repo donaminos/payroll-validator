@@ -13,7 +13,7 @@ const columns = [
   {
     key: "firstName",
     header: "Prénom",
-    className: "w-48",
+    className: "w-32",
     cell: (item: Employee) => (
       <span className="truncate block">{item.firstName}</span>
     ),
@@ -21,7 +21,7 @@ const columns = [
   {
     key: "lastName",
     header: "Nom",
-    className: "w-48",
+    className: "w-32",
     cell: (item: Employee) => (
       <span className="truncate block">{item.lastName}</span>
     ),
@@ -29,7 +29,7 @@ const columns = [
   {
     key: "email",
     header: "Email",
-    className: "w-64",
+    className: "w-48",
     cell: (item: Employee) => (
       <span className="truncate block">{item.email}</span>
     ),
@@ -37,7 +37,7 @@ const columns = [
   {
     key: "department",
     header: "Département",
-    className: "w-40",
+    className: "w-36",
     cell: (item: Employee) => (
       <span className="truncate block">{item.department}</span>
     ),
@@ -45,7 +45,7 @@ const columns = [
   {
     key: "contractType",
     header: "Contrat",
-    className: "w-32",
+    className: "w-24",
     cell: (item: Employee) => (
       <span className="truncate block">{item.contractType}</span>
     ),
@@ -53,7 +53,7 @@ const columns = [
   {
     key: "salary",
     header: "Salaire brut (€)",
-    className: "w-36",
+    className: "w-32",
     cell: (item: Employee) => (
       <span className="font-mono truncate block">
         {item.salary.toLocaleString("fr-FR", {
@@ -61,14 +61,6 @@ const columns = [
           currency: "EUR",
         })}
       </span>
-    ),
-  },
-  {
-    key: "weeklyHours",
-    header: "Heures/semaine",
-    className: "w-32",
-    cell: (item: Employee) => (
-      <span className="truncate block">{item.weeklyHours}h</span>
     ),
   },
   {
