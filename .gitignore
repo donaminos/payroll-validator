@@ -39,3 +39,15 @@ yarn-error.log*
 
 *storybook.log
 storybook-static
+
+
+# Playwright
+packages/e2e/playwright-report/
+packages/e2e/test-results/
+packages/e2e/test-results.json
+packages/e2e/playwright/.cache/
+
+# Screenshots et vidéos de tests
+packages/e2e/screenshots/
+packages/e2e/videos/
+packages/e2e/traces/
