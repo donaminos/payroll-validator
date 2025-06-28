@@ -1,1 +1,1 @@
-export { SignInView as default } from "@/views/auth/singnin-view";
+export { SignInView as default } from "@/views/auth/signin-view";
