@@ -80,7 +80,7 @@ export function UpcomingOnboarding({ onboarding }: UpcomingOnboardingProps) {
                     </span>
                   </div>
                 </div>
-                <StatusBadge status={employee.status} />
+                <StatusBadge status={employee.status} label={employee.status} />
               </div>
 
               <div className="grid grid-cols-2 gap-4 text-sm">

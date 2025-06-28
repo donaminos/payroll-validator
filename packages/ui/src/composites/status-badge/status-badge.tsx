@@ -9,7 +9,7 @@ export function StatusBadge({
   label,
 }: {
   status: string;
-  label: string;
+  label?: string;
 }) {
   const badgeData = {
     [STATUS.PENDING]: {
@@ -35,7 +35,7 @@ export function StatusBadge({
   return (
     <Badge
       variant={variant}
-      className="flex items-center uppercase text-[9px] font-semibold w-18"
+      className="flex items-center uppercase text-[9px] font-semibold w-20"
     >
       {text}
     </Badge>
