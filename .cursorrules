@@ -1,13 +1,12 @@
-
 # Project: Payroll Data Validator (24h MVP - Recruitment Project)
-# Stack: Next.js 15, React 19, Shadcn/ui, Tailwind 4, Supabase
+# Stack: Next.js 15, React 19, Shadcn/ui, Tailwind 4, Turborepo
 # Architecture: Feature-based monorepo with design system
 
 ## BUSINESS CONTEXT
-- Domain: French payroll variable validation for HR professionals
-- Use Case: Upload CSV/Excel → Validate against French labor law → Export clean data
-- Performance Target: Process 500 payroll lines in <30 seconds
-- Mobile-first responsive design for field payroll managers
+- Domain: French employee management for HR professionals
+- Use Case: Employee record management with search, filtering, and CRUD operations
+- Performance Target: Load 1000+ employees in <3 seconds
+- Mobile-first responsive design for HR managers and payroll administrators
 
 ## CODE STYLE & ARCHITECTURE
 
@@ -26,59 +25,81 @@
 - Error boundaries for feature isolation
 - Proper loading states with Suspense
 
-### File Organization (Feature-based)
+### File Organization (Domain-based)
 ```
-apps/web/features/[feature-name]/
-├── components/     # Feature-specific UI
-├── hooks/         # Business logic hooks
-├── types/         # Feature domain types
-├── utils/         # Feature utilities
-└── api/          # Feature API handlers
+apps/web/src/
+├── domains/           # Feature-based organization
+│   ├── employees/     # Employee management feature
+│   │   ├── components/
+│   │   ├── hooks.ts
+│   │   ├── service.ts
+│   │   └── types.ts
+│   ├── compliance/    # Compliance monitoring
+│   ├── onboarding/    # Onboarding management
+│   └── offboarding/   # Offboarding management
+├── shared/            # Shared components and utilities
+│   ├── components/
+│   ├── constants/
+│   └── utils/
+└── views/             # Page-level components
+    ├── dashboard/
+    ├── employees/
+    └── auth/
 ```
 
 ### Naming Conventions
-- Components: PascalCase (PayrollValidator.tsx)
-- Hooks: camelCase with 'use' prefix (usePayrollValidation.ts)
-- Types: PascalCase with domain prefix (PayrollEmployee, ValidationResult)
+- Components: PascalCase (EmployeesTable.tsx)
+- Hooks: camelCase with 'use' prefix (useEmployees.ts)
+- Types: PascalCase with domain prefix (Employee, ValidationResult)
 - Constants: SCREAMING_SNAKE_CASE (SMIC_2024, MAX_WEEKLY_HOURS)
-- Files: kebab-case (payroll-validator.tsx)
+- Files: kebab-case (employees-table.tsx)
 
 ## IMPORT ORGANIZATION
 1. React imports first
 2. Next.js imports
 3. Third-party libraries (ordered alphabetically)
-4. Shared package imports (@payroll/ui, @payroll/shared)
+4. Shared package imports (@payroll/ui, @payroll/types, @payroll/schemas)
 5. Feature-relative imports (./components, ../hooks)
 6. Type-only imports last
 
-## SUPABASE INTEGRATION
+## MONOREPO STRUCTURE
 
-### Database Patterns
-- Use generated TypeScript types from Supabase CLI
-- Implement RLS (Row Level Security) for multi-tenant data
-- Handle loading/error states consistently
-- Use React Query for data fetching and caching
+### Package Organization
+```
+packages/
+├── ui/                    # Design System Package
+│   ├── src/components/    # Base UI components (Shadcn/ui)
+│   ├── src/composites/    # Complex UI components
+│   └── stories/           # Storybook stories
+├── types/                 # Shared TypeScript types
+├── schemas/               # Zod validation schemas
+├── tailwind-config/       # Shared Tailwind configuration
+├── typescript-config/     # Shared TypeScript configuration
+└── eslint-config/         # Shared ESLint configuration
+```
 
-### Naming Conventions
-- Tables: snake_case (payroll_files, validation_results)
-- Columns: snake_case (file_name, created_at, employee_id)
-- Foreign keys: [table]_id pattern
+### Package Dependencies
+- `@payroll/ui`: Design system components
+- `@payroll/types`: Shared TypeScript interfaces
+- `@payroll/schemas`: Zod validation schemas
+- `@payroll/tailwind-config`: Tailwind configuration
+- `@payroll/typescript-config`: TypeScript configuration
 
-### Error Handling
-- Always wrap database calls in try-catch
-- Use custom error types for business logic
-- Provide user-friendly error messages
-- Log errors for debugging (non-sensitive data only)
-
-## FRENCH PAYROLL BUSINESS RULES
+## FRENCH EMPLOYEE MANAGEMENT BUSINESS RULES
 
 ### Legal Constants (2024)
-- SMIC_MONTHLY: 1398.69 (euros gross)
+- SMIC_MONTHLY: 1801 (euros gross)
 - MAX_WEEKLY_HOURS: 48
 - LEGAL_WEEKLY_HOURS: 35
 - MAX_DAILY_HOURS: 10
 - OVERTIME_RATE_125: 1.25 (first 8 hours)
 - OVERTIME_RATE_150: 1.50 (beyond 43h/week)
+
+### Employee Types
+- CDI: Permanent contract (most common)
+- CDD: Fixed-term contract
+- Interim: Temporary work
+- Stage: Internship
 
 ### Validation Categories
 - BLOCKING_ERROR: Violates legal minimums (salary < SMIC)
@@ -90,19 +111,22 @@ apps/web/features/[feature-name]/
 - Hours: Decimal format (37.5 not 37h30)
 - Dates: ISO format (YYYY-MM-DD)
 - Names: Trim whitespace, handle accents properly
+- French phone: 10 digits format
+- French postal code: 5 digits format
 
 ## PERFORMANCE REQUIREMENTS
 
-### Web Workers Usage
-- Use Web Workers for CSV parsing (non-blocking UI)
-- Stream validation results to UI progressively
-- Handle worker termination gracefully
-- Provide progress feedback with meaningful steps
+### Data Loading
+- Load 1000+ employees in under 3 seconds
+- Search results appear within 200ms
+- Smooth pagination without page reloads
+- Efficient memory usage
+- Caching for frequently accessed data
 
 ### Component Optimization
 - Use React.memo for heavy table components
 - Implement virtual scrolling for large datasets
-- Lazy load correction modals
+- Lazy load employee detail modals
 - Debounce search and filter inputs
 
 ## RESPONSIVE DESIGN
@@ -138,13 +162,13 @@ apps/web/features/[feature-name]/
 
 ### Unit Tests (Vitest)
 - Test business logic in isolation
-- Mock external dependencies (Supabase, Workers)
+- Mock external dependencies
 - Test error handling paths
 - Validate French business rules
 
 ### E2E Tests (Playwright)
 - Test complete user workflows
-- Validate file upload/download
+- Validate employee CRUD operations
 - Test responsive behavior
 - Performance benchmarks
 
@@ -160,16 +184,57 @@ apps/web/features/[feature-name]/
 ## SECURITY CONSIDERATIONS
 
 ### Data Privacy
-- No persistent storage of payroll data
+- No persistent storage of sensitive data (mock data only)
 - Clear localStorage on session end
 - HTTPS only for production
-- Input sanitization for file uploads
+- Input sanitization for forms
 - Rate limiting for API endpoints
 
+## CURRENT IMPLEMENTATION STATUS
+
+### ✅ Completed Features
+- API infrastructure for employees (GET, POST, PUT, DELETE)
+- 1000 realistic French employee records
+- DataTable component with search and pagination
+- Sheet component for drawers
+- Complete design system with Shadcn/ui
+- Mobile-responsive layout components
+- TypeScript interfaces and validation
+- Dashboard with compliance monitoring
+- Employee management interface
+
+### 🔄 In Progress
+- Employee details drawer implementation
+- Add employee form with validation
+- Advanced filtering and search
+
+### ⏳ Future Enhancements (Post-MVP)
+- File upload and validation features
+- Export functionality
+- Real-time validation with Web Workers
+- Advanced reporting and analytics
+
+## UI COMPONENTS
+
+### Design System Foundation
+- Base: Shadcn/ui + Tailwind 4 + Radix UI primitives
+- Theme: Consistent token system
+- Responsive: Mobile-first with adaptive breakpoints
+- Accessibility: WCAG 2.1 AA compliance
+
+### Essential Components
+1. DataTable: Advanced table with search, pagination, sorting
+2. EmployeeDetailsDrawer: Right-side drawer for employee information
+3. AddEmployeeForm: Form in drawer for new employee creation
+4. EmployeeFilters: Advanced filtering and search controls
+5. StatusBadge: Color-coded status indicators
+
 When suggesting code changes:
-1. Always consider the business context (French payroll processing)
-2. Maintain feature isolation in the monorepo structure
+1. Always consider the business context (French employee management)
+2. Maintain domain isolation in the monorepo structure
 3. Optimize for mobile-first responsive design
 4. Include proper TypeScript types and error handling
 5. Follow the established naming conventions
 6. Consider performance implications for large datasets
+7. Use the existing design system components from @payroll/ui
+8. Implement French-specific validation rules
