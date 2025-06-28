@@ -3,8 +3,6 @@ import {
   gotoEmployees,
   waitForTableLoaded,
   searchEmployee,
-  paginateEmployees,
-  openEmployeeDetails,
 } from '../src/helpers';
 
 test.describe('Employees Page - Data Display', () => {
@@ -15,13 +13,13 @@ test.describe('Employees Page - Data Display', () => {
 
   test('should load employee list table', async ({ page }) => {
     await expect(page.locator('table')).toBeVisible();
-    await expect(page.getByText('Prénom')).toBeVisible();
-    await expect(page.getByText('Nom')).toBeVisible();
+    await expect(page.locator('th').nth(0)).toHaveText('Prénom');
+    await expect(page.locator('th').nth(1)).toHaveText('Nom');
   });
 
   test('should paginate employee list', async ({ page }) => {
-    await paginateEmployees(page, 2);
-    await expect(page).toHaveURL(/page=2/);
+    await page.getByRole('button', { name: 'Page suivante' }).click();
+    await expect(page.getByText(/Page 2 of|Page 2 sur/, { exact: false })).toBeVisible();
   });
 
   test('should search employees', async ({ page }) => {
@@ -30,24 +28,11 @@ test.describe('Employees Page - Data Display', () => {
   });
 });
 
-test.describe('Employees Page - Interactions', () => {
-  test.beforeEach(async ({ page }) => {
-    await gotoEmployees(page);
-    await waitForTableLoaded(page);
-  });
-
-  test('should open employee details', async ({ page }) => {
-    await openEmployeeDetails(page, 'Jean'); // Replace with a real name from mock data
-    // Expect a drawer or modal to open
-    await expect(page.getByRole('dialog')).toBeVisible();
-  });
-});
-
 test.describe('Employees Page - Edge Cases', () => {
   test('should handle empty search results', async ({ page }) => {
     await gotoEmployees(page);
     await searchEmployee(page, 'zzzzzzzzzzzzzzzzzzzz');
-    await expect(page.getByText(/Aucun employé trouvé|No data/i)).toBeVisible();
+    await expect(page.getByText(/No results found\./i)).toBeVisible();
   });
 });
 

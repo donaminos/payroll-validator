@@ -8,11 +8,17 @@ test.describe('Dashboard Page - Core Functionality', () => {
 
   test('should load all widgets and metrics', async ({ page }) => {
     await expect(page.getByText('Tableau de bord')).toBeVisible();
-    await expect(page.getByText(/Vue d'ensemble/)).toBeVisible();
-    await expect(page.getByText(/Conformité/)).toBeVisible();
-    await expect(page.getByText(/Embauches à venir/)).toBeVisible();
-    await expect(page.getByText(/Départs à venir/)).toBeVisible();
-    await expect(page.getByText(/Actions rapides/)).toBeVisible();
+    await expect(
+      page.getByText(
+        "Vue d'ensemble de votre système de validation de paie. Surveillez la conformité et gérez vos données."
+      )
+    ).toBeVisible();
+    await expect(
+      page.getByText("Vue d'ensemble de la conformité")
+    ).toBeVisible();
+    await expect(page.getByText('Arrivées prévues')).toBeVisible();
+    await expect(page.getByText('Départs prévus')).toBeVisible();
+    await expect(page.getByText('Actions rapides')).toBeVisible();
   });
 
   test('should have working navigation links', async ({ page }) => {
