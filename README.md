@@ -191,12 +191,12 @@ Given these challenges, relying on Radix UI for critical or long-term projects c
 
 Consider these actively maintained alternatives for your projects:
 
-| Library | Focus | Key Benefits |
-|---------|-------|--------------|
-| **[React Aria](https://react-spectrum.adobe.com/react-aria/)** | Accessibility hooks | No imposed styling, excellent a11y |
-| **[Headless UI](https://headlessui.com/)** | Unstyled components | Tailwind CSS integration, Vue/React support |
-| **[Ariakit](https://ariakit.org/)** | Accessible components | Highly customizable, active development |
-| **[Base UI](https://mui.com/base-ui/)** | Customizable components | Same team as Radix, actively maintained |
+| Library                                                        | Focus                   | Key Benefits                                |
+| -------------------------------------------------------------- | ----------------------- | ------------------------------------------- |
+| **[React Aria](https://react-spectrum.adobe.com/react-aria/)** | Accessibility hooks     | No imposed styling, excellent a11y          |
+| **[Headless UI](https://headlessui.com/)**                     | Unstyled components     | Tailwind CSS integration, Vue/React support |
+| **[Ariakit](https://ariakit.org/)**                            | Accessible components   | Highly customizable, active development     |
+| **[Base UI](https://mui.com/base-ui/)**                        | Customizable components | Same team as Radix, actively maintained     |
 
 ### Migration Considerations
 

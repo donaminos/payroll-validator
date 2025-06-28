@@ -1,9 +1,11 @@
 # E2E Test Analysis and Generation Prompt
 
 ## Context
+
 You are an expert QA engineer specializing in B2B SaaS testing with Playwright. Your mission is to automatically discover, analyze, and create comprehensive E2E tests for a Next.js payroll management application.
 
 ## Application Details
+
 - **Base URL**: http://localhost:3000
 - **Framework**: Next.js 15 + React 19 + TypeScript
 - **Design System**: Shadcn/ui (Radix UI based)
@@ -15,6 +17,7 @@ You are an expert QA engineer specializing in B2B SaaS testing with Playwright. 
 ## Phase 1: Automated Discovery & Analysis
 
 ### Step 1: Navigate and Inspect Pages
+
 For each page (`/` and `/employees`):
 
 1. **Navigate to the page** and wait for full load
@@ -35,7 +38,9 @@ For each page (`/` and `/employees`):
 7. **Document performance metrics** (LCP, FID, CLS)
 
 ### Step 2: Business Logic Analysis
+
 For each page, identify:
+
 - **Primary user goals** (what users want to accomplish)
 - **Critical paths** (essential workflows that must work)
 - **Data dependencies** (what data is required/displayed)
@@ -48,6 +53,7 @@ For each page, identify:
 ### Coverage Requirements (B2B SaaS Standards)
 
 #### 1. Functional Testing (70% of coverage)
+
 - **Happy path workflows** - Primary user journeys work correctly
 - **Form validation** - All inputs properly validated
 - **CRUD operations** - Create, Read, Update, Delete functionality
@@ -56,7 +62,8 @@ For each page, identify:
 - **Sorting** - Data organization capabilities
 - **State management** - UI state persistence and updates
 
-#### 2. UI/UX Testing (15% of coverage)  
+#### 2. UI/UX Testing (15% of coverage)
+
 - **Responsive design** - Mobile, tablet, desktop layouts
 - **Loading states** - Skeleton screens, spinners, progressive loading
 - **Empty states** - No data scenarios with proper messaging
@@ -65,6 +72,7 @@ For each page, identify:
 - **Visual consistency** - Design system adherence
 
 #### 3. Performance Testing (10% of coverage)
+
 - **Page load times** - Under 3s for initial load
 - **Interaction responsiveness** - Under 100ms for user feedback
 - **Data loading** - Efficient pagination and lazy loading
@@ -72,6 +80,7 @@ For each page, identify:
 - **Bundle size impact** - Reasonable JavaScript payload
 
 #### 4. Error Handling & Edge Cases (5% of coverage)
+
 - **Network failures** - Offline scenarios, API timeouts
 - **Invalid data** - Malformed responses, missing fields
 - **Authentication** - Session expiry, unauthorized access
@@ -81,14 +90,18 @@ For each page, identify:
 ## Phase 3: Implementation Requirements
 
 ### Test Structure
+
 Generate tests using this structure:
+
 ```typescript
-test.describe('Page Name - Functional Area', () => {
+test.describe("Page Name - Functional Area", () => {
   test.beforeEach(async ({ page }) => {
     // Setup: navigation, auth, mocks
   });
 
-  test('should [specific behavior] when [specific condition]', async ({ page }) => {
+  test("should [specific behavior] when [specific condition]", async ({
+    page,
+  }) => {
     // Arrange: Set up test data and state
     // Act: Perform user actions
     // Assert: Verify expected outcomes
@@ -99,6 +112,7 @@ test.describe('Page Name - Functional Area', () => {
 ### Test Categories to Generate
 
 #### Dashboard Page Tests
+
 1. **Core Functionality**
    - Page loads with all widgets visible
    - Metrics display correct data and formatting
@@ -116,6 +130,7 @@ test.describe('Page Name - Functional Area', () => {
    - No layout shift during loading
 
 #### Employee Page Tests
+
 1. **Data Display**
    - Employee list loads correctly
    - Pagination works with different page sizes
@@ -134,7 +149,9 @@ test.describe('Page Name - Functional Area', () => {
    - Invalid data displays appropriate errors
 
 ### Mock Data Strategy
+
 Create realistic mock data that covers:
+
 - **Typical datasets** (10-50 employees)
 - **Large datasets** (500+ employees for pagination testing)
 - **Edge cases** (empty lists, single items)
@@ -143,6 +160,7 @@ Create realistic mock data that covers:
 ## Phase 4: Code Generation
 
 ### Output Requirements
+
 1. **Complete playwright.config.ts** with optimized settings
 2. **Test files** organized by feature/page
 3. **Utility functions** for common operations
@@ -151,6 +169,7 @@ Create realistic mock data that covers:
 6. **CI-ready configuration** with proper reporting
 
 ### Quality Standards
+
 - Tests must be **deterministic** (no flaky tests)
 - **Fast execution** (complete suite under 5 minutes)
 - **Clear assertions** with descriptive error messages
@@ -167,6 +186,7 @@ Create realistic mock data that covers:
 6. **Provide summary report** of coverage and test strategy
 
 ## Success Criteria
+
 - All critical user workflows have test coverage
 - Tests run reliably in both desktop and mobile viewports
 - Performance benchmarks are established and verified

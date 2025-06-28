@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Manrope } from "next/font/google";
 
 import "@payroll/tailwind-config/globals.css";
 
@@ -9,6 +10,10 @@ import {
 
 import { AppSidebar } from "@/shared/components/sidebar/app-sidebar";
 import { SidebarHeader } from "@/shared/components/sidebar/sidebar-header";
+
+const manrope = Manrope({
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "PayrollValidator - Validation de paie intelligente",
@@ -30,7 +35,7 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr">
+    <html lang="fr" className={manrope.className}>
       <body>
         <SidebarProvider>
           <AppSidebar />

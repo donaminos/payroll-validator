@@ -54,9 +54,8 @@ export function DashboardView() {
         <QuickActions />
       </div>
       <div className="my-6 md:my-12">
-      <LegalReminders />
+        <LegalReminders />
       </div>
- 
     </div>
   );
 }

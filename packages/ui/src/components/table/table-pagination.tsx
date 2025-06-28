@@ -43,7 +43,12 @@ function TablePagination({
       )}
     >
       <div className="flex-1 text-muted-foreground">
-        <span aria-live="polite" aria-atomic="true" ref={liveRegionRef} className="sr-only" />
+        <span
+          aria-live="polite"
+          aria-atomic="true"
+          ref={liveRegionRef}
+          className="sr-only"
+        />
         Page {currentPage} sur {totalPages}
       </div>
       <div className="flex items-center space-x-2">

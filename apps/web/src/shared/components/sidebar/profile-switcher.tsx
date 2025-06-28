@@ -17,7 +17,8 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@payroll/ui/components/sidebar/sidebar";
-import { Avatar, AvatarFallback } from "@payroll/ui/components/avatar/avatar";
+
+import { BrandLogo } from "@/shared/components/brand-logo/brand-logo";
 
 export function ProfileSwitcher({
   profiles,
@@ -43,16 +44,7 @@ export function ProfileSwitcher({
               size="lg"
               className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground gap-x-2"
             >
-              <div className="text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
-                <Avatar>
-                  <AvatarFallback className="text-primary bg-[#E6F4FF] font-bold text-lg">
-                    {activeTeam.name.charAt(0)}
-                  </AvatarFallback>
-                </Avatar>
-              </div>
-              <div className="grid flex-1 text-left text-base leading-tight">
-                <span className="truncate">{activeTeam.name}</span>
-              </div>
+              <BrandLogo activeTeam={activeTeam} />
               <ChevronsUpDown className="ml-auto" />
             </SidebarMenuButton>
           </DropdownMenuTrigger>
