@@ -285,6 +285,34 @@ This project includes an experimental E2E test package using [Playwright MCP](ht
 - Icons from [Lucide](https://lucide.dev/)
 - Monorepo powered by [Turborepo](https://turborepo.com/)
 
+## Is it production ready?
+
+**TL;DR: No**
+
+This project is a proof of concept designed to demonstrate how to architect a modern, scalable frontend for complex HR/payroll domains. The focus was on establishing a robust foundation—domain-driven structure, type safety, and design system integration—rather than delivering a production-ready application. Due to time constraint, several critical aspects required for a true production deployment were intentionally deprioritized :
+
+- **Comprehensive Error Handling:**
+  - The app lacks feature-scoped error boundaries, structured logging, and user-friendly recovery flows. In production, robust error handling is essential for both user experience and maintainability.
+
+- **Schema-Driven Forms:**
+  - Forms should be schema-driven or dynamically generated from backend contracts. A production system should leverage shared validation schemas (e.g., Zod, OpenAPI) to ensure consistency, enable dynamic forms, and facilitate future API exposure to partners.
+
+- **Unified Data Layer:**
+  - For scalability and reliability, a unified data layer (e.g., React Query, SWR, or custom abstraction) should manage API communication, caching, error states, and offline support.
+
+- **Automated Testing:**
+  - The current test suite focuses on E2E flows. Production readiness demands comprehensive unit and integration tests for business logic, forms, and error handling, with code coverage enforcement.
+
+- **Strict Linting & Code Quality:**
+  - Linting rules (import order, Tailwind class sorting, etc.) are not fully enforced. Production codebases benefit from strict, automated code quality checks to ensure consistency and prevent regressions.
+
+- **Offline & Resilience:**
+  - The app does not handle offline scenarios or provide user feedback when connectivity is lost. Production systems should gracefully degrade and inform users of network issues.
+
+- **Security & Compliance:**
+  - While mock data is used, production deployments require rigorous input sanitization, secure storage practices, and compliance with data privacy regulations.
+
+
 ---
 
 **Made with ❤️ for Payroll**
